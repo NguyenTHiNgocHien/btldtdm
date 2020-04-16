@@ -79,7 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     Route::get('sanpham/{id}/delete','SanphamController@destroy')->name('xoasanpham');
     Route::post('sanpham/nhap-hang', 'SanphamController@nhapHang')->name('nhaphang');
-
+    Route::get('sanpham/{id}/edit','SanphamController@edit')->name('suathongtinsanpham');
     Route::get('sanpham/{id}/cap-nhat-gia-ban','SanphamController@CapNhatGiaBan')->name('capnhatgiaban');
 
     //Hình ảnh cho sản phẩm
