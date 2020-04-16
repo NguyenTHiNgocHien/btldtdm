@@ -98,7 +98,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     //quản lý banner
     Route::get('banner','BannerController@index')->name('banner');
-    Route::post('banner/say-some-thing','BannerController@store');
 });
 
 
