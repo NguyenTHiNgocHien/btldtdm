@@ -69,7 +69,7 @@ class CongdungphuController extends Controller
      */
     public function show($id)
     {
-        //
+        echo 'somthing';
     }
 
     /**
