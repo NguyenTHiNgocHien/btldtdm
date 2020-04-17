@@ -7,7 +7,7 @@ use DB;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
-class CongdungController extends Controller
+class CongdungphuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CongdungController extends Controller
      */
     public function index()
     {
-        $congdung = DB::table('congdung')->paginate(5);
-        return view('admin.congdung.index',compact('congdung'));
+        $congdungphu = DB::table('congdungphu')->paginate(5);
+        return view('admin.congdungphu.index',compact('congdungphu'));
     }
 
     /**
@@ -39,25 +39,25 @@ class CongdungController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
-        $congdung = DB::table('congdung')
+        $congdungphu = DB::table('congdungphu')
                 ->insert(
                     [
                         //'cdp_id' =>$request->idCDP,
-                        'cd_ten' =>$request->tenCD,
+                        'cdp_ten' =>$request->tenCDP,
                         'created_at' => $now,
                         'updated_at' => $now,
                     ]
                 );
 
-        if($congdung)
+        if($congdungphu)
         {
             $success = Session::put('alert-info', 'Thêm dữ liệu thành công');
-            return redirect()->route('danhsachcongdung');
+            return redirect()->route('danhsachcongdungphu');
         }
         else
         {
             $success = Session::put('alert-info', 'Thêm dữ liệu không thành công');
-            return redirect()->route('danhsachcongdung');
+            return redirect()->route('danhsachcongdungphu');
         }
     }
 
@@ -80,8 +80,8 @@ class CongdungController extends Controller
      */
     public function edit($id)
     {
-        $congdung = DB::table('congdung')->where('cd_id', $id)->first();
-        return view('admin.congdung.edit', compact('congdung'));
+        $congdungphu = DB::table('congdungphu')->where('cdp_id', $id)->first();
+        return view('admin.congdungphu.edit', compact('congdungphu'));
     }
 
     /**
@@ -94,17 +94,17 @@ class CongdungController extends Controller
     public function update(Request $request, $id)
     {
         $now = Carbon::now();
-        $data = DB::table('congdung')->where('cd_id',$id)
+        $data = DB::table('congdungphu')->where('cdp_id',$id)
                     ->update(
                         [
-                            'cd_ten' => $request->tenCongdung,
+                            'cdp_ten' => $request->tenCongdungphu,
                             'updated_at' => $now,
                         ]
                     );
 
         //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
         $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
-        return redirect()->route('danhsachcongdung');
+        return redirect()->route('danhsachcongdungphu');
     }
 
     /**
@@ -115,8 +115,8 @@ class CongdungController extends Controller
      */
     public function destroy($id)
     {
-        $data = DB::table('congdung')->where('cd_id',$id)->delete();
+        $data = DB::table('congdungphu')->where('cdp_id',$id)->delete();
         $success = Session::put('alert-del', 'Xóa dữ liệu thành công');
-        return redirect()->route('danhsachcongdung');
+        return redirect()->route('danhsachcongdungphu');
     }
 }
