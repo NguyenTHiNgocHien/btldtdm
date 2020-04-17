@@ -69,7 +69,10 @@ class CongdungphuController extends Controller
      */
     public function show($id)
     {
-        //
+        //ra ngoai view hien thi k can foreach
+        // $chitietcongdungphu->cdp_ten;
+        $chitietcongdungphu = DB::table('congdungphu')->where('cdp_id','=',$id)->first();
+        return view('admin.congdungphu.detail',compact('chitietcongdungphu'));
     }
 
     /**
