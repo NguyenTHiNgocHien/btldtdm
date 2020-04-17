@@ -17,7 +17,7 @@ class SanphamController extends Controller
      */
     public function index()
     {
-        $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->paginate(5);
+        $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_id', 'asc')->paginate(10);
         // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
         // dd($sanphamcon);
         $loai = DB::table('loai')->get();
@@ -48,7 +48,6 @@ class SanphamController extends Controller
                 ->insert(
                     [
                         'sp_ten' => $request->tenSP,
-                        'sp_giagoc' => $request->giaGoc,
                         'sp_giaban' => $request->giaBan,
                         'sp_thongtin' => $request->thongTin,
                         'l_id' => $request->loai,
@@ -107,7 +106,8 @@ class SanphamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sanpham = DB::table('sanpham')->where('sp_id','=',$id)->first();
+        return view('admin.sanpham.edit');
     }
 
     /**

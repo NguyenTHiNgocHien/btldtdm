@@ -68,7 +68,7 @@
                 <td>{{ $value->l_ten }}</td>
                 <td>{{ $value->sp_soluong == NULL ? 'Chưa nhập hàng' : $value->sp_soluong }}</td>
                 <td>
-                  @if ($value->sp_giaban == 0 || $value->sp_soluong == 0)
+                  @if ($value->sp_giaban == 0)
                       <p>Chưa nhập giá bán</p>
                   @else
                       {{ number_format($value->sp_giaban) }}
@@ -82,7 +82,7 @@
                 @endif
                 <td>
                   <a href="{{ route('chitietsanpham', ['id'=>$value->sp_id]) }}" class="btn btn-default">Chi tiết</a>
-                  <a href="{{ route('suaxuatxu', ['id'=>$value->sp_id]) }}" class="btn btn-primary">Sửa</a>
+                  <a href="{{ route('suathongtinsanpham', ['id'=>$value->sp_id]) }}" class="btn btn-primary">Sửa</a>
                   <a href="{{ route('suaxuatxu', ['id'=>$value->sp_id]) }}" class="btn btn-danger">Xóa</a>
                 </td>
               </tr>
@@ -137,10 +137,6 @@
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Mô tả sản phẩm</label>
               <textarea name="thongTin" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Giá gốc</label>
-              <input name="giaGoc" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập tên loại sản phẩm . . . ">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Giá bán</label>

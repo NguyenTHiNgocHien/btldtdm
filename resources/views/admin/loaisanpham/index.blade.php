@@ -19,7 +19,7 @@
     </div>
   </div><!-- /.container-fluid -->
 </section>
-{{ \Auth::guard('nhanvien')->user()->nv_id}}
+{{-- {{ \Auth::guard('nhanvien')->user()->nv_id}} --}}
     <div class="col-12">
       @if (Session::has('alert-info'))
         <div class="alert alert-success">
@@ -43,6 +43,12 @@
 
           <div class="card-title">
             
+          </div>
+        </div>
+        <div class="card-header">
+          <div class="form-group ml-1 mr-1">
+            {{-- <label>Tìm kiếm</label> --}}
+            <input type="email" class="form-control" name="search" placeholder="Nhập tên sản phẩm">
           </div>
         </div>
         <!-- /.card-header -->

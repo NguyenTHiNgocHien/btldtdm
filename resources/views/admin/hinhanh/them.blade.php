@@ -35,21 +35,32 @@
                 </div>
                 <div class="form-group">
                     <label for="image 1">Hình ảnh</label>
-                    <input type="file"  class="selectImage" name="ha_ten" id="images"/>
-                    <div class="show-progress">
-                          
-                    </div>
+                    <input type="file" name="ha_ten" id="fileInput"/>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" id="uploadImage">Upload</button>
+                    <button type="submit" class="btn btn-primary" >Upload</button>
                 </div> 
             </form>
         </div>
     </div>
     {{-- //Image show ở đây --}}
-    <div class="row justify-content-center" id="showImage">
-        
+    <div class="row justify-content-center js-file-list" id="showImage">
+        <img src="" alt="Ảnh sản phẩm" class="js-file-image">
     </div>
 
   </div>
+    <script>
+        $(document).ready(function(){
+            $('#fileInput').on('change', function() {
+                var file = $(this)[0].files[0];
+
+                var fileReader = new FileReader();
+                fileReader.onload = function() {
+                    var imageSrc = event.target.result;
+                    $('.js-file-image').attr('src', imageSrc);
+                };
+                fileReader.readAsDataURL(file);
+            });
+        });
+    </script>
 @endsection

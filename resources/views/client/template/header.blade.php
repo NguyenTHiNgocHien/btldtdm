@@ -60,19 +60,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="left"> Welcome to BeutifulShop <span><i class="fa fa-phone"></i>Call us</span> +84 589 20 2409</div>
+                        <div class="left"> Công ty mỹ phẩm Asley<span><i class="fa fa-phone"></i>Call us</span> +84 589 20 2409</div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="right">
                             <ul>
-                                <li class="toggle">
+                                {{-- <li class="toggle">
                                     <span>USD</span> <i class="fa fa-angle-down"></i>
                                     <ul>
                                         <li>USD</li>
                                         <li>EUR</li>
                                     </ul>
-                                </li>
-                                <li><a href="{{ route('dangnhapkhachhang') }}">Login</a></li>
+                                </li> --}}
+                                <li><a href="{{ route('dangnhapkhachhang') }}">Đăng nhập</a></li>
                             </ul>
                         </div>
                     </div>
