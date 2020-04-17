@@ -15,7 +15,7 @@ class CreateTableKhuyenmai extends Migration
     {
         Schema::create('khuyenmai', function (Blueprint $table) {
             $table->engine = "InnoDB";
-            $table->unsignedBigInteger('km_id')->autoIncrement();
+            $table->bigIncrements('km_id')->unsigned();
             $table->string('km_ten')->comment('Tên của đợt khuyến mãi');
             $table->string('km_noidung')->comment('Nội dung của đợt khuyến mãi');
             $table->integer('km_giatri')->comment('Giá trị khuyến mãi');

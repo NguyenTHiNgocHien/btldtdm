@@ -90,7 +90,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     //Công dụng
     Route::get('congdung', 'CongdungController@index')->name('danhsachcongdung');
 
+    Route::post('congdung','CongdungController@store')->name('themcongdung');
 
+    Route::get('congdung/{id}/edit','CongdungController@edit')->name('suacongdung');
+
+    Route::post('congdung/{id}/edit', 'CongdungController@update')->name('capnhatcongdung');
+
+    Route::get('congdung/{id}/delete','CongdungController@destroy')->name('xoacongdung');
+    //Công dụng phụ
+    Route::get('congdungphu', 'CongdungphuController@index')->name('danhsachcongdungphu');  
+
+    Route::post('congdungphu','CongdungphuController@store')->name('themcongdungphu');
+
+    Route::get('congdungphu/{id}/edit','CongdungphuController@edit')->name('suacongdungphu');
+
+    Route::post('congdungphu/{id}/edit', 'CongdungphuController@update')->name('capnhatcongdungphu');
+
+    Route::get('congdungphu/{id}/delete','CongdungphuController@destroy')->name('xoacongdungphu');
 
 
 
