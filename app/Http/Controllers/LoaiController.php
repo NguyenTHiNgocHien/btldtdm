@@ -122,4 +122,24 @@ class LoaiController extends Controller
         $success = Session::put('alert-del', 'Xóa dữ liệu thành công');
         return redirect()->route('danhsachloai');
     }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $output = '';
+            $loai = DB::table('sanpham')->where('sp_ten', 'LIKE', '%' . $request->search . '%')->get();
+            if ($products) {
+                foreach ($loai as $item => $value) {
+                    $output .= '<tr>
+                    <td>' . $product->id . '</td>
+                    <td>' . $product->title . '</td>
+                    <td>' . $product->description . '</td>
+                    <td>' . $product->price . '</td>
+                    </tr>';
+                }
+            }
+            
+            return Response($output);
+        }
+    }
 }
