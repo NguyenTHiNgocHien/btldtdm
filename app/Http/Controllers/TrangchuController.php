@@ -59,7 +59,18 @@ class TrangchuController extends Controller
 
     public function getAllProduct (){
         //Lẫy ngẫu nhiên sản phẩm
-        $allProduct = DB::table('sanpham')->inRandomOrder()->get();
-        dd($allProduct);
+        $allProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(5);
+        $allCategory = DB::table('loai')->get();
+        $countProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->count();
+        return view('client.product',compact(['allProduct','allCategory','countProduct']));
     }
+
+    public function getAllProduct2 (){
+        //Lẫy ngẫu nhiên sản phẩm
+        $allProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(5);
+        $allCategory = DB::table('loai')->get();
+        $countProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->count();
+        return view('client.product-2',compact(['allProduct','allCategory','countProduct']));
+    }
+
 }

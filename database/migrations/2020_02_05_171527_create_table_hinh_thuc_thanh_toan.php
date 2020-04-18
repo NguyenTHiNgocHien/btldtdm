@@ -14,7 +14,8 @@ class CreateTableHinhthucthanhtoan extends Migration
     public function up()
     {
         Schema::create('hinhthucthanhtoan', function (Blueprint $table) {
-            $table->unsignedBigInteger('httt_id')->autoIncrement();
+            $table->engine = "InnoDB";
+            $table->bigIncrements('httt_id')->unsigned();
             $table->string('httt_ten')->comment('Tên của hình thức thanh toán');
             $table->timestamps();
         });

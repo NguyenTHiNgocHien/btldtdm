@@ -14,7 +14,8 @@ class CreateTableHinhthucvanchuyen extends Migration
     public function up()
     {
         Schema::create('hinhthucvanchuyen', function (Blueprint $table) {
-            $table->unsignedBigInteger('htvc_id')->autoIncrement();
+            $table->engine = "InnoDB";
+            $table->bigIncrements('htvc_id')->unsigned();
             $table->string('htvc_ten')->comment('Tên của hình thức vận chuyển');
             $table->timestamps();
         });

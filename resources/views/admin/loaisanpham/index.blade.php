@@ -48,12 +48,12 @@
         <div class="card-header">
           <div class="form-group ml-1 mr-1">
             {{-- <label>Tìm kiếm</label> --}}
-            <input type="email" class="form-control" name="search" placeholder="Nhập tên sản phẩm">
+            <input type="text" class="form-control" name="search" id="search" placeholder="Nhập tên sản phẩm">
           </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
-          <table class="table table-hover text-nowrap" id="category_table">
+          <table class="table table-hover text-nowrap" >
             <thead>
               <tr>
                 <th>STT</th>
@@ -64,27 +64,28 @@
                 <th>Thao tác</th>
               </tr>
             </thead>
-            <tbody>
-              <?php $stt = 1; ?>
+            <tbody id="category_table">
+              @php
+                  $stt=1;
+              @endphp
               @foreach ($loai as $item => $value)
-              <tr class="post{{$value->l_id}}">
+              <tr>
                 <td>{{$stt++}}</td>
-                <td>{{$value->l_id}}</td>
-                <td>{{$value->l_ten}}</td>
-                <td>{{$value->created_at}}</td>
-                <td>{{$value->updated_at}}</td>
+                <td id="l_id">{{$value->l_id}}</td>
+                <td id="l_ten">{{$value->l_ten}}</td>
+                <td id="l_ngaytao">{{$value->created_at}}</td>
+                <td id="l_ngaycapnhap">{{$value->updated_at}}</td>
                 <td>
                   <a href="{{ route('sualoai', ['id'=>$value->l_id]) }}" class="btn btn-primary">Sửa</a>
                   <a href="{{ route('xoaloai', ['id'=>$value->l_id]) }}" class="btn btn-danger">Xóa</a>
                 </td>
               </tr>
               @endforeach
-
             </tbody>
             
           </table>
           <nav aria-label="Page navigation example">
-            {!! $loai->links() !!}
+            {{-- {!! $loai->links() !!} --}}
           </nav>
         </div>
         <!-- /.card-body -->
@@ -119,4 +120,26 @@
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        function fetch_category_data(query = '')
+        {
+          $.ajax({
+            type: "GET",
+            url: "{{ route('search-category') }}",
+            data: {query : query},
+            dataType: "json",
+            success: function (data) {
+              $('tbody').html(data.table_data);
+            }
+          });
+        }
+
+        $(document).on('keyup','#search', function () {
+          var query = $(this).val();
+          fetch_category_data(query);
+        });
+      });
+  </script>
 @endsection

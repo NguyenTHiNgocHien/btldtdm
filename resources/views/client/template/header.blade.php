@@ -169,12 +169,26 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="{{ Request::path() == '/' ? 'active' : '' }}"><a href="{{ route('trangchu') }}">Trang chủ</a></li>
-                        <li class="{{ Request::path() == 'san-pham' ? 'active' : '' }}"><a href="{{ route('tatcasanpham') }}">Sản phẩm</a></li>
-                        <li class="dropdown {{  request()->routeIs('loaisanpham') ? 'active' : ''  }}">
+                        <li class="
+                                @if (Request::path() == 'san-pham')
+                                active
+                                @endif
+                                @if (Request::path() == 'san-pham-2')
+                                active
+                                @endif
+                                "><a href="{{ route('tatcasanpham') }}">Sản phẩm</a></li>
+                        <li class="dropdown
+                            @if (Request::path() == 'loai-san-pham/1' ||
+                                Request::path() == 'loai-san-pham/2' ||
+                                Request::path() == 'loai-san-pham/3' )
+                            active
+                            @endif
+
+                        ">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Loại sản phẩm</a>
                             <ul class="dropdown-menu">
                                 @foreach ($loai as $item)
-                                <li><a href="{{ route('loaisanpham', ['idCategory'=> $item->l_id]) }}">{{ $item->l_ten }}</a></li>
+                                    <li><a href="{{ route('loaisanpham', ['idCategory'=> $item->l_id]) }}">{{ $item->l_ten }}</a></li>
                                 @endforeach
                             </ul>
                         </li>

@@ -1,8 +1,10 @@
+@extends('client.template.master')
 @section('title')
     Giới thiệu
 @endsection
-@include('client.template.header')
-    <!-- page title -->
+@section('content')
+	
+<!-- page title -->
 	<div class="page_title_area">
 		<div class="container">
 			<div class="row">
@@ -121,4 +123,4 @@
 		</div>
 	</div>
 	<!--/ about prograss bar -->
-@include('client.template.footer')
+@endsection    

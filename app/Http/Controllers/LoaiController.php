@@ -18,8 +18,8 @@ class LoaiController extends Controller
 
     public function index()
     {
-        $loai = DB::table('loai')->paginate(5);
-        return view('admin.loaisanpham.index', compact('loai'));
+        $loai = DB::table('loai')->get();
+        return view('admin.loaisanpham.index',compact('loai'));
         // return dd($loai);
     }
 
@@ -125,21 +125,49 @@ class LoaiController extends Controller
 
     public function search(Request $request)
     {
+        $output = '';
+        $stt = 1;
         if ($request->ajax()) {
-            $output = '';
-            $loai = DB::table('sanpham')->where('sp_ten', 'LIKE', '%' . $request->search . '%')->get();
-            if ($products) {
-                foreach ($loai as $item => $value) {
-                    $output .= '<tr>
-                    <td>' . $product->id . '</td>
-                    <td>' . $product->title . '</td>
-                    <td>' . $product->description . '</td>
-                    <td>' . $product->price . '</td>
+            $query = $request->get('query');
+            if ($query != '') {
+                # code...
+                $data = DB::table('loai')->where('l_ten','like','%' . $query . '%')->get();
+            }
+            else
+            {
+                $data = DB::table('loai')->get();
+            }
+            $total_row = $data->count();
+            if ($total_row > 0) {
+                # code...http://127.0.0.1:8000/admin/loai/1/edit
+                foreach ($data as $row) {
+                    # code...
+                    $output .= '
+                    <tr>
+                        <td>'. $stt++ .'</td>
+                        <td>'. $row->l_id .'</td>
+                        <td>'. $row->l_ten .'</td>
+                        <td>'. $row->created_at .'</td>
+                        <td>'. $row->updated_at .'</td>
+                        <td>'. '<a href="http://127.0.0.1:8000/admin/loai/'. $row->l_id .'/edit" class="btn btn-primary">Sửa</a>' 
+                            .'<a href="http://127.0.0.1:8000/admin/loai/'. $row->l_id .'/delete" class="btn btn-danger">Xóa</a>' 
+                        .'</td>
                     </tr>';
                 }
             }
-            
-            return Response($output);
+            else
+            {
+                $output .= '
+                    <tr>
+                        <td align="center" colspan="6">Không có dữ liệu</td>
+                    <tr>
+                ';
+            }
+
+            $data = array(
+                'table_data' => $output,
+            );
+            echo json_encode($data);
         }
     }
 }

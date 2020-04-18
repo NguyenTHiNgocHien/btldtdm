@@ -1,5 +1,5 @@
 @section('title')
-    Loại sản phẩm
+    Đăng nhập
 @endsection
 @include('client.template.header')
 

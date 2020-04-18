@@ -2127,7 +2127,8 @@ label.css-label {
 }
 .trendify-banner .banner-text h4 {
 	font-size: 29px;
-	margin-bottom: 30px;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
 }
 .trendify-banner .bordered {
 	margin-left: 0;
@@ -2226,7 +2227,7 @@ label.css-label {
 	}
 }
 
-.view-navigation .right-content .input-select:after {
+/* .view-navigation .right-content .input-select:after {
     content: "\f107";
     color: #000;
     z-index: 1;
@@ -2238,7 +2239,7 @@ label.css-label {
     pointer-events: none;
     box-sizing: border-box;
     font-family: FontAwesome;
-}
+} */
 .view-navigation .right-content .input-select select option {
     font-size: 10px;
     color: #555555;

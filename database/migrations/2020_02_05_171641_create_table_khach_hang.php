@@ -22,6 +22,8 @@ class CreateTableKhachhang extends Migration
             $table->string('kh_email');
             $table->string('kh_diachi');
             $table->string('kh_sdt');
+            $table->bigInteger('lkh_id')->unsigned();
+            $table->foreign('lkh_id')->references('lkh_id')->on('loaikhachhang');
             $table->rememberToken();
             $table->timestamps();
         });

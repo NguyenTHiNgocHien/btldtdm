@@ -14,7 +14,7 @@ class CreateTableLoaikhachhang extends Migration
     public function up()
     {
         Schema::create('loaikhachhang', function (Blueprint $table) {
-            $table->unsignedBigInteger('lkh_id')->autoIncrement()->comment('ID loại khách hàng giá trị tự tăng');
+            $table->bigIncrements('lkh_id')->unsigned()->comment('ID loại khách hàng giá trị tự tăng');
             $table->string('lkh_ten')->comment('Tên của loại khách hàng đó');
             $table->timestamps();
         });

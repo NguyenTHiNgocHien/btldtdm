@@ -19,8 +19,8 @@ class CreateTableKhuyenmai extends Migration
             $table->string('km_ten')->comment('Tên của đợt khuyến mãi');
             $table->string('km_noidung')->comment('Nội dung của đợt khuyến mãi');
             $table->integer('km_giatri')->comment('Giá trị khuyến mãi');
-            $table->dateTime('km_batdau')->comment('Ngày bắt đầu');
-            $table->dateTime('km_ketthuc')->comment('Ngày kết thúc');
+            $table->date('km_batdau')->comment('Ngày bắt đầu');
+            $table->date('km_ketthuc')->comment('Ngày kết thúc');
             $table->integer('km_trangthai')->comment('Trạng thái còn hay đã hêt');
             $table->timestamps();
         });

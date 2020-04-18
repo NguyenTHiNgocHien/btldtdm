@@ -100,7 +100,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('voucher') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tạo voucher</p>
                 </a>

@@ -19,8 +19,13 @@ class Khachhang extends Authenticatable
         // 'nv_id',
         'username', 
         'password',
+        'kh_hoten',
+        'kh_gioitinh',
+        'kh_email',
+        'kh_diachi',
+        'kh_sdt',
+        'lkh_id',
         'remember_token',
-        
         'created_at',
         'updated_at',
     ];
@@ -35,4 +40,9 @@ class Khachhang extends Authenticatable
     protected $hidden = [
         'password','remember_token'
     ];
+
+    public function loaiKH()
+    {
+        return $this->belongsTo('App\User', 'foreign_key', 'other_key');
+    }
 }

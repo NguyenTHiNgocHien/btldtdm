@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableDonhang extends Migration
+class CreateVouchersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateTableDonhang extends Migration
      */
     public function up()
     {
-        Schema::create('donhang', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('vouchers', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->bigIncrements('vc_id');
+            $table->string('vc_code');
+            $table->integer('vc_trangthai');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateTableDonhang extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donhang');
+        Schema::dropIfExists('vouchers');
     }
 }

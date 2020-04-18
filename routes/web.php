@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     Route::get('loai/{id}/delete','LoaiController@destroy')->name('xoaloai');
 
+    Route::get('loai/search', 'LoaiController@search')->name('search-category');
 
     //xuất xứ sản phẩm
     Route::get('xuatxu', 'XuatxuController@index')->name('danhsachxuatxu');
@@ -110,7 +111,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
 
 
-
+    //Khuyến mãi
+    Route::get('khuyenmai/voucher', 'KhuyenmaiVoucherController@index')->name('voucher');
 
     //quản lý banner
     Route::get('banner','BannerController@index')->name('banner');
@@ -129,4 +131,5 @@ Route::get('dang-nhap', 'AuthController@getClientLogin')->name('dangnhapkhachhan
 Route::get('/loai-san-pham/{idCategory}', 'TrangchuController@getCategory')->name('loaisanpham');
 Route::get('/san-pham/{idProduct}', 'TrangchuController@getProduct')->name('sanpham');
 Route::get('/san-pham', 'TrangchuController@getAllProduct')->name('tatcasanpham');
+Route::get('/san-pham-2', 'TrangchuController@getAllProduct2')->name('tatcasanpham-2');
 
