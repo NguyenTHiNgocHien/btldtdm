@@ -24,6 +24,14 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           {{-- Cái sidebar sửa ở đây là được --}}
           <li class="nav-item ">
+            <a href="{{ route('admin') }}" class="nav-link  {{ Request::path() == 'admin' ? 'active' : '' }}">
+              <i class="nav-icon far fa-heart"></i>
+              <p>
+                Bảng điều khiển
+              </p>
+            </a>
+          </li>
+          <li class="nav-item ">
             <a href="{{ route('danhsachloai') }}" class="nav-link  {{ Request::path() == 'admin/loai' ? 'active' : '' }}">
               <i class="nav-icon far fa-heart"></i>
               <p>
@@ -120,6 +128,14 @@
               <i class="nav-icon far fa-heart"></i>
               <p>
                 Đơn hàng
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('thongke') }}" class="nav-link {{ Request::path() == 'admin/thong-ke' ? 'active' : '' }}">
+              <i class="nav-icon far fa-heart"></i>
+              <p>
+                Thống kê
               </p>
             </a>
           </li>

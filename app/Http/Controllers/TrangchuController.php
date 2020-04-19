@@ -9,7 +9,11 @@ class TrangchuController extends Controller
 
     public function index()
     {
-        return view('client.index');
+        $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->paginate(5);
+        $sanphambanchay = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_soluong','<','50')->paginate(5);
+        $sanphamyeuthich = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_danhgia','>=','4')->paginate(5);
+        $flashsale = "";
+        return view('client.index',compact(['sanphammoi','sanphambanchay','sanphamyeuthich']));
     }
 
     public function getCategory ($idCategory)

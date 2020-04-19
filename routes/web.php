@@ -116,6 +116,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     //quản lý banner
     Route::get('banner','BannerController@index')->name('banner');
+
+
+    //Thống kê
+    Route::get('thong-ke','ThongkeController@index')->name('thongke');
 });
 
 
@@ -125,11 +129,20 @@ Route::get('/gioi-thieu', function () {
     return view('client.about');
 })->name('gioithieu');
 
-//Đăng nhập cho khách hàng
+//Đăng nhập và đăng ký cho khách hàng
+Route::get('dang-ky', 'AuthController@getClientRegister')->name('dangkykhachhang');
 Route::get('dang-nhap', 'AuthController@getClientLogin')->name('dangnhapkhachhang');
+Route::post('dang-ky-1', 'AuthController@ClientRegister')->name('dang-ky');
+
+
 
 Route::get('/loai-san-pham/{idCategory}', 'TrangchuController@getCategory')->name('loaisanpham');
 Route::get('/san-pham/{idProduct}', 'TrangchuController@getProduct')->name('sanpham');
 Route::get('/san-pham', 'TrangchuController@getAllProduct')->name('tatcasanpham');
 Route::get('/san-pham-2', 'TrangchuController@getAllProduct2')->name('tatcasanpham-2');
+
+//Liên hệ khách hàng với shop
+Route::get('/lien-he', function () {
+    return view('client.contact');
+})->name('lienhe');
 

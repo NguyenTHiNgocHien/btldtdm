@@ -57,32 +57,32 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3 col-sm-6 fadeInDown wow" data-wow-delay="0.5s">
-					<div class="single_team_member">
-						<img src="{{ asset('front-end-2/img/team/member1.jpg') }}" alt="" />
+				<div class="col-md-3 col-sm-6 fadeInDown wow" data-wow-delay="0.5s" >
+					<div class="single_team_member" style="height: 300px">
+						<img src="{{ asset('front-end-2/img/team/member1.jpg') }}" alt="" width="100%" height="100%"/>
 						<h2>Lê Ngọc Đức</h2>
-						<p>Nhân viên</p>
+						<p>Chủ tiệm</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 fadeInDown wow" data-wow-delay="0.6s">
-					<div class="single_team_member">
-						<img src="{{ asset('front-end-2/img/team/member2.jpg') }}" alt="" />
+					<div class="single_team_member" style="height: 300px">
+						<img src="{{ asset('front-end-2/img/team/member2.jpeg') }}" alt="" width="100%" height="100%"/>
 						<h2>Đỗ Thị Ngọc Nguyên</h2>
-						<p>Nhân viên</p>
+						<p>Thủ quỷ</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 fadeInDown wow" data-wow-delay="0.7s">
-					<div class="single_team_member">
-						<img src="{{ asset('front-end-2/img/team/member3.jpg') }}" alt="" />
+					<div class="single_team_member" style="height: 300px">
+						<img src="{{ asset('front-end-2/img/team/member3.jpg') }}" alt="" width="100%" height="100%"/>
 						<h2>Lương Quốc Bình</h2>
-						<p>Nhân viên</p>
+						<p>Nhân viên bán hàng</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 fadeInDown wow" data-wow-delay="0.8s">
-					<div class="single_team_member">
-						<img src="{{ asset('front-end-2/img/team/member4.jpg') }}" alt="" />
+					<div class="single_team_member" style="height: 300px">
+						<img src="{{ asset('front-end-2/img/team/member4.jpg') }}" alt="" width="100%" height="100%"/>
 						<h2>Đặng Thị Tường Vy</h2>
-						<p>Nhân viên</p>
+						<p>Nhân viên thu ngân</p>
 					</div>
 				</div>
 			</div>

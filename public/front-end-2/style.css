@@ -2807,7 +2807,6 @@ ul.pagination-number li:hover {
 	font-weight: 600;
 }
 .login input, .login textarea {
-    margin-bottom: 20px;
     padding: 5px 10px;
     border: 1px solid #e3e3e3;
     font-size: 18px;

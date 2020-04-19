@@ -72,7 +72,11 @@
                                         <li>EUR</li>
                                     </ul>
                                 </li> --}}
-                                <li><a href="{{ route('dangnhapkhachhang') }}">Đăng nhập</a></li>
+                                <li>
+                                    <a href="{{ route('dangnhapkhachhang') }}">Đăng nhập</a>
+                                    /
+                                    <a href="{{ route('dangkykhachhang') }}">Đăng ký</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -101,26 +105,6 @@
                         
 							<div class="cart-list hidden-xs">
 								<h5 class="title">your shopping cart <span>(2 items)</span></h5>
-								<div class="cart-item">
-									<img class="img-responsive" alt="Single product" src="{{ asset('front-end-2/img/products/1.jpg') }}">
-									<span class="icon_close close-icon"></span>
-									<div class="product-info">
-										<h5>New Yorker Suit</h5>
-										<div class="star-rating">
-											<ul>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-full"></i></li>
-											</ul>
-										</div><br>
-										<div class="price">
-											<del> $399 </del> $259
-										</div>
-									</div>
-								</div>
-								
 								<div class="cart-item">
 									<img class="img-responsive" alt="Single product" src="{{ asset('front-end-2/img/products/1.jpg') }}">
 									<span class="icon_close close-icon"></span>
@@ -201,7 +185,7 @@
                             </ul>
                         </li> --}}
                         <li class="{{ Request::path() == 'gioi-thieu' ? 'active' : '' }}"><a href="{{ route('gioithieu') }}">Giới thiệu</a></li>
-                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="{{ route('lienhe') }}">Liên hệ</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
