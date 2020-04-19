@@ -123,6 +123,22 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('danhsachhinhthucthanhtoan') }}" class="nav-link ">
+              <i class="nav-icon far fa-heart"></i>
+              <p>
+                Hình thức thanh toán
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('danhsachhinhthucvanchuyen') }}" class="nav-link ">
+              <i class="nav-icon far fa-heart"></i>
+              <p>
+                Hình thức vận chuyển
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
