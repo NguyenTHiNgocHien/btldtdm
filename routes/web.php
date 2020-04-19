@@ -115,10 +115,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     Route::get('hinhthucthanhtoan/{id}/edit','HinhthucthanhtoanController@edit')->name('suahinhthucthanhtoan');
 
-<<<<<<< HEAD
     //Khuyến mãi
     Route::get('khuyenmai/voucher', 'KhuyenmaiVoucherController@index')->name('voucher');
-=======
     Route::post('hinhthucthanhtoan/{id}/edit', 'HinhthucthanhtoanController@update')->name('capnhathinhthucthanhtoan');
 
     Route::get('hinhthucthanhtoan/{id}/delete','HinhthucthanhtoanController@destroy')->name('xoahinhthucthanhtoan');
@@ -133,7 +131,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     Route::get('hinhthucvanchuyen/{id}/delete','HinhthucvanchuyenController@destroy')->name('xoahinhthucvanchuyen');
 
->>>>>>> binhhere
 
     //quản lý banner
     Route::get('banner','BannerController@index')->name('banner');
