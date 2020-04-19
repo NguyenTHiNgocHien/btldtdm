@@ -132,10 +132,25 @@
             </a>
           </li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a href="{{ route('thongke') }}" class="nav-link {{ Request::path() == 'admin/thong-ke' ? 'active' : '' }}">
               <i class="nav-icon far fa-heart"></i>
               <p>
                 Thống kê
+=======
+            <a href="{{ route('danhsachhinhthucthanhtoan') }}" class="nav-link ">
+              <i class="nav-icon far fa-heart"></i>
+              <p>
+                Hình thức thanh toán
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('danhsachhinhthucvanchuyen') }}" class="nav-link ">
+              <i class="nav-icon far fa-heart"></i>
+              <p>
+                Hình thức vận chuyển
+>>>>>>> binhhere
               </p>
             </a>
           </li>

@@ -88,7 +88,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::post('sanpham/hinhanh', 'HinhanhController@store')->name('themhinhanh2222');
     Route::get('sanpham/{idHA}/{idSP}/ha-delete','HinhanhController@destroy')->name('xoahinhanh');
     Route::get('sanpham/{id}/{tenHA}','SanphamController@getAvata')->name('datanhdaidien');
-    //Công dụng
+    //Công dụng nà
     Route::get('congdung', 'CongdungController@index')->name('danhsachcongdung');
 
     Route::post('congdung','CongdungController@store')->name('themcongdung');
@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::post('congdung/{id}/edit', 'CongdungController@update')->name('capnhatcongdung');
 
     Route::get('congdung/{id}/delete','CongdungController@destroy')->name('xoacongdung');
-    //Công dụng phụ
+    //Công dụng phụ nà
     Route::get('congdungphu', 'CongdungphuController@index')->name('danhsachcongdungphu');  
 
     Route::post('congdungphu','CongdungphuController@store')->name('themcongdungphu');
@@ -108,11 +108,32 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::post('congdungphu/{id}/edit', 'CongdungphuController@update')->name('capnhatcongdungphu');
 
     Route::get('congdungphu/{id}/delete','CongdungphuController@destroy')->name('xoacongdungphu');
+    ///Hình thức thanh toán nà
+    Route::get('hinhthucthanhtoan', 'HinhthucthanhtoanController@index')->name('danhsachhinhthucthanhtoan');  
 
+    Route::post('hinhthucthanhtoan','HinhthucthanhtoanController@store')->name('themhinhthucthanhtoan');
 
+    Route::get('hinhthucthanhtoan/{id}/edit','HinhthucthanhtoanController@edit')->name('suahinhthucthanhtoan');
 
+<<<<<<< HEAD
     //Khuyến mãi
     Route::get('khuyenmai/voucher', 'KhuyenmaiVoucherController@index')->name('voucher');
+=======
+    Route::post('hinhthucthanhtoan/{id}/edit', 'HinhthucthanhtoanController@update')->name('capnhathinhthucthanhtoan');
+
+    Route::get('hinhthucthanhtoan/{id}/delete','HinhthucthanhtoanController@destroy')->name('xoahinhthucthanhtoan');
+    ///Hình thức vận chuyển nà
+    Route::get('hinhthucvanchuyen', 'HinhthucvanchuyenController@index')->name('danhsachhinhthucvanchuyen');  
+
+    Route::post('hinhthucvanchuyen','HinhthucvanchuyenController@store')->name('themhinhthucvanchuyen');
+
+    Route::get('hinhthucvanchuyen/{id}/edit','HinhthucvanchuyenController@edit')->name('suahinhthucvanchuyen');
+
+    Route::post('hinhthucvanchuyen/{id}/edit', 'HinhthucvanchuyenController@update')->name('capnhathinhthucvanchuyen');
+
+    Route::get('hinhthucvanchuyen/{id}/delete','HinhthucvanchuyenController@destroy')->name('xoahinhthucvanchuyen');
+
+>>>>>>> binhhere
 
     //quản lý banner
     Route::get('banner','BannerController@index')->name('banner');
