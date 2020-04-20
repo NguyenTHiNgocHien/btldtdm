@@ -42,7 +42,7 @@
 
           <div class="card-title float-right">
             {{-- Refesh lại trang để về dạng mặc định --}}
-            <a href="{{ route('danhsachsanpham') }}" class="btn btn-success"><i class="fas fa-sync"></i></a>
+            <a href="{{ route('danhsachsanpham', ['sort'=> 'danh-sach']) }}" class="btn btn-success"><i class="fas fa-sync"></i></a>
           </div>
         </div>
         <!-- /.card-header -->
@@ -57,16 +57,16 @@
                 {{-- Cái này là sắp xếp --}}
                 <th>Giá bán 
                   {{-- Nếu nó đang ở trang bình thường thì khi click vào sắp xếp tăng --}}
-                  @if (Request::path() == 'admin/san-pham')
-                    <a href="{{ route('danhsachsanphamgiatang') }}"><i class="fas fa-sort"></i></a>
+                  @if (Request::path() == 'admin/san-pham/danh-sach')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'gia-tang']) }}"><i class="fas fa-sort"></i></a>
                   @endif
                   {{-- Nếu nó đang ở trang sắp xếp tăng thì khi click vào sẽ thành sắp xếp giảm --}}
-                  @if(Request::path() == 'admin/san-pham-gia-tang')
-                    <a href="{{ route('danhsachsanphamgiagiam') }}"><i class="fas fa-sort"></i></a>
+                  @if(Request::path() == 'admin/san-pham/gia-tang')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'gia-giam']) }}"><i class="fas fa-sort"></i></a>
                   @endif
                   {{-- Ngược lại --}}
-                  @if (Request::path() == 'admin/san-pham-gia-giam')
-                    <a href="{{ route('danhsachsanphamgiatang') }}"><i class="fas fa-sort"></i></a>
+                  @if (Request::path() == 'admin/san-pham/gia-giam')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'gia-tang']) }}"><i class="fas fa-sort"></i></a>
                   @endif
                 </th>
 

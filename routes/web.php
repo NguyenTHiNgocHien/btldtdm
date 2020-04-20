@@ -62,11 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('lo/{id}/delete','LoController@destroy')->name('xoalo');
 
     //Sản phẩm
-    Route::get('san-pham', 'SanphamController@index')->name('danhsachsanpham');
-
-    //Đây là phần sắp xếp theo giá
-    Route::get('san-pham-gia-tang', 'SanphamController@index2')->name('danhsachsanphamgiatang');
-    Route::get('san-pham-gia-giam', 'SanphamController@index3')->name('danhsachsanphamgiagiam');
+    Route::get('san-pham/{sort}', 'SanphamController@index')->name('danhsachsanpham');
 
     Route::post('sanpham','SanphamController@store')->name('themsanpham');
 

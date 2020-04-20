@@ -15,38 +15,33 @@ class SanphamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($optionSort)
     {
-        $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_id', 'asc')->paginate(10);
-        // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
-        // dd($sanphamcon);
-        $loai = DB::table('loai')->get();
-        $congdung = DB::table('congdung')->get();
-        return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+        if($optionSort == 'danh-sach')
+        {
+            $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_id', 'asc')->paginate(10);
+            $loai = DB::table('loai')->get();
+            $congdung = DB::table('congdung')->get();
+            return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+        }
+        else if($optionSort == 'gia-tang'){
+            //Trường hợp giá tăng
+            $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giaban', 'desc')->paginate(10);
+            $loai = DB::table('loai')->get();
+            $congdung = DB::table('congdung')->get();
+            return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+        }
+        else if($optionSort == 'gia-giam')
+        {
+            $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giaban', 'asc')->paginate(10);
+            // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
+            // dd($sanphamcon);
+            $loai = DB::table('loai')->get();
+            $congdung = DB::table('congdung')->get();
+            return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+        }
     }
 
-    //Tăng theo giá
-    public function index2()
-    {
-        $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giaban', 'desc')->paginate(10);
-        // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
-        // dd($sanphamcon);
-        $loai = DB::table('loai')->get();
-        $congdung = DB::table('congdung')->get();
-        return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
-    }
-
-
-    //Giảm theo giá
-    public function index3()
-    {
-        $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giaban', 'asc')->paginate(10);
-        // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
-        // dd($sanphamcon);
-        $loai = DB::table('loai')->get();
-        $congdung = DB::table('congdung')->get();
-        return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
-    }
     /**
      * Show the form for creating a new resource.
      *
