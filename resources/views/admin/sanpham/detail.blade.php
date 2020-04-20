@@ -12,7 +12,7 @@
           <div class="col-sm-4">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('danhsachsanpham') }}">Sản phẩm</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('danhsachsanpham', ['sort'=> 'danh-sach']) }}">Sản phẩm</a></li>
               <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
             </ol>
           </div>
