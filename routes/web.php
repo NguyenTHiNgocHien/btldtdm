@@ -62,7 +62,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('lo/{id}/delete','LoController@destroy')->name('xoalo');
 
     //Sản phẩm
-    Route::get('sanpham', 'SanphamController@index')->name('danhsachsanpham');
+    Route::get('san-pham', 'SanphamController@index')->name('danhsachsanpham');
+
+    //Đây là phần sắp xếp theo giá
+    Route::get('san-pham-gia-tang', 'SanphamController@index2')->name('danhsachsanphamgiatang');
+    Route::get('san-pham-gia-giam', 'SanphamController@index3')->name('danhsachsanphamgiagiam');
 
     Route::post('sanpham','SanphamController@store')->name('themsanpham');
 
@@ -82,6 +86,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::post('sanpham/nhap-hang', 'SanphamController@nhapHang')->name('nhaphang');
     Route::get('sanpham/{id}/edit','SanphamController@edit')->name('suathongtinsanpham');
     Route::get('sanpham/{id}/cap-nhat-gia-ban','SanphamController@CapNhatGiaBan')->name('capnhatgiaban');
+
+
+    Route::get('sanpham/{idsp}', 'SanphamController@editProduct')->name('showproduct');
+
+
+
 
     //Hình ảnh cho sản phẩm
     Route::get('sanpham/{id}/hinhanh','HinhanhController@create')->name('themhinhanh');

@@ -40,8 +40,9 @@
             <a href="#" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Thêm Sản phẩm</a>
           </h3>
 
-          <div class="card-title">
-            
+          <div class="card-title float-right">
+            {{-- Refesh lại trang để về dạng mặc định --}}
+            <a href="{{ route('danhsachsanpham') }}" class="btn btn-success"><i class="fas fa-sync"></i></a>
           </div>
         </div>
         <!-- /.card-header -->
@@ -50,10 +51,26 @@
             <thead>
               <tr>
                 <th>STT</th>
+                <th>Mã sản phẩm</th>
                 <th>Tên Sản phẩm</th>
-                <th>Loại</th>
                 <th>Số lượng</th>
-                <th>Giá bán</th>
+                {{-- Cái này là sắp xếp --}}
+                <th>Giá bán 
+                  {{-- Nếu nó đang ở trang bình thường thì khi click vào sắp xếp tăng --}}
+                  @if (Request::path() == 'admin/san-pham')
+                    <a href="{{ route('danhsachsanphamgiatang') }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                  {{-- Nếu nó đang ở trang sắp xếp tăng thì khi click vào sẽ thành sắp xếp giảm --}}
+                  @if(Request::path() == 'admin/san-pham-gia-tang')
+                    <a href="{{ route('danhsachsanphamgiagiam') }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                  {{-- Ngược lại --}}
+                  @if (Request::path() == 'admin/san-pham-gia-giam')
+                    <a href="{{ route('danhsachsanphamgiatang') }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                </th>
+
+
                 <th>Giá khuyễn mãi</th>
                 <th>Trạng thái</th>
                 <th>Thao tác</th>
@@ -64,8 +81,8 @@
               @foreach ($sanpham as $item => $value)
               <tr>
                 <td>{{$stt++}}</td>
+                <td>SP-{{ $value->sp_id }}</td>
                 <td>{{$value->sp_ten}}</td>
-                <td>{{ $value->l_ten }}</td>
                 <td>{{ $value->sp_soluong == NULL ? 'Chưa nhập hàng' : $value->sp_soluong }}</td>
                 <td>
                   @if ($value->sp_giaban == 0)
@@ -151,5 +168,4 @@
         </div>
       </div>
     </div>
-    
 @endsection

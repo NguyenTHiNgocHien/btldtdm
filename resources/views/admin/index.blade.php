@@ -78,5 +78,4 @@
   </div>
   <!-- /.row -->
 </section>
-  
 @endsection
