@@ -153,10 +153,3 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
-  @php
-    $stt = 1;    
-  @endphp
-  @foreach ($collection as $item => $value)
-      <p>Hình {{ $stt++ }}</p>
-  @endforeach
