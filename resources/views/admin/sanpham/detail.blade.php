@@ -12,7 +12,7 @@
           <div class="col-sm-4">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('danhsachsanpham') }}">Sản phẩm</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('danhsachsanpham', ['sort'=> 'danh-sach']) }}">Sản phẩm</a></li>
               <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
             </ol>
           </div>
@@ -64,23 +64,28 @@
               @endif --}}
             </p>
             @if ($chitietlo)
-              <p>Giá gốc: {{number_format($chitietlo->ctl_dongia)}}</p>
-            @else
-            <p>Giá gốc: Chưa nhập hàng</p>
-            @endif
-            <p>Giá bán: {{number_format($sanpham->sp_giaban)}}</p>
-            <!-- Button trigger modal -->
-            @if ($chitietlo)
               <p>Giá gốc: {{number_format($chitietlo->ctl_dongia)}} </p>
-              <button type="button" class="btn-xs btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Cập nhật giá bán
-              </button>
+              
             @else
             <p>Giá gốc: Chưa nhập hàng</p>
             <p><a href="#" data-toggle="modal" data-target="#exampleModal1">Nhập hàng</a> </p>
             @endif
+            {{-- @if ($chitietlo)
+              <p>Giá gốc: {{number_format($chitietlo->ctl_dongia)}}</p>
+            @else
+            <p>Giá gốc: Chưa nhập hàng</p>
+            @endif --}}
+            <p>Giá bán: {{number_format($sanpham->sp_giaban)}}</p>
+            <button type="button" class="btn-xs btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Cập nhật giá bán
+            </button>
+            <!-- Button trigger modal -->
+            
             
             <p>Giá khuyễn mãi: {{ number_format($sanpham->sp_giakhuyenmai) == 0 ? 'Chưa có khuyễn mãi' : number_format($sanpham->sp_giakhuyenmai) }}</p>
+            @if (number_format($sanpham->sp_giakhuyenmai) != 0)
+              <a href="{{ route('resetGia', ['id'=> $sanpham->sp_id]) }}">Quay về giá cũ</a>
+            @endif
             <p>Số lượng: {{ $lo }}</p>
             <p>Hạn sử dụng:
               @if ($chitietlo)
@@ -89,9 +94,7 @@
                   Chưa có sản phẩm
               @endif
             </p>
-            @if (number_format($sanpham->sp_giakhuyenmai) != 0)
-              <a href="{{ route('resetGia', ['id'=> $sanpham->sp_id]) }}">Quay về giá cũ</a>
-            @endif
+           
             
             
             <p>Đánh giá sản phẩm</p>
@@ -199,7 +202,16 @@
                 @foreach ($anhsanpham as $item => $value)
                 <tr>
                   <td>{{$stt++}}</td>
-                  <td>{{$value->ha_ten}}</td>
+                  <td>
+                    <p style="
+                      white-space: nowrap;
+                      width: 200px;
+                      text-overflow: ellipsis;
+                      overflow: hidden;
+                    ">
+                      {{$value->ha_ten}}
+                    </p>
+                  </td>
                   
                   <td>
                     @if ($sanpham->sp_anhdaidien == $value->ha_ten)
@@ -240,14 +252,14 @@
               </button>
             </div>
             <div class="modal-body">
-              <div class="form-group">
-                <div class="form-control">
+              <div class="">
+                <div class="form-group">
                   <label for="">Giá cũ</label>
-                  <input type="number" readonly value="{{ $sanpham->sp_giaban }}" name="" id="">
+                  <p class="form-control">{{ number_format($sanpham->sp_giaban) }}đ</p>
                 </div>
-                <div class="form-control">
+                <div class="form-group">
                   <label for="">Giá mới</label>
-                  <input type="number" name="giaban" id="">
+                  <input type="number" name="giaban" id="" class="form-control">
                 </div>
               </div>
             </div>
@@ -264,7 +276,6 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Nhập sản phẩm: {{ $sanpham->sp_ten }}</h5>
-            <h5 class="modal-title">Giá bán: {{ $sanpham->sp_giaban }}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

@@ -15,14 +15,35 @@ class SanphamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($optionSort)
     {
-        $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_id', 'asc')->paginate(10);
-        // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
-        // dd($sanphamcon);
-        $loai = DB::table('loai')->get();
-        $congdung = DB::table('congdung')->get();
-        return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+        switch ($optionSort) {
+            case 'danh-sach':
+                # code...
+                // Sắp sếp bình thường theo id sản phẩm tăng dần ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_id', 'asc')->paginate(10);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                break;
+            
+            case 'gia-tang':
+                //Trường hợp giá tăng ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giaban', 'desc')->paginate(10);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                break;
+            case 'gia-giam':
+                //Trường hợp giá giảm ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giaban', 'asc')->paginate(10);
+                // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
+                // dd($sanphamcon);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+            break;
+        }
     }
 
     /**
@@ -219,5 +240,11 @@ class SanphamController extends Controller
             $success = Session::put('alert-info', 'Thêm dữ liệu không thành công');
             return redirect()->route('danhsachlo');
         }
+    }
+
+    public function editProduct($idsp)
+    { 
+        $data = DB::table('sanpham')->where('sp_id','=',$idsp)->get();
+        return response()->json($data, 200);
     }
 }

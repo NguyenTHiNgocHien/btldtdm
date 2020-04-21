@@ -3,6 +3,7 @@
 
 @yield('content')
 <!--Start of Tawk.to Script-->
+@if (Request::path() == '/')
 <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
@@ -15,4 +16,5 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+@endif
 @include('client.template.footer')

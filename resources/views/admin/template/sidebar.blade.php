@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('danhsachsanpham') }}" class="nav-link {{ Request::path() == 'admin/sanpham' ? 'active' : '' }}">
+            <a href="{{ route('danhsachsanpham', ['sort'=> 'danh-sach']) }}" class="nav-link {{ Request::path() == 'admin/sanpham' ? 'active' : '' }}">
               <i class="nav-icon far fa-heart"></i>
               <p>
                 Sản phẩm

@@ -68,11 +68,11 @@
                         @foreach ($allProduct as $item)
                         <div class="col-md-4 col-sm-6">
                             <div class="product-single">
-                                <div class="product-img">
+                                <div class="product-img" style="height: 300px">
                                     @if ($item->sp_anhdaidien == '')
                                         <img class="img-responsive" alt="Single product" src="{{ asset('upload') }}/nothing.jpg" width="100%">
                                     @else
-                                        <img class="img-responsive" alt="Single product" src="{{ asset('upload/sanpham') }}/{{ $item->sp_anhdaidien }}" width="100%">
+                                        <img class="img-responsive" alt="Single product" src="{{ asset('upload/sanpham') }}/{{ $item->sp_anhdaidien }}" style="height: 100%"  width="100%">
                                     @endif
                                     <div class="actions">
                                         <ul>
