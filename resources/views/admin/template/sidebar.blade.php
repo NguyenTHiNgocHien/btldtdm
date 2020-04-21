@@ -15,7 +15,14 @@
           <img src="{{asset('front-end')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Ông chủ</a>
+          <a href="#" class="d-block">Xin chào 
+{{-- {{ \Auth::guard('nhanvien')->user()->nv_id}} --}}
+            @if (Auth::guard('nhanvien')->user()->q_id == 1)
+                ADMIN
+            @else
+              Nhân viên
+            @endif
+          </a>
         </div>
       </div>
 

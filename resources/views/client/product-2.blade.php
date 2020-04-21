@@ -16,9 +16,7 @@
 				<div class="col-sm-4">
 					<div class="bredcrumb">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Shop</a></li>
-							<li><a href="#">Men's</a></li>
+							
 						</ul>
 					</div>
 				</div>

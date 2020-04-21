@@ -15,8 +15,7 @@
             <div class="col-sm-4">
                 <div class="bredcrumb">
                     <ul>
-                        <li><a href="#">Trang chủ</a></li>
-                        <li><a href="#">Loại sản phẩm</a></li>
+                        
                     </ul>
                 </div>
             </div>

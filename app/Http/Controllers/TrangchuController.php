@@ -9,11 +9,9 @@ class TrangchuController extends Controller
 
     public function index()
     {
-        $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->paginate(5);
-        $sanphambanchay = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_soluong','<','50')->paginate(5);
-        $sanphamyeuthich = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_danhgia','>=','4')->paginate(5);
-        $flashsale = "";
-        return view('client.index',compact(['sanphammoi','sanphambanchay','sanphamyeuthich']));
+        $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->paginate(5);
+        $flashsale = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_giakhuyenmai','>',0)->get();
+        return view('client.index',compact(['sanphammoi','flashsale']));
     }
 
     public function getCategory ($idCategory)
@@ -48,22 +46,20 @@ class TrangchuController extends Controller
 
     public function getProduct ($idProduct)
     {
-        $product = DB::table('sanpham')
-        ->join('congdung','congdung.cd_id','=','sanpham.cd_id')
-        ->join('loai','loai.l_id','=','sanpham.l_id')
-        ->where('sp_id', $idProduct)->first();
-
+        $product = DB::table('sanpham')->where('sp_id', $idProduct)->first();
+        $category = DB::table('loai')->where('l_id','=',$product->l_id)->first();
         $productImage = DB::table('hinhanh')->where('sp_id', $idProduct)->get();
 
-        $productCate = DB::table('sanpham')->join('loai','loai.l_id', '=' , 'sanpham.l_id')->paginate(4);
+        $productCate = DB::table('sanpham')->join('loai','loai.l_id', '=' , 'sanpham.l_id')->get();
 
         // dd($productCate);
-        return view('client.product',compact(['product', 'productImage','productCate']));
+        return view('client.product-detail',compact(['product', 'productImage','productCate','category']));
     }
 
     public function getAllProduct (){
         //Lẫy ngẫu nhiên sản phẩm
         $allProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(5);
+        $productPopular = DB::table('sanpham')->where('sp_danhgia','>=', 3)->paginate(2);
         $allCategory = DB::table('loai')->get();
         $countProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->count();
         return view('client.product',compact(['allProduct','allCategory','countProduct']));

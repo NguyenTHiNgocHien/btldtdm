@@ -11,30 +11,29 @@
                 <div class="trendify-tab-title">
                     <ul>
                         <li class="active"><a data-toggle="tab" href="#new">Sản phẩm mới</a></li>
-                        <li><a data-toggle="tab" href="#latest">Flash Sale</a></li>
-                        <li><a data-toggle="tab" href="#men">Sản phẩm bán chạy</a></li>
-                        <li><a data-toggle="tab" href="#women">Sản phẩm được yêu thích</a></li>
+                        <li><a data-toggle="tab" href="#flashsale">Flash Sale</a></li>
                     </ul>
                 </div>
                 <div class="tab-content">
 
                     <div class="trendify-prev"></div>
                     <div class="trendify-next"></div>
-
+                    {{-- Sản phẩm mới --}}
                     <div id="new" class="tab-pane fade in active">
+                        @foreach ($sanphammoi as $item => $value)
                         <div class="product-single fadeInDown wow" data-wow-delay="0.5s">
-                            <div class="product-img">
-                                <img class="img-responsive" alt="Single product" src="{{ asset('front-end-2/img/single_1.jpg') }}">
+                            <div class="product-img " style="height: 300px">
+                                <img class="img-responsive" alt="Single product" style="height: 100%" src="{{ asset('upload/sanpham/'.$value->sp_anhdaidien) }}">
                                 <div class="actions">
                                     <ul>
-                                        <li><a class="zoom" href="img/single_1.jpg') }}"><i class="fa fa-search"></i></a></li>
+                                        <li><a class="zoom" href="{{ asset('upload/sanpham/'.$value->sp_anhdaidien) }}"><i class="fa fa-search"></i></a></li>
 										<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
 										<li><a href="product-details-1.html"><i class="fa fa-expand"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="product-info">
-                                <h2>New Look Stripe T-Shirt</h2>
+                                <h2><a href="{{ route('sanpham', ['id'=>$value->sp_id]) }}">{{ $value->sp_ten }}</a></h2>
                                 <div class="star-rating">
                                     <ul>
                                         <li><i class="fa fa-star"></i></li>
@@ -49,22 +48,26 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
 
-                    <div id="latest" class="tab-pane fade">
+                    {{-- Flash sale --}}
+                    
+                    <div id="flashsale" class="tab-pane fade">
+                        @foreach ($flashsale as $item => $value)
                         <div class="product-single">
-                            <div class="product-img">
-                                <img class="img-responsive" alt="Single product" src="{{ asset('front-end-2/img/single_2.jpg') }}">
+                            <div class="product-img" style="height: 300px">
+                                <img class="img-responsive" style="height: 100%" alt="Single product" src="{{ asset('upload/sanpham/'.$value->sp_anhdaidien) }}">
                                 <div class="actions">
                                     <ul>
-                                        <li><a class="zoom" href="img/single_2.jpg') }}"><i class="fa fa-search"></i></a></li>
+                                        <li><a class="zoom" href="{{ asset('upload/sanpham/'.$value->sp_anhdaidien) }}"><i class="fa fa-search"></i></a></li>
 										<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
 										<li><a href="product-details-1.html"><i class="fa fa-expand"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="product-info">
-                                <h2>New Look Stripe T-Shirt</h2>
+                                <h2>{{ $value->sp_ten }}</h2>
                                 <div class="star-rating">
                                     <ul>
                                         <li><i class="fa fa-star"></i></li>
@@ -79,67 +82,9 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-
-                    <div id="men" class="tab-pane fade">
-                        <div class="product-single">
-                            <div class="product-img">
-                                <img class="img-responsive" alt="Single product" src="{{ asset('front-end-2/img/single_3.jpg') }}">
-                                <div class="actions">
-                                    <ul>
-                                        <li><a class="zoom" href="img/single_3.jpg') }}"><i class="fa fa-search"></i></a></li>
-										<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-										<li><a href="product-details-1.html"><i class="fa fa-expand"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h2>New Look Stripe T-Shirt</h2>
-                                <div class="star-rating">
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-half-full"></i></li>
-                                    </ul>
-                                </div>
-                                <div class="price">
-                                    <del> $50 </del> $40
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="women" class="tab-pane fade">
-                        <div class="product-single">
-                            <div class="product-img">
-                                <img class="img-responsive" alt="Single product" src="{{ asset('front-end-2/img/women.png') }}">
-                                <div class="actions">
-                                    <ul>
-                                        <li><a class="zoom" href="img/women.png') }}"><i class="fa fa-search"></i></a></li>
-										<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-										<li><a href="product-details-1.html"><i class="fa fa-expand"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h2>New Look Stripe T-Shirt</h2>
-                                <div class="star-rating">
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-half-full"></i></li>
-                                    </ul>
-                                </div>
-                                <div class="price">
-                                    <del> $50 </del> $40
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>

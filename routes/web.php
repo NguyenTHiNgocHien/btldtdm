@@ -165,6 +165,9 @@ Route::get('/san-pham/{idProduct}', 'TrangchuController@getProduct')->name('sanp
 Route::get('/san-pham', 'TrangchuController@getAllProduct')->name('tatcasanpham');
 Route::get('/san-pham-2', 'TrangchuController@getAllProduct2')->name('tatcasanpham-2');
 
+
+// Route::get('/san-pham/{}')
+
 //Liên hệ khách hàng với shop
 Route::get('/lien-he', function () {
     return view('client.contact');
