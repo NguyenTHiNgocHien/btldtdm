@@ -79,6 +79,9 @@
 											@endif
 												<img class="img-responsive lazy-load" style="width: 280px;" src="{{ asset('upload/sanpham') }}/{{ $item->sp_anhdaidien }}" alt="">
 										</div>
+											{{-- @php
+												$phamtramgiam = $item->sp_giakhuyenmai * 100 / $item->sp_giaban;
+											@endphp --}}
 										<div class="product-info">
 											<a href="#"><h2>{{ $item->sp_ten }}</h2></a>
 											<div class="star-rating">
@@ -94,7 +97,10 @@
 												@if (number_format($item->sp_giakhuyenmai) == 0)
 													{{ number_format($item->sp_giaban) }} đ
 												@else
-												<del> {{ $item->sp_giaban }} </del> ${{ $item->sp_giakhuyenmai }}
+												
+												<del style="color: red"> {{ number_format($item->sp_giaban) }}đ </del>
+												<br>
+												{{ number_format($item->sp_giakhuyenmai) }}đ
 												@endif
 											</div>
 											<p>{{ $item->sp_thongtin }}</p>
