@@ -81,7 +81,7 @@
 												$phamtramgiam = $item->sp_giakhuyenmai * 100 / $item->sp_giaban;
 											@endphp --}}
 										<div class="product-info">
-											<a href="#"><h2>{{ $item->sp_ten }}</h2></a>
+											<a href="{{ route('sanpham', ['id'=>$item->sp_id]) }}"><h2>{{ $item->sp_ten }}</h2></a>
 											<div class="star-rating">
 												<ul>
 													<li><i class="fa fa-star"></i></li>
@@ -101,7 +101,7 @@
 												{{ number_format($item->sp_giakhuyenmai) }}đ
 												@endif
 											</div>
-											<p>{{ $item->sp_thongtin }}</p>
+											{{-- <p>{{ $item->sp_thongtin }}</p> --}}
 											<div class="link-button">
 												<a class="trendify-btn black-bordered margin-top-20px" href="#">Thêm vào giỏ hàng</a>
 											</div>

@@ -105,7 +105,7 @@
                         <div class="tab-content">
                             <div id="tab1" class="tab-pane active">
                                 <h3>Thông tin chi tiết về sản phẩm</h3>
-                                <p>{{ $product->sp_thongtin }}</p>
+                                <p>{!! $product->sp_thongtin !!}</p>
                                 <p>Tác dụng: </p>
                                 <p>Tác dụng phụ: </p>
                             </div>
@@ -121,6 +121,7 @@
                         </div>
                     </div>
                     
+                    <hr style="border: 2px solid black;">
                     <div class="related-products margin-top-70px">
                         <h4>Sản phẩm vừa xem</h4>
                         <ul class="related-products-slider">

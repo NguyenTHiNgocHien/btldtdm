@@ -64,6 +64,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     //Sản phẩm
     Route::get('san-pham/{sort}', 'SanphamController@index')->name('danhsachsanpham');
 
+    //Hiển thị giao diện thêm sản phẩm
+    Route::get('them-san-pham', 'SanphamController@create')->name('giao-dien-them');
+
     Route::post('sanpham','SanphamController@store')->name('themsanpham');
 
     Route::get('sanpham/{id}', 'SanphamController@show')->name('chitietsanpham');
@@ -82,8 +85,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::post('sanpham/nhap-hang', 'SanphamController@nhapHang')->name('nhaphang');
     Route::get('sanpham/{id}/edit','SanphamController@edit')->name('suathongtinsanpham');
     Route::get('sanpham/{id}/cap-nhat-gia-ban','SanphamController@CapNhatGiaBan')->name('capnhatgiaban');
-
-
     Route::get('sanpham/{idsp}', 'SanphamController@editProduct')->name('showproduct');
 
 
@@ -166,7 +167,8 @@ Route::get('/san-pham', 'TrangchuController@getAllProduct')->name('tatcasanpham'
 Route::get('/san-pham-2', 'TrangchuController@getAllProduct2')->name('tatcasanpham-2');
 
 
-// Route::get('/san-pham/{}')
+// Tìm kiếm nè:
+Route::get('tim-kiem','TrangchuController@searchProduct')->name('search');
 
 //Liên hệ khách hàng với shop
 Route::get('/lien-he', function () {

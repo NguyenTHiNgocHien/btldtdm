@@ -83,12 +83,12 @@
                                                     
                                                 </li>
                                             <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="product-details-1.html"><i class="fa fa-expand"></i></a></li>
+                                            <li><a href="{{ route('sanpham', ['id'=>$item->sp_id]) }}"><i class="fa fa-expand"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h2>{{ $item->sp_ten }}</h2>
+                                    <h2><a href="{{ route('sanpham', ['id'=>$item->sp_id]) }}">{{ $item->sp_ten }}</a></h2>
                                     <div class="star-rating">
                                         <ul>
                                             <li><i class="fa fa-star"></i></li>

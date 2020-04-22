@@ -24,7 +24,8 @@ class SanphamController extends Controller
                 $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_id', 'asc')->paginate(10);
                 $loai = DB::table('loai')->get();
                 $congdung = DB::table('congdung')->get();
-                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                $congdungphu = DB::table('congdungphu')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung','congdungphu']));
                 break;
             
             case 'gia-tang':
@@ -32,7 +33,8 @@ class SanphamController extends Controller
                 $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giaban', 'desc')->paginate(10);
                 $loai = DB::table('loai')->get();
                 $congdung = DB::table('congdung')->get();
-                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                $congdungphu = DB::table('congdungphu')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung','congdungphu']));
                 break;
             case 'gia-giam':
                 //Trường hợp giá giảm ===> để ý hàm orderBy
@@ -41,7 +43,8 @@ class SanphamController extends Controller
                 // dd($sanphamcon);
                 $loai = DB::table('loai')->get();
                 $congdung = DB::table('congdung')->get();
-                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                $congdungphu = DB::table('congdungphu')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung','congdungphu']));
             break;
         }
     }
@@ -53,7 +56,10 @@ class SanphamController extends Controller
      */
     public function create()
     {
-        //
+        $loai = DB::table('loai')->get();
+        $congdung = DB::table('congdung')->get();
+        $congdungphu = DB::table('congdungphu')->get();
+        return view('admin.sanpham.add-product',compact(['loai','congdung','congdungphu']));
     }
 
     /**
@@ -73,6 +79,7 @@ class SanphamController extends Controller
                         'sp_thongtin' => $request->thongTin,
                         'l_id' => $request->loai,
                         'cd_id' => $request->congDung,
+                        'cdp_id' => $request->congDungPhu,
                         'created_at' => $now,
                         'updated_at' => $now,
                     ]
@@ -81,12 +88,12 @@ class SanphamController extends Controller
         if($sanpham)
         {
             $success = Session::put('alert-info', 'Thêm dữ liệu thành công');
-            return redirect()->route('danhsachsanpham');
+            return redirect()->route('danhsachsanpham', ['sort'=> 'danh-sach']);
         }
         else
         {
             $success = Session::put('alert-info', 'Thêm dữ liệu không thành công');
-            return redirect()->route('danhsachsanpham');
+            return redirect()->route('danhsachsanpham', ['sort'=> 'danh-sach']);
         }
     }
 

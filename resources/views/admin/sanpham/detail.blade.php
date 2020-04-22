@@ -139,7 +139,7 @@
             <br>
             <br>
             <p><b>Mô tả</b></p>
-            <p>{{$sanpham->sp_thongtin}}</p>
+            <p>{!! $sanpham->sp_thongtin !!}</p>
           </div>
           <!-- /.col -->
           <div class="col-sm-4 invoice-col">

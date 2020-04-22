@@ -37,7 +37,7 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">
-            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Thêm Sản phẩm</a>
+            <a href="{{ route('giao-dien-them') }}" class="btn btn-info">Thêm Sản phẩm</a>
           </h3>
 
           <div class="card-title float-right">
@@ -115,57 +115,5 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-    </div>
-
-    {{-- Form thêm loại ở đây --}}
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Thêm Sản phẩm</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form method="POST" action="{{ route('themsanpham') }}">
-              @csrf
-              <div class="form-group">
-                <label for="exampleInputEmail1">Tên sản phẩm</label>
-                <input name="tenSP" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập tên loại sản phẩm . . . ">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Loại sản phẩm</label>
-                <select class="form-control" id="exampleFormControlSelect1" name="loai">
-                    @foreach ($loai as $item => $value)
-                      <option value="{{$value->l_id}}">{{$value->l_ten}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Công dụng</label>
-              <select class="form-control" id="exampleFormControlSelect1" name="congDung">
-                  @foreach ($congdung as $item => $value)
-                    <option value="{{$value->cd_id}}">{{$value->cd_ten}}</option>
-                  @endforeach
-              </select>
-          </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Mô tả sản phẩm</label>
-              <textarea name="thongTin" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Giá bán</label>
-              <input name="giaBan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập tên loại sản phẩm . . . ">
-            </div>
-              <button type="submit" class="btn btn-primary" id="add">Thêm</button>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-          </div>
-        </div>
-      </div>
     </div>
 @endsection

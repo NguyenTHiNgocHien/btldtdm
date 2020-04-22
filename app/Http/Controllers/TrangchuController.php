@@ -73,4 +73,11 @@ class TrangchuController extends Controller
         return view('client.product-2',compact(['allProduct','allCategory','countProduct']));
     }
 
+
+    public function searchProduct (Request $request){
+        $search = $request->get('search');
+        $count = DB::table('sanpham')->where('sp_ten','LIKE','%'.$search.'%')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->count();
+        $data = DB::table('sanpham')->where('sp_ten','LIKE','%'.$search.'%')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->get();
+        return view('client.product-search',compact(['count','data','search']));
+    }
 }
