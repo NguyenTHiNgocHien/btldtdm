@@ -17,6 +17,8 @@ class CreateVouchersTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('vc_id');
             $table->string('vc_code');
+            $table->date('vc_ngaybatdau');
+            $table->date('vc_ngayketthuc');
             $table->integer('vc_trangthai');
             $table->timestamps();
         });

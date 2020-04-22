@@ -56,6 +56,24 @@ button {
   margin-left: 25px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 }
+
+a {
+  border: none;
+  background: red;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 200px;
+  color: white;
+  margin-left: 90px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
 button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
@@ -67,7 +85,10 @@ button:hover {
     <h1>Đăng nhập</h1>
     <input name="username" placeholder="Tên đăng nhập" type="text" required="">
     <input name="password" placeholder="Mật khẩu" type="password" required="">
-    <button>Submit</button>
+    <button>Đăng nhập</button>
+    <br>
+    <br>
+    <a href="{{ route('trangchu') }}">Quay về</a>
     {{ csrf_field() }}
   </form>
   

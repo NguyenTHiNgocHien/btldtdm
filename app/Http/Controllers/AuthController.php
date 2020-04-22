@@ -30,6 +30,7 @@ class AuthController extends Controller
     public function logoutAdmin ()
     {
         Auth::guard('nhanvien')->logout();
+        Session::put('username', null);
         return redirect()->route('getDangnhap');
     }
 
@@ -53,6 +54,7 @@ class AuthController extends Controller
                     //xai auth
                     $nv_id = \Auth::guard('nhanvien')->user()->nv_id;
                     $dataNV = Nhanvien::where('nv_id','=', $nv_id)->first();
+                    Session::put('username', $taikhoan->username);
                     // View::share('dataNV',$dataNV);
                     return redirect()->route('admin');
                     // return view()->share('dataNV', $dataNV);

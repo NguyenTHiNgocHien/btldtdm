@@ -21,7 +21,7 @@ class SanphamController extends Controller
             case 'danh-sach':
                 # code...
                 // Sắp sếp bình thường theo id sản phẩm tăng dần ===> để ý hàm orderBy
-                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_id', 'asc')->paginate(10);
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_id', 'desc')->paginate(10);
                 $loai = DB::table('loai')->get();
                 $congdung = DB::table('congdung')->get();
                 $congdungphu = DB::table('congdungphu')->get();

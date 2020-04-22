@@ -16,7 +16,7 @@ class CreateKMvouchersTable extends Migration
         Schema::create('KMvouchers', function (Blueprint $table) {
             // php artisan make:migration create_vouchers_table --create=vouchers
             $table->bigInteger('km_id')->unsigned();
-            $table->foreign('km_id')->references('km_id')->on('khuyenmai')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('km_id')->references('sp_id')->on('sanpham')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->bigInteger('vc_id')->unsigned();
             $table->foreign('vc_id')->references('vc_id')->on('vouchers')->onDelete('CASCADE')->onUpdate('CASCADE');;
             $table->integer('kmvc_giatri');

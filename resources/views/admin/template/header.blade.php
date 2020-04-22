@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Trang quản lý</title>
+  <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -62,6 +63,7 @@
   {{-- <script src="{{ asset('front-end/dist/js/pages/dashboard.js') }}"></script> --}}
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('front-end/dist/js/demo.js') }}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     .checked {
       color: orange;
