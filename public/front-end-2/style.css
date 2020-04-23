@@ -309,8 +309,8 @@ ol {
     background-color: #000 !important;
 }
 .default-bordered {
-    color: #eedbb9;
-    border-color: #eedbb9;
+    color: #000000;
+    border-color: #000000;
 }
 .default-bordered:hover {
     color: #000;

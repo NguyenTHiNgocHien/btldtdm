@@ -11,7 +11,12 @@ class TrangchuController extends Controller
     {
         $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->paginate(5);
         $flashsale = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_giakhuyenmai','>',0)->get();
-        return view('client.index',compact(['sanphammoi','flashsale']));
+
+
+
+        //Lấy banner ra ngoài
+        $banner = DB::table('banner')->get();
+        return view('client.index',compact(['sanphammoi','flashsale','banner']));
     }
 
     public function getCategory ($idCategory)
@@ -61,8 +66,9 @@ class TrangchuController extends Controller
         $allProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(5);
         $productPopular = DB::table('sanpham')->where('sp_danhgia','>=', 3)->paginate(2);
         $allCategory = DB::table('loai')->get();
+        $newProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(2);
         $countProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->count();
-        return view('client.product',compact(['allProduct','allCategory','countProduct']));
+        return view('client.product',compact(['allProduct','allCategory','countProduct','newProduct']));
     }
 
     public function getAllProduct2 (){
@@ -70,7 +76,8 @@ class TrangchuController extends Controller
         $allProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(5);
         $allCategory = DB::table('loai')->get();
         $countProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->count();
-        return view('client.product-2',compact(['allProduct','allCategory','countProduct']));
+        $newProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(2);
+        return view('client.product-2',compact(['allProduct','allCategory','countProduct','newProduct']));
     }
 
 
@@ -79,5 +86,10 @@ class TrangchuController extends Controller
         $count = DB::table('sanpham')->where('sp_ten','LIKE','%'.$search.'%')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->count();
         $data = DB::table('sanpham')->where('sp_ten','LIKE','%'.$search.'%')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->get();
         return view('client.product-search',compact(['count','data','search']));
+    }
+
+    public function getBanner($idBanner) {
+        $banner = DB::table('banner')->where('bn_id','=',$idBanner)->first();
+        return view('client.banner',compact('banner'));
     }
 }

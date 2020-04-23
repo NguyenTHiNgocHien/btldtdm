@@ -176,8 +176,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h2 class="trendify-heading middle-align">
-                            <span class="lg">Tin tức</span>
-                            <span class="sm">Tin mới nhất</span> 
+                            <span class="lg">Khách hàng</span>
+                            <span class="sm">ý kiến khách hàng</span> 
                         </h2>
                     </div>
                 </div>
@@ -185,46 +185,30 @@
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="single-news fadeInUp wow" data-wow-delay="0.5s">
                             <div class="col-md-6 col-sm-12 col-xs-12 no-padding">
-                                <div class="control-thumb">
-                                    <div class="prev"></div>
-                                    <div class="next"></div>
-                                </div>
                                 <div class="thumbs">
-                                    <img class="img-responsive" alt="blog post" src="{{ asset('front-end-2/img/blog1.jpg') }}">
-                                    <img class="img-responsive" alt="blog post" src="{{ asset('front-end-2/img/blog1.jpg') }}">
                                     <img class="img-responsive" alt="blog post" src="{{ asset('front-end-2/img/blog1.jpg') }}">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12 no-padding">
                                 <div class="news-content">
                                     <h2>Đức đẹp trai</h2>
-                                    <p class="meta">April 14, 2015 | Jonah Doe | in <a href="#">Clothes</a></p>
-                                    <p class="excerpt">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet....</p>
-                                    <a href="single.html"><span class="blog-icon arrow_right"></span></a>
+                                    <p class="excerpt">Sản phẩm rất tốt tôi sẽ sử dụng và giới thiệu cho nhiều người biết đến</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="single-news fadeInUp wow" data-wow-delay="1.0s">
+                        <div class="single-news fadeInUp wow" data-wow-delay="0.5s">
                             <div class="col-md-6 col-sm-12 col-xs-12 no-padding">
-                                <div class="control-thumb">
-                                    <div class="prev"></div>
-                                    <div class="next"></div>
-                                </div>
                                 <div class="thumbs">
-                                    <img class="img-responsive" alt="blog post" src="{{ asset('front-end-2/img/blog3.jpg') }}">
-                                    <img class="img-responsive" alt="blog post" src="{{ asset('front-end-2/img/blog3.jpg') }}">
                                     <img class="img-responsive" alt="blog post" src="{{ asset('front-end-2/img/blog3.jpg') }}">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12 no-padding">
                                 <div class="news-content">
                                     <h2>Đức đẹp trai</h2>
-                                    <p class="meta">April 14, 2015 | Jonah Doe | in <a href="#">Clothes</a></p>
-                                    <p class="excerpt">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet....</p>
-                                    <a href="single.html"><span class="blog-icon arrow_right"></span></a>
+                                    <p class="excerpt">Sản phẩm rất tốt tôi sẽ sử dụng và giới thiệu cho nhiều người biết đến</p>
                                 </div>
                             </div>
                         </div>

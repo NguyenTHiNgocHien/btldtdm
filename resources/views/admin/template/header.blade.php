@@ -83,6 +83,16 @@
     #rating>input:checked~label:hover,
     #rating>label:hover~input:checked~label,
     #rating>input:checked~label:hover~label{color:#FFED85;}
+
+    .zoomA {
+        width: 100px;
+        height: auto;
+        /* ease | ease-in | ease-out | linear */
+        transition: transform ease-in-out 0.3s;
+      }
+      .zoomA:hover {
+        transform: scale(5.5);
+      }
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

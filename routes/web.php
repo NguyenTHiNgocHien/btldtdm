@@ -141,8 +141,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     //quản lý banner
     Route::get('banner','BannerController@index')->name('banner');
-
-
+    Route::get('banner/them-banner','BannerController@create')->name('them-banner');
+    Route::post('banner/them-banners','BannerController@store')->name('them-banners');
+    Route::get('banner/chi-tiet/{id}','BannerController@show')->name('chi-tiet-banner');
+    Route::get('banner/cap-nhat-trang-thai/{id}/{trangthai}','BannerController@CapNhatTrangThai')->name('capnhattrangthai');
     //Thống kê
     Route::get('thong-ke','ThongkeController@index')->name('thongke');
 });
@@ -165,6 +167,8 @@ Route::get('/loai-san-pham/{idCategory}', 'TrangchuController@getCategory')->nam
 Route::get('/san-pham/{idProduct}', 'TrangchuController@getProduct')->name('sanpham');
 Route::get('/san-pham', 'TrangchuController@getAllProduct')->name('tatcasanpham');
 Route::get('/san-pham-2', 'TrangchuController@getAllProduct2')->name('tatcasanpham-2');
+//Banner
+Route::get('banner/{idBanner}','TrangchuController@getBanner')->name('getBanner');
 
 
 // Tìm kiếm nè:

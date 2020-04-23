@@ -34,7 +34,7 @@
 				<div class="col-md-9 col-md-push-3 col-sm-12">
 					<div class="trendify-banner">
 						<img src="{{ asset('front-end-2/img/banner2.jpg') }}" class="img-responsive" alt="image banner">
-						<div class="banner-text">
+						<div class="banner-text" style="color: black;">
 							<h3 class="animate fadeInDown wow">Sản phẩm cập nhật thường xuyên</h3>
 							<h4 class="animate fadeInDown wow" data-wow-delay="0.5s">Đăng nhập để mua sắm</h4>
 							<a class="trendify-btn default-bordered margin-left-0" href="#">Đăng nhập ngay</a>
@@ -139,13 +139,17 @@
 							</ul>
 						</div>
 						<div class="popular-products widget">
-							<h4>Popular Products</h4>
+							<h4>Sản phẩm mới</h4>
+							@foreach ($newProduct as $item)
 							<div class="product-single">
 								<div class="product-img">
-									<img class="img-responsive" alt="Single product" src="img/single_1.jpg">
+									@if ($item->sp_anhdaidien == '')
+										<img class="img-responsive" style="width: 280px;" src="{{ asset('upload') }}/nothing.jpg" alt="">
+									@endif
+										<img class="img-responsive lazy-load" style="width: 280px;" src="{{ asset('upload/sanpham') }}/{{ $item->sp_anhdaidien }}" alt="">
 								</div>
 								<div class="product-info">
-									<h2>New Look Stripe Shirt</h2>
+									<h2>{{ $item->sp_ten }}</h2>
 									<div class="star-rating">
 										<ul>
 											<li><i class="fa fa-star"></i></li>
@@ -156,31 +160,18 @@
 										</ul>
 									</div>
 									<div class="price">
-										<del> $50 </del> $40
+										@if (number_format($item->sp_giakhuyenmai) == 0)
+											{{ number_format($item->sp_giaban) }} đ
+										@else
+										
+										<del style="color: red"> {{ number_format($item->sp_giaban) }}đ </del>
+										<br>
+										{{ number_format($item->sp_giakhuyenmai) }}đ
+										@endif
 									</div>
 								</div>
 							</div>	
-
-							<div class="product-single">
-								<div class="product-img">
-									<img class="img-responsive" alt="Single product" src="img/single_1.jpg">
-								</div>
-								<div class="product-info">
-									<h2>New Look Stripe Shirt</h2>
-									<div class="star-rating">
-										<ul>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star-half-full"></i></li>
-										</ul>
-									</div>
-									<div class="price">
-										<del> $50 </del> $40
-									</div>
-								</div>
-							</div>
+							@endforeach
 						</div>
 					</div>
 				</div>

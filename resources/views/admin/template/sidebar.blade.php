@@ -118,6 +118,16 @@
               </p>
             </a>
             <ul class="nav nav-treeview ">
+              <li class="nav-item">
+                <a href="#" class="nav-link 
+                {{-- @if (Request::path() == 'admin/khuyenmai/voucher')
+                  active
+                @endif --}}
+                ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách khuyến mãi</p>
+                </a>
+              </li>
               <li class="nav-item ">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -154,10 +164,13 @@
                   <p>Flash Sale</p>
                 </a>
               </li>
+              
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('banner') }}" class="nav-link ">
+          <li class="nav-item ">
+            <a href="{{ route('banner') }}" class="nav-link @if (Request::path() == 'admin/banner')
+            active
+          @endif">
               <i class="nav-icon far fa fa-picture-o"></i>
               <p>
                 Banner
