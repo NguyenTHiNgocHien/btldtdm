@@ -77,7 +77,7 @@
                 <td id="l_ngaycapnhap">{{$value->updated_at}}</td>
                 <td>
                   <a href="{{ route('sualoai', ['id'=>$value->l_id]) }}" class="btn btn-primary">Sửa</a>
-                  <a href="{{ route('xoaloai', ['id'=>$value->l_id]) }}" class="btn btn-danger">Xóa</a>
+                  {{-- <a href="{{ route('xoaloai', ['id'=>$value->l_id]) }}" class="btn btn-danger">Xóa</a> --}}
                 </td>
               </tr>
               @endforeach

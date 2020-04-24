@@ -70,7 +70,7 @@
                 <td>
                   <a href="{{ route('xoaxuatxu', ['id'=>$value->cd_id]) }}" class="btn btn-default">Chi tiết</a>
                   <a href="{{ route('suacongdung', ['id'=>$value->cd_id]) }}" class="btn btn-primary">Sửa</a>
-                  <a href="{{ route('xoacongdung', ['id'=>$value->cd_id]) }}" class="btn btn-danger">Xóa</a>
+                  {{-- <a href="{{ route('xoacongdung', ['id'=>$value->cd_id]) }}" class="btn btn-danger">Xóa</a> --}}
                 </td>
               </tr>
               @endforeach

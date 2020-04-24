@@ -42,7 +42,67 @@ class SanphamController extends Controller
                 $loai = DB::table('loai')->get();
                 $congdung = DB::table('congdung')->get();
                 return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
-            break;
+                break;
+
+
+
+
+            case 'sl-tang':
+                //Trường hợp sl tăng ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_soluong', 'desc')->paginate(10);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                break;    
+            case 'sl-giam':
+                //Trường hợp sl giảm ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_soluong', 'asc')->paginate(10);
+                // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
+                // dd($sanphamcon);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                break;    
+
+
+
+
+            case 'km-tang':
+                //Trường hợp km tăng ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giakhuyenmai', 'desc')->paginate(10);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                break;    
+            case 'km-giam':
+                //Trường hợp km giảm ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_giakhuyenmai', 'asc')->paginate(10);
+                // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
+                // dd($sanphamcon);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                break;    
+
+
+
+
+            case 'tt-tang':
+                //Trường hợp km tăng ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_trangthai', 'desc')->paginate(10);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                break;    
+            case 'tt-giam':
+                //Trường hợp km giảm ===> để ý hàm orderBy
+                $sanpham = DB::table('sanpham')->join('loai','loai.l_id','=','sanpham.l_id')->orderBy('sp_trangthai', 'asc')->paginate(10);
+                // $sanphamcon = DB::table('sanpham')->join('chitietlo','chitietlo.sp_id','=','sanpham.sp_id')->distinct()->get();
+                // dd($sanphamcon);
+                $loai = DB::table('loai')->get();
+                $congdung = DB::table('congdung')->get();
+                return view('admin.sanpham.index', compact(['sanpham','loai','congdung']));
+                break;    
         }
     }
 

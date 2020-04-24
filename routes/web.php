@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     })->name('admin');
 
     Route::get('/dang-xuat','AuthController@logoutAdmin')->name('dangxuat');
-
+    // Route::get('/', 'ThongkeController@index')->name('admin');
     //Các route này của Loại sản phẩm
     Route::get('loai', 'LoaiController@index')->name('danhsachloai');
 
@@ -61,9 +61,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     Route::get('lo/{id}/delete','LoController@destroy')->name('xoalo');
 
-    //Sản phẩm
+    //Sản phẩm truyền cái biến sort dô
     Route::get('san-pham/{sort}', 'SanphamController@index')->name('danhsachsanpham');
 
+    
+    
     Route::post('sanpham','SanphamController@store')->name('themsanpham');
 
     Route::get('sanpham/{id}', 'SanphamController@show')->name('chitietsanpham');
