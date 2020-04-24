@@ -53,11 +53,24 @@
                 <th>STT</th>
                 <th>Mã sản phẩm</th>
                 <th>Tên Sản phẩm</th>
-                <th>Số lượng</th>
+                <th>Số lượng
+                  {{-- Nếu nó đang ở trang bình thường thì khi click vào sắp xếp tăng --}}
+                  @if (Request::path() == 'admin/san-pham/danh-sach' || Request::path() == 'admin/san-pham/gia-tang' || Request::path() == 'admin/san-pham/gia-giam' || Request::path() == 'admin/san-pham/km-tang' || Request::path() == 'admin/san-pham/km-giam' || Request::path() == 'admin/san-pham/tt-tang' || Request::path() == 'admin/san-pham/tt-giam')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'sl-tang']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                  {{-- Nếu nó đang ở trang sắp xếp tăng thì khi click vào sẽ thành sắp xếp giảm --}}
+                  @if(Request::path() == 'admin/san-pham/sl-tang')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'sl-giam']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                  {{-- Ngược lại --}}
+                  @if (Request::path() == 'admin/san-pham/sl-giam')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'sl-tang']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                </th>
                 {{-- Cái này là sắp xếp --}}
                 <th>Giá bán 
                   {{-- Nếu nó đang ở trang bình thường thì khi click vào sắp xếp tăng --}}
-                  @if (Request::path() == 'admin/san-pham/danh-sach')
+                  @if (Request::path() == 'admin/san-pham/danh-sach' || Request::path() == 'admin/san-pham/sl-tang' || Request::path() == 'admin/san-pham/sl-giam' || Request::path() == 'admin/san-pham/km-tang' || Request::path() == 'admin/san-pham/km-giam' || Request::path() == 'admin/san-pham/tt-tang' || Request::path() == 'admin/san-pham/tt-giam')
                     <a href="{{ route('danhsachsanpham', ['sort'=> 'gia-tang']) }}"><i class="fas fa-sort"></i></a>
                   @endif
                   {{-- Nếu nó đang ở trang sắp xếp tăng thì khi click vào sẽ thành sắp xếp giảm --}}
@@ -71,8 +84,34 @@
                 </th>
 
 
-                <th>Giá khuyễn mãi</th>
-                <th>Trạng thái</th>
+                <th>Giá khuyễn mãi
+                  {{-- Nếu nó đang ở trang bình thường thì khi click vào sắp xếp tăng --}}
+                  @if (Request::path() == 'admin/san-pham/danh-sach' || Request::path() == 'admin/san-pham/sl-tang' || Request::path() == 'admin/san-pham/sl-giam'|| Request::path() == 'admin/san-pham/gia-tang' || Request::path() == 'admin/san-pham/gia-giam' || Request::path() == 'admin/san-pham/tt-tang' || Request::path() == 'admin/san-pham/tt-giam')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'km-tang']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                  {{-- Nếu nó đang ở trang sắp xếp tăng thì khi click vào sẽ thành sắp xếp giảm --}}
+                  @if(Request::path() == 'admin/san-pham/km-tang')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'km-giam']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                  {{-- Ngược lại --}}
+                  @if (Request::path() == 'admin/san-pham/km-giam')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'km-tang']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                </th>
+                <th>Trạng thái
+                  {{-- Nếu nó đang ở trang bình thường thì khi click vào sắp xếp tăng --}}
+                  @if (Request::path() == 'admin/san-pham/danh-sach' || Request::path() == 'admin/san-pham/sl-tang' || Request::path() == 'admin/san-pham/sl-giam'|| Request::path() == 'admin/san-pham/gia-tang' || Request::path() == 'admin/san-pham/gia-giam' || Request::path() == 'admin/san-pham/km-tang' || Request::path() == 'admin/san-pham/km-giam')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'tt-tang']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                  {{-- Nếu nó đang ở trang sắp xếp tăng thì khi click vào sẽ thành sắp xếp giảm --}}
+                  @if(Request::path() == 'admin/san-pham/tt-tang')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'tt-giam']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                  {{-- Ngược lại --}}
+                  @if (Request::path() == 'admin/san-pham/tt-giam')
+                    <a href="{{ route('danhsachsanpham', ['sort'=> 'tt-tang']) }}"><i class="fas fa-sort"></i></a>
+                  @endif
+                </th>
                 <th>Thao tác</th>
               </tr>
             </thead>

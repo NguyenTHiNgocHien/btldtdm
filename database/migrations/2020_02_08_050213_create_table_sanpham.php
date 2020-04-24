@@ -25,7 +25,7 @@ class CreateTableSanpham extends Migration
             $table->integer('sp_danhgia')->nullable();
             $table->integer('sp_trangthai')->default(0)->comment('Trạng thái có 0 hoặc 1 chỉ Còn hàng hoặc Hết hàng');
             $table->string('sp_anhdaidien')->nullable();
-            $table->string('sp_soluong')->nullable();
+            $table->integer('sp_soluong')->nullable();
             //Khóa ngoại đây
             $table->bigInteger('l_id')->unsigned();//khóa ngoại
             $table->foreign('l_id')->references('l_id')->on('loai');
