@@ -2,6 +2,8 @@
 @include('client.template.slider')
 
 @yield('content')
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=592925578098159&autoLogAppEvents=1"></script>
 <!--Start of Tawk.to Script-->
 @if (Request::path() == '/')
 <script type="text/javascript">

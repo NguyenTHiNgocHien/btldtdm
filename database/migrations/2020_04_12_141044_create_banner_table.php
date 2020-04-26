@@ -17,12 +17,8 @@ class CreateBannerTable extends Migration
             $table->bigIncrements('bn_id');
             $table->string('bn_hinhanh');
             $table->string('bn_tieude');
-            $table->string('bn_tieudephu');
-            $table->string('bn_noidung');
+            $table->text('bn_noidung');
             $table->integer('bn_trangthai');
-
-            $table->bigInteger('km_id')->unsigned();
-            $table->foreign('km_id')->references('km_id')->on('khuyenmai');
             $table->timestamps();
         });
     }

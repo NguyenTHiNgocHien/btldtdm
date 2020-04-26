@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVouchersTable extends Migration
+class CreateTableChiTietGioHangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateVouchersTable extends Migration
      */
     public function up()
     {
-        Schema::create('vouchers', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->bigIncrements('vc_id');
-            $table->string('vc_code');
-            $table->date('vc_ngaybatdau');
-            $table->date('vc_ngayketthuc');
-            $table->integer('vc_trangthai');
+        Schema::create('chitietgiohang', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class CreateVouchersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vouchers');
+        Schema::dropIfExists('chitietgiohang');
     }
 }

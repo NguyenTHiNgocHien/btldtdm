@@ -9,11 +9,10 @@ class TrangchuController extends Controller
 
     public function index()
     {
-        $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->paginate(5);
-        $sanphambanchay = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_soluong','<','50')->paginate(5);
-        $sanphamyeuthich = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_danhgia','>=','4')->paginate(5);
-        $flashsale = "";
-        return view('client.index',compact(['sanphammoi','sanphambanchay','sanphamyeuthich']));
+        $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->paginate(5);
+        $flashsale = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_giakhuyenmai','>',0)->get();//Lấy banner ra ngoài
+        $banner = DB::table('banner')->where('bn_trangthai','=',1)->get();
+        return view('client.index',compact(['sanphammoi','flashsale','banner']));
     }
 
     public function getCategory ($idCategory)
@@ -48,25 +47,24 @@ class TrangchuController extends Controller
 
     public function getProduct ($idProduct)
     {
-        $product = DB::table('sanpham')
-        ->join('congdung','congdung.cd_id','=','sanpham.cd_id')
-        ->join('loai','loai.l_id','=','sanpham.l_id')
-        ->where('sp_id', $idProduct)->first();
-
+        $product = DB::table('sanpham')->where('sp_id', $idProduct)->first();
+        $category = DB::table('loai')->where('l_id','=',$product->l_id)->first();
         $productImage = DB::table('hinhanh')->where('sp_id', $idProduct)->get();
 
-        $productCate = DB::table('sanpham')->join('loai','loai.l_id', '=' , 'sanpham.l_id')->paginate(4);
+        $productCate = DB::table('sanpham')->join('loai','loai.l_id', '=' , 'sanpham.l_id')->get();
 
         // dd($productCate);
-        return view('client.product',compact(['product', 'productImage','productCate']));
+        return view('client.product-detail',compact(['product', 'productImage','productCate','category']));
     }
 
     public function getAllProduct (){
         //Lẫy ngẫu nhiên sản phẩm
         $allProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(5);
+        $productPopular = DB::table('sanpham')->where('sp_danhgia','>=', 3)->paginate(2);
         $allCategory = DB::table('loai')->get();
+        $newProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(2);
         $countProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->count();
-        return view('client.product',compact(['allProduct','allCategory','countProduct']));
+        return view('client.product',compact(['allProduct','allCategory','countProduct','newProduct']));
     }
 
     public function getAllProduct2 (){
@@ -74,7 +72,20 @@ class TrangchuController extends Controller
         $allProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(5);
         $allCategory = DB::table('loai')->get();
         $countProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->count();
-        return view('client.product-2',compact(['allProduct','allCategory','countProduct']));
+        $newProduct = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('sp_id','desc')->paginate(2);
+        return view('client.product-2',compact(['allProduct','allCategory','countProduct','newProduct']));
     }
 
+
+    public function searchProduct (Request $request){
+        $search = $request->get('search');
+        $count = DB::table('sanpham')->where('sp_ten','LIKE','%'.$search.'%')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->count();
+        $data = DB::table('sanpham')->where('sp_ten','LIKE','%'.$search.'%')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->get();
+        return view('client.product-search',compact(['count','data','search']));
+    }
+
+    public function getBanner($idBanner) {
+        $banner = DB::table('banner')->where('bn_id','=',$idBanner)->first();
+        return view('client.banner',compact('banner'));
+    }
 }

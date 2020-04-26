@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
+/* Phần này là các route của trang admin */
 // Xử lý đăng nhập cho trang admin
 Route::get('dang-nhap-admin', 'AuthController@getLogin')->name('getDangnhap');
 Route::post('dang-nhap-admin','AuthController@authLogin')->name('dangnhap');
@@ -74,8 +79,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     //Sản phẩm truyền cái biến sort dô
     Route::get('san-pham/{sort}', 'SanphamController@index')->name('danhsachsanpham');
 
-    
-    
+    //Hiển thị giao diện thêm sản phẩm
+    Route::get('them-san-pham', 'SanphamController@create')->name('giao-dien-them');
+
     Route::post('sanpham','SanphamController@store')->name('themsanpham');
 
     Route::get('sanpham/{id}', 'SanphamController@show')->name('chitietsanpham');
@@ -94,8 +100,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::post('sanpham/nhap-hang', 'SanphamController@nhapHang')->name('nhaphang');
     Route::get('sanpham/{id}/edit','SanphamController@edit')->name('suathongtinsanpham');
     Route::get('sanpham/{id}/cap-nhat-gia-ban','SanphamController@CapNhatGiaBan')->name('capnhatgiaban');
-
-
     Route::get('sanpham/{idsp}', 'SanphamController@editProduct')->name('showproduct');
 
 
@@ -152,8 +156,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     //quản lý banner
     Route::get('banner','BannerController@index')->name('banner');
-
-
+    Route::get('banner/them-banner','BannerController@create')->name('them-banner');
+    Route::post('banner/them-banners','BannerController@store')->name('them-banners');
+    Route::get('banner/chi-tiet/{id}','BannerController@show')->name('chi-tiet-banner');
+    Route::get('banner/cap-nhat-trang-thai/{id}/{trangthai}','BannerController@CapNhatTrangThai')->name('capnhattrangthai');
     //Thống kê
     Route::get('thong-ke','ThongkeController@index')->name('thongke');
 });
@@ -176,6 +182,12 @@ Route::get('/loai-san-pham/{idCategory}', 'TrangchuController@getCategory')->nam
 Route::get('/san-pham/{idProduct}', 'TrangchuController@getProduct')->name('sanpham');
 Route::get('/san-pham', 'TrangchuController@getAllProduct')->name('tatcasanpham');
 Route::get('/san-pham-2', 'TrangchuController@getAllProduct2')->name('tatcasanpham-2');
+//Banner
+Route::get('banner/{idBanner}','TrangchuController@getBanner')->name('getBanner');
+
+
+// Tìm kiếm nè:
+Route::get('tim-kiem','TrangchuController@searchProduct')->name('search');
 
 //Liên hệ khách hàng với shop
 Route::get('/lien-he', function () {

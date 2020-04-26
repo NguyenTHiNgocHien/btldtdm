@@ -78,11 +78,11 @@
   </div>
   <!-- /.row -->
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-6">
       <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Asley Cosmetic</h3>
+                  <h3 class="card-title">Biểu đồ lượt truy cập</h3>
                   
                 </div>
               </div>
@@ -108,27 +108,19 @@
     </div>
           <!-- /.col-md-6 -->
 
-    <div class="col-lg-12">
+    <div class="col-lg-6">
       <div class="card">
             <div class="card-header border-0">
-              <h3 class="card-title">Lượt truy cập</h3>
-              <div class="card-tools">
-                <a href="#" class="btn btn-tool btn-sm">
-                  <i class="fas fa-download"></i>
-                </a>
-                <a href="#" class="btn btn-tool btn-sm">
-                  <i class="fas fa-bars"></i>
-                </a>
-              </div>
+              <h3 class="card-title">Lượt truy cập trong tháng</h3>
+              
             </div>
             <div class="card-body table-responsive p-0">
               <table class="table table-striped table-valign-middle">
                 <thead>
                 <tr>
-                  <th>#</th>
+                  <th>STT</th>
                   <th>Địa chỉ</th>
                   <th>Trang truy cập</th>
-                  
                 </tr>
                 </thead>
                 <tbody>
@@ -152,8 +144,20 @@
     </div>
           <!-- /.card -->
   </div>
+
+</section>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164525157-1"></script>
 <script>
-    $(function () {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164525157-1');
+</script>
+
+<script>
+  $(function () {
   'use strict'
 
   var ticksStyle = {
@@ -164,7 +168,7 @@
   var mode      = 'index'
   var intersect = true
 
-  
+
 
   var $visitorsChart = $('#visitors-chart')
   var visitorsChart  = new Chart($visitorsChart, {
@@ -217,7 +221,7 @@
           },
           ticks    : $.extend({
             beginAtZero : true,
-            suggestedMax: 10
+            suggestedMax: 20
           }, ticksStyle)
         }],
         xAxes: [{
@@ -230,8 +234,7 @@
       }
     }
   })
-})
+  })
 
 </script>
-</section>
 @endsection

@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Beutiful Shop - @yield('title')
+        Asley Cosmictic - @yield('title')
     </title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
 
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="{{ asset('front-end-2/css/bootstrap.min.css')}}">
@@ -53,7 +54,12 @@
 </head>
 
 <body class="home1">
-
+        @if (Session::has('username'))
+        <div class="">
+            <a href="{{ route('admin') }}" style="margin-left: 20px;"><i class="fa fa-reply"></i> Quay về trang admin</a>
+            <a href="{{ route('dangxuat') }}" style="float: right; margin-right: 20px;">Đăng xuất</a>
+        </div>
+        @endif
     <!-- header -->
     <div class="header">
         <div class="header-top">
@@ -88,7 +94,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12 search">
-                        <form>
+                        <form action="{{ route('search') }}" method="GET">
+                            {{-- Tìm kiếm sản phẩm --}}
+                            @csrf
                             <input type="text" name="search" placeholder="Tìm kiếm sản phẩm" />
                             <button type="submit"><span class="arrow_right"></span></button>
                         </form>
@@ -176,14 +184,6 @@
                                 @endforeach
                             </ul>
                         </li>
-						{{-- <li class="dropdown {{ Request::path() == '/loai-san-pham' ? 'active' : '' }}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Công dụng</a>
-                            <ul class="dropdown-menu">
-                                @foreach ($congdung as $item)
-                                    <li><a href="">{{ $item->cd_ten }}</a></li>
-                                @endforeach
-                            </ul>
-                        </li> --}}
                         <li class="{{ Request::path() == 'gioi-thieu' ? 'active' : '' }}"><a href="{{ route('gioithieu') }}">Giới thiệu</a></li>
                         <li><a href="{{ route('lienhe') }}">Liên hệ</a></li>
                     </ul>
