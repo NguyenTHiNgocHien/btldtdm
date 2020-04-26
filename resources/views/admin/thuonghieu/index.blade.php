@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-4">
-        <h1>Xuất xứ</h1>
+        <h1>Thương hiệu</h1>
       </div>
       <div class="col-sm-4">
         
@@ -13,7 +13,7 @@
       <div class="col-sm-4">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-          <li class="breadcrumb-item active">Xuất xứ</li>
+          <li class="breadcrumb-item active">Thương hiệu</li>
         </ol>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">
-            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Thêm nơi xuất xứ</a>
+            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Thêm thương hiệu sản phẩm</a>
           </h3>
 
           <div class="card-title">
@@ -52,7 +52,7 @@
               <tr>
                 <th>STT</th>
                 <th>Mã số</th>
-                <th>Tên nơi xuất xứ</th>
+                <th>Tên thương hiệu</th>
                 <th>Ngày thêm</th>
                 <th>Ngày cập nhật</th>
                 <th>Thao tác</th>
@@ -60,16 +60,16 @@
             </thead>
             <tbody>
               <?php $stt = 1; ?>
-              @foreach ($xx as $item => $value)
+              @foreach ($th as $item => $value)
               <tr>
                 <td>{{$stt++}}</td>
-                <td>{{$value->xx_id}}</td>
-                <td>{{$value->xx_ten}}</td>
+                <td>{{$value->th_id}}</td>
+                <td>{{$value->th_ten}}</td>
                 <td>{{$value->created_at}}</td>
                 <td>{{$value->updated_at}}</td>
                 <td>
-                  <a href="{{ route('capnhatxuatxu', ['id'=>$value->xx_id]) }}" class="btn btn-primary">Sửa</a>
-                  <a href="{{ route('xoaxuatxu', ['id'=>$value->xx_id]) }}" class="btn btn-danger">Xóa</a>
+                  <a href="{{ route('capnhatthuonghieu', ['id'=>$value->th_id]) }}" class="btn btn-primary">Sửa</a>
+                  <a href="{{ route('xoathuonghieu', ['id'=>$value->th_id]) }}" class="btn btn-danger">Xóa</a>
                 </td>
               </tr>
               @endforeach
@@ -78,7 +78,7 @@
             
           </table>
           <nav aria-label="Page navigation example">
-            {!! $xx->links() !!}
+            {!! $th->links() !!}
           </nav>
         </div>
         <!-- /.card-body -->
@@ -98,11 +98,11 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="{{ route('themxuatxu') }}">
+            <form method="POST" action="{{ route('themthuonghieu') }}">
               @csrf
               <div class="form-group">
-                <label for="exampleInputEmail1">Tên nơi xuất xứ</label>
-                <input name="tenXX" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập nơi xuất xứ . . . ">
+                <label for="exampleInputEmail1">Tên thương hiệu</label>
+                <input name="tenTH" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập thương hiệu. . . ">
               </div>
               <button type="submit" class="btn btn-primary" id="add">Thêm</button>
             </form>

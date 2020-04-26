@@ -55,6 +55,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('danhsachthuonghieu') }}" class="nav-link {{ Request::path() == 'admin/thuonghieu' ? 'active' : '' }}">
+              <i class="nav-icon far fa-heart"></i>
+              <p>
+                thương hiệu sản phẩm
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('danhsachlo') }}" class="nav-link {{ Request::path() == 'admin/lo' ? 'active' : '' }}">
               <i class="nav-icon fa fa-archive"></i>
               <p>
