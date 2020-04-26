@@ -82,8 +82,8 @@
       <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <h3 class="card-title">Asley Cosmetic</h3>
+                  
                 </div>
               </div>
               <div class="card-body">
@@ -95,11 +95,11 @@
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> Visitor
+                    <i class="fas fa-square text-primary"></i> Lượt truy cập
                   </span>
 
                   <span>
-                    <i class="fas fa-square text-gray"></i> Page View
+                    <i class="fas fa-square text-gray"></i> Trang truy cập
                   </span>
                 </div>
               </div>
@@ -111,7 +111,7 @@
     <div class="col-lg-12">
       <div class="card">
             <div class="card-header border-0">
-              <h3 class="card-title">Top Referrers</h3>
+              <h3 class="card-title">Lượt truy cập</h3>
               <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm">
                   <i class="fas fa-download"></i>
@@ -126,9 +126,9 @@
                 <thead>
                 <tr>
                   <th>#</th>
-                  <th>url</th>
-                  <th>PageViews</th>
-                  <th>More</th>
+                  <th>Địa chỉ</th>
+                  <th>Trang truy cập</th>
+                  
                 </tr>
                 </thead>
                 <tbody>
