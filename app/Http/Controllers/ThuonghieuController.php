@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class XuatxuController extends Controller
+class ThuonghieuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class XuatxuController extends Controller
      */
     public function index()
     {
-        $xx = DB::table('xuatxu')->paginate(5);
-        return view('admin.xuatxu.index', compact('xx'));
+        $th = DB::table('thuonghieu')->paginate(5);
+        return view('admin.thuonghieu.index', compact('th'));
     }
 
     /**
@@ -38,24 +38,24 @@ class XuatxuController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
-        $xuatxu = DB::table('xuatxu')
+        $thuonghieu = DB::table('thuonghieu')
                 ->insert(
                     [
-                        'xx_ten' =>$request->tenXX,
+                        'th_ten' =>$request->tenTH,
                         'created_at' => $now,
                         'updated_at' => $now,
                     ]
                 );
 
-        if($xuatxu)
+        if($thuonghieu)
         {
             $success = Session::put('alert-info', 'Thêm dữ liệu thành công');
-            return redirect()->route('danhsachxuatxu');
+            return redirect()->route('danhsachthuonghieu');
         }
         else
         {
             $success = Session::put('alert-info', 'Thêm dữ liệu không thành công');
-            return redirect()->route('danhsachxuatxu');
+            return redirect()->route('danhsachthuonghieu');
         }
     }
 
@@ -78,8 +78,8 @@ class XuatxuController extends Controller
      */
     public function edit($id)
     {
-        $xx = DB::table('xuatxu')->where('xx_id', $id)->first();
-        return view('admin.xuatxu.edit', compact('xx'));
+        $th = DB::table('thuonghieu')->where('th_id', $id)->first();
+        return view('admin.thuonghieu.edit', compact('th'));
     }
 
     /**
@@ -92,17 +92,17 @@ class XuatxuController extends Controller
     public function update(Request $request, $id)
     {
         $now = Carbon::now();
-        $data = DB::table('xuatxu')->where('xx_id',$id)
+        $data = DB::table('thuonghieu')->where('th_id',$id)
                     ->update(
                         [
-                            'xx_ten' => $request->tenXX,
+                            'th_ten' => $request->tenTH,
                             'updated_at' => $now,
                         ]
                     );
 
         //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
         $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
-        return redirect()->route('danhsachxuatxu');
+        return redirect()->route('danhsachthuonghieu');
     }
 
     /**
@@ -113,8 +113,8 @@ class XuatxuController extends Controller
      */
     public function destroy($id)
     {
-        $data = DB::table('xuatxu')->where('xx_id',$id)->delete();
+        $data = DB::table('thuonghieu')->where('th_id',$id)->delete();
         $success = Session::put('alert-del', 'Xóa dữ liệu thành công');
-        return redirect()->route('danhsachxuatxu');
+        return redirect()->route('danhsachthuonghieu');
     }
 }

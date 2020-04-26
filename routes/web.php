@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     })->name('admin');
 
     Route::get('/dang-xuat','AuthController@logoutAdmin')->name('dangxuat');
-    // Route::get('/', 'ThongkeController@index')->name('admin');
+     Route::get('/', 'ThongkeController@index')->name('admin');
     //Các route này của Loại sản phẩm
     Route::get('loai', 'LoaiController@index')->name('danhsachloai');
 
@@ -34,6 +34,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('loai/{id}/delete','LoaiController@destroy')->name('xoaloai');
 
     Route::get('loai/search', 'LoaiController@search')->name('search-category');
+    //thương hiệu nà
+    Route::get('thuonghieu', 'ThuonghieuController@index')->name('danhsachthuonghieu');
+
+    Route::post('thuonghieu','ThuonghieuController@store')->name('themthuonghieu');
+
+    Route::get('thuonghieu/{id}/edit','ThuonghieuController@edit')->name('suathuonghieu');
+
+    Route::post('thuonghieu/{id}/edit', 'ThuonghieuController@update')->name('capnhatthuonghieu');
+
+    Route::get('thuonghieu/{id}/delete','ThuonghieuController@destroy')->name('xoathuonghieu');
 
     //xuất xứ sản phẩm
     Route::get('xuatxu', 'XuatxuController@index')->name('danhsachxuatxu');

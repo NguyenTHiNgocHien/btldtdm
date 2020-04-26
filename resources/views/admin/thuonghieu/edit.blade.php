@@ -4,23 +4,23 @@
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">
-            Sửa thông tin xuất xứ
+            Sửa thông tin thương hiệu
         </h3>
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-2">
-        <form method="POST" action="{{ route('capnhatxuatxu', ['id'=>$xx->xx_id]) }}">
+        <form method="POST" action="{{ route('capnhatthuonghieu', ['id'=>$th->th_id]) }}">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Mã số</label>
-                <input name="" readonly type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$xx->xx_id}}">
+                <input name="" readonly type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$th->th_id}}">
               </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Tên xuất xứ sản phẩm</label>
-              <input name="tenXX" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$xx->xx_ten}}">
+              <label for="exampleInputEmail1">Tên thương hiệu</label>
+              <input name="tenXX" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$th->th_ten}}">
             </div>
             <button type="submit" class="btn btn-primary">Sửa</button>
-            <a href="{{ route('danhsachxuatxu') }}" class="btn btn-default">Quay về</a>
+            <a href="{{ route('danhsachthuonghieu') }}" class="btn btn-default">Quay về</a>
           </form>
       </div>
       <!-- /.card-body -->

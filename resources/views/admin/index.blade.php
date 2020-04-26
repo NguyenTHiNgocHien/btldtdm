@@ -37,8 +37,8 @@
         <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Likes</span>
-          <span class="info-box-number">41,410</span>
+          <span class="info-box-text">Đơn hàng</span>
+          <span class="info-box-number">{{$countDH}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -54,8 +54,8 @@
         <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Sản phẩm bán</span>
-          <span class="info-box-number">760</span>
+          <span class="info-box-text">Sản phẩm</span>
+        <span class="info-box-number">{{$countSP}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -67,8 +67,8 @@
         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Thành viên mới</span>
-          <span class="info-box-number">2,000</span>
+          <span class="info-box-text">Loại sản phẩm</span>
+          <span class="info-box-number">{{$countLSP}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -95,11 +95,11 @@
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This Week
+                    <i class="fas fa-square text-primary"></i> Visitor
                   </span>
 
                   <span>
-                    <i class="fas fa-square text-gray"></i> Last Week
+                    <i class="fas fa-square text-gray"></i> Page View
                   </span>
                 </div>
               </div>
@@ -107,117 +107,11 @@
             <!-- /.card -->   
     </div>
           <!-- /.col-md-6 -->
-    <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header border-0">
-                <h3 class="card-title">Products</h3>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-bars"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="card-body table-responsive p-0">
-                <table class="table table-striped table-valign-middle">
-                  <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Sales</th>
-                    <th>More</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Some Product
-                    </td>
-                    <td>$13 USD</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fas fa-arrow-up"></i>
-                        12%
-                      </small>
-                      12,000 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Another Product
-                    </td>
-                    <td>$29 USD</td>
-                    <td>
-                      <small class="text-warning mr-1">
-                        <i class="fas fa-arrow-down"></i>
-                        0.5%
-                      </small>
-                      123,234 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Amazing Product
-                    </td>
-                    <td>$1,230 USD</td>
-                    <td>
-                      <small class="text-danger mr-1">
-                        <i class="fas fa-arrow-down"></i>
-                        3%
-                      </small>
-                      198 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                      Perfect Item
-                      <span class="badge bg-danger">NEW</span>
-                    </td>
-                    <td>$199 USD</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fas fa-arrow-up"></i>
-                        63%
-                      </small>
-                      87 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!-- /.card -->
-    </div>
-    <div class="col-lg-6">
+
+    <div class="col-lg-12">
       <div class="card">
             <div class="card-header border-0">
-              <h3 class="card-title">Products</h3>
+              <h3 class="card-title">Top Referrers</h3>
               <div class="card-tools">
                 <a href="#" class="btn btn-tool btn-sm">
                   <i class="fas fa-download"></i>
@@ -231,90 +125,26 @@
               <table class="table table-striped table-valign-middle">
                 <thead>
                 <tr>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Sales</th>
+                  <th>#</th>
+                  <th>url</th>
+                  <th>PageViews</th>
                   <th>More</th>
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($data['fetchTopReferrers'] as $key=>$item)
                 <tr>
                   <td>
-                    <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                    Some Product
+                    {{$key+1}}
                   </td>
-                  <td>$13 USD</td>
+                <td>{{ $item["url"] }}</td>
                   <td>
-                    <small class="text-success mr-1">
-                      <i class="fas fa-arrow-up"></i>
-                      12%
-                    </small>
-                    12,000 Sold
+                    {{ $item["pageViews"] }}
                   </td>
-                  <td>
-                    <a href="#" class="text-muted">
-                      <i class="fas fa-search"></i>
-                    </a>
-                  </td>
+                 
                 </tr>
-                <tr>
-                  <td>
-                    <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                    Another Product
-                  </td>
-                  <td>$29 USD</td>
-                  <td>
-                    <small class="text-warning mr-1">
-                      <i class="fas fa-arrow-down"></i>
-                      0.5%
-                    </small>
-                    123,234 Sold
-                  </td>
-                  <td>
-                    <a href="#" class="text-muted">
-                      <i class="fas fa-search"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                    Amazing Product
-                  </td>
-                  <td>$1,230 USD</td>
-                  <td>
-                    <small class="text-danger mr-1">
-                      <i class="fas fa-arrow-down"></i>
-                      3%
-                    </small>
-                    198 Sold
-                  </td>
-                  <td>
-                    <a href="#" class="text-muted">
-                      <i class="fas fa-search"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                    Perfect Item
-                    <span class="badge bg-danger">NEW</span>
-                  </td>
-                  <td>$199 USD</td>
-                  <td>
-                    <small class="text-success mr-1">
-                      <i class="fas fa-arrow-up"></i>
-                      63%
-                    </small>
-                    87 Sold
-                  </td>
-                  <td>
-                    <a href="#" class="text-muted">
-                      <i class="fas fa-search"></i>
-                    </a>
-                  </td>
-                </tr>
+                @endforeach
+                
                 </tbody>
               </table>
             </div>
@@ -339,10 +169,10 @@
   var $visitorsChart = $('#visitors-chart')
   var visitorsChart  = new Chart($visitorsChart, {
     data   : {
-      labels  : ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
+      labels  : {!! json_encode($data['date']->map(function($d){return $d->format("d/m/Y");})) !!},
       datasets: [{
         type                : 'line',
-        data                : [100, 120, 170, 167, 180, 177, 160],
+        data                : {!! json_encode($data['visitors']) !!},
         backgroundColor     : 'transparent',
         borderColor         : '#007bff',
         pointBorderColor    : '#007bff',
@@ -353,7 +183,7 @@
       },
         {
           type                : 'line',
-          data                : [60, 80, 70, 67, 80, 77, 100],
+          data                : {!! json_encode($data['pageViews']) !!},
           backgroundColor     : 'tansparent',
           borderColor         : '#ced4da',
           pointBorderColor    : '#ced4da',
@@ -387,7 +217,7 @@
           },
           ticks    : $.extend({
             beginAtZero : true,
-            suggestedMax: 200
+            suggestedMax: 10
           }, ticksStyle)
         }],
         xAxes: [{
