@@ -112,6 +112,68 @@
                             <div id="tab2" class="tab-pane">
                                 <h3>Bình luận bằng tài khoản khách hàng</h3>
                                 <p>Sử dụng tài khoản khách hàng để bình luận</p>
+                                <form action="">
+                                    <label for="">Đánh giá</label>
+                                    <br>
+                                    <div id="rating" style="display:block;">
+                                        <input type="radio" id="star5" name="rating" value="5" />
+                                        <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                        
+                                        <input type="radio" id="star4half" name="rating" value="4 and a half" />
+                                        <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                        
+                                        <input type="radio" id="star4" name="rating" value="4" />
+                                        <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                        
+                                        <input type="radio" id="star3half" name="rating" value="3 and a half" />
+                                        <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                        
+                                        <input type="radio" id="star3" name="rating" value="3" />
+                                        <label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                        
+                                        <input type="radio" id="star2half" name="rating" value="2 and a half" />
+                                        <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                        
+                                        <input type="radio" id="star2" name="rating" value="2" />
+                                        <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                        
+                                        <input type="radio" id="star1half" name="rating" value="1 and a half" />
+                                        <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                        
+                                        <input type="radio" id="star1" name="rating" value="1" />
+                                        <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                        
+                                        <input type="radio" id="starhalf" name="rating" value="half" />
+                                        <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <label for="">Nội dung</label>
+                                    <br>
+                                    <textarea name="" id="" style="margin: 0px; width: 520px; height: 136px;"></textarea>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                </form>
+                                <div class="col-md-12">
+                                    <h1>Bình luận</h1>
+                                    <div class="col-md-1" style="border-radius: 50%;">
+                                        <img class="img-responsive" alt="Single product" src="{{ asset('front-end-2') }}/img/single_1.jpg">
+                                    </div>
+                                    <div class="col-md-11">
+                                        <h4>Tên khách hàng</h4>
+                                            <div class="rated">
+                                                <ul>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <br>
+                                        <p>bla bla bla blabla bla bla bla bla bla bla bla </p>
+                                    </div>
+                                </div>
                             </div>
                             <div id="tab3" class="tab-pane">
                                 <h3>Bình luận bằng Facebook</h3>

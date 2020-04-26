@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
+/* Phần này là các route của trang admin */
 // Xử lý đăng nhập cho trang admin
 Route::get('dang-nhap-admin', 'AuthController@getLogin')->name('getDangnhap');
 Route::post('dang-nhap-admin','AuthController@authLogin')->name('dangnhap');
