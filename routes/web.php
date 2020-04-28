@@ -196,3 +196,5 @@ Route::get('/lien-he', function () {
 //Giỏ hàng
 Route::get('/add-to-cart/{idSP}','GiohangController@addCart')->name('add-cart');
 Route::get('content-cart','GiohangController@getCart')->name('content-cart');
+Route::get('clear-cart','GiohangController@clearCart')->name('clear-cart');
+Route::get('remove-product/{id}','GiohangController@remove')->name('remove');

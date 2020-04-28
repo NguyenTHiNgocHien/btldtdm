@@ -77,12 +77,14 @@
                             <span class="item-cat"><b>Loại sản phẩm:</b>  {{ $category->l_ten }}</span>
                         </div>
                         <div>
-                            <div class="quantity">
-                                <label>Số lượng</label><input type="number" step="1" min="0" max="99" name="cart" value="1" title="Qty" class="qty">
-                            </div>
-                            <div class="add-to-cart">
-                                <a href="{{ route('add-cart', ['id'=> $product->sp_id]) }}" class="trendify-btn black-bordered">Add To Cart</a>
-                            </div>
+                            <form action="{{ route('add-cart', ['id'=> $product->sp_id]) }}" method="get">
+                                <div class="quantity">
+                                    <label>Số lượng</label><input type="number" step="1" min="0" max="99" name="qty" value="1" title="Qty" class="qty">
+                                </div>
+                                <div class="add-to-cart">
+                                    <button type="submit" class="trendify-btn black-bordered">Thêm vào giỏ hàng</button>
+                                </div>
+                            </form>
                         </div>
                         <br>
                         <div class="fb-like" data-href="{{ asset('') }}{{ Request::path() }}" data-width="" data-layout="button" data-action="like" data-size="large" data-share="false">

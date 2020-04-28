@@ -103,7 +103,7 @@
 											</div>
 											{{-- <p>{{ $item->sp_thongtin }}</p> --}}
 											<div class="link-button">
-												<a class="trendify-btn black-bordered margin-top-20px" href="#">Thêm vào giỏ hàng</a>
+												<a class="trendify-btn black-bordered margin-top-20px" href="{{ route('add-cart', ['id'=> $item->sp_id]) }}">Thêm vào giỏ hàng</a>
 											</div>
 											<a class="like" href="#"><i class="fa fa-heart-o"></i></a>
 										</div>

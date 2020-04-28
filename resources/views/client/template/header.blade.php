@@ -102,30 +102,29 @@
                         <div class="cart">
                             <a href="#">
                                 <img alt="cart" src="{{ asset('front-end-2/img/cart.png') }}">
-                                <span>2</span>
+                                <span>{{ $total }}</span>
                             </a>
                         
 							<div class="cart-list hidden-xs">
-                                <h5 class="title">your shopping cart <span>{{ $countCart }}</span></h5>
+                                <h5 class="title">Giỏ hàng của bạn <span></span></h5>
                                 @foreach ($cart as $item)
                                     <div class="cart-item">
                                         <img class="img-responsive" alt="Single product" src="{{ asset('upload/sanpham/'.$item->associatedModel->sp_anhdaidien) }}">
-                                        <span class="icon_close close-icon"></span>
+                                        <a href="{{ route('remove', ['id'=>$item->id]) }}"><span class="icon_close close-icon"></span></a>
                                         <div class="product-info">
-                                            <h5>{{ $item->name }}</h5>
-                                            <br>
+                                            <h5>{{ $item->name }} X {{ $item->quantity }}</h5>
                                             <div class="price">
-                                                {{ $item->price }}
+                                                {{ number_format($item->price) }}
                                                 {{-- <del> $399 </del> $259 --}}
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
 								<div class="order-total">
-									<h5 class="title">TOTAL ON YOUR CART<span class="amount">$166</span></h5>
+									<h5 class="title">Tổng tiền:<span class="amount">{{ number_format($totalPrice) }}</span></h5>
 								</div>
-								<a href="cart.html" class="trendify-btn black-bordered">View Cart</a>
-								<a href="checkout.html" class="trendify-btn black-bordered">Checkout</a>
+								<a href="{{ route('clear-cart') }}" class="trendify-btn black-bordered">Xóa hết</a>
+								<a href="checkout.html" class="trendify-btn black-bordered">Thanh toán</a>
 							</div>
 						</div>
                     </div>

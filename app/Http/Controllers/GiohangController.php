@@ -32,17 +32,36 @@ class GiohangController extends Controller
         // dd($cart);
         if ($cart) {
             # code...
-            return redirect()->route('trangchu');
+            return redirect()->back();
             // return response()->json('Đã thêm sản phẩm vào giỏ hàng', 200);
         }
         else{
-            return response()->json('Something errors', 500);
+            return redirect()->back();
         }
     }
 
+
+    //get all product from cart
     public function getCart(){
         $cart = Cart::getContent();
-        // $cart = Cart::remove(456);
+        // $cart = Cart::remove($rowId);
+        // Cart::remove($rowId);
         dd($cart);
+        // if($cart)
+        // {
+        //     dd($cart);
+        // }
+    }
+
+    //Remove one product from cart
+    public function remove($id) {
+        $cart = Cart::remove($id);
+        return redirect()->back();
+    }
+
+    //clear all product from cart
+    public function clearCart() {
+        Cart::clear();
+        return redirect()->back();
     }
 }
