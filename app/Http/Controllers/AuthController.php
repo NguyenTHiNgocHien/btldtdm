@@ -136,7 +136,7 @@ class AuthController extends Controller
                 'kh_email' => $email,
                 'kh_diachi' => $diachi,
                 'kh_sdt' => $sdt,
-                'lkh_id' => 1
+                'lkh_id' => '1'
             ]);
 
             $success = Session::put('alert-info', 'Đăng ký thành công');

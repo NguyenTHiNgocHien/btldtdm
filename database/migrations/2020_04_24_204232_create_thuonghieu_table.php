@@ -17,6 +17,7 @@ class CreateThuonghieuTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('th_id')->unsigned();
             $table->string('th_ten')->comment('Tên thương hiệu sản phẩm');
+            $table->string('th_logo')->nullable();
             $table->timestamps();
         });
     }

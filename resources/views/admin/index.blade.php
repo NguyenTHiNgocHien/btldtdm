@@ -67,8 +67,8 @@
         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Loại sản phẩm</span>
-          <span class="info-box-number">{{$countLSP}}</span>
+          <span class="info-box-text">Khách hàng</span>
+          <span class="info-box-number">{{$countKH}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -78,7 +78,7 @@
   </div>
   <!-- /.row -->
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
@@ -108,7 +108,7 @@
     </div>
           <!-- /.col-md-6 -->
 
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <div class="card">
             <div class="card-header border-0">
               <h3 class="card-title">Lượt truy cập trong tháng</h3>
@@ -146,15 +146,16 @@
   </div>
 
 </section>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164525157-1"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164120573-2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-164525157-1');
+  gtag('config', 'UA-164120573-2');
 </script>
+
 
 <script>
   $(function () {

@@ -9,7 +9,7 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-2">
-        <form method="POST" action="{{ route('capnhatthuonghieu', ['id'=>$th->th_id]) }}">
+        <form method="POST" action="{{ route('capnhatthuonghieu', ['id'=>$th->th_id]) }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Mã số</label>
@@ -17,7 +17,11 @@
               </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Tên thương hiệu</label>
-              <input name="tenXX" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$th->th_ten}}">
+              <input name="tenTH" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$th->th_ten}}">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Logo thương hiệu</label>
+              <input name="tenLG" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$th->th_logo}}">
             </div>
             <button type="submit" class="btn btn-primary">Sửa</button>
             <a href="{{ route('danhsachthuonghieu') }}" class="btn btn-default">Quay về</a>

@@ -65,6 +65,9 @@
                 <td>{{$stt++}}</td>
                 <td>{{$value->th_id}}</td>
                 <td>{{$value->th_ten}}</td>
+                <td>
+                  <img src="{{asset('/upload/hinhanh')}}/{{ $value->th_logo }}" class="img-fluid" width="100px"/>
+                </td>
                 <td>{{$value->created_at}}</td>
                 <td>{{$value->updated_at}}</td>
                 <td>
@@ -98,11 +101,12 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="{{ route('themthuonghieu') }}">
+            <form method="POST" action="{{ route('themthuonghieu') }}" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
                 <label for="exampleInputEmail1">Tên thương hiệu</label>
                 <input name="tenTH" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập thương hiệu. . . ">
+                <input type="file" name="hinhanh" class="form-control">
               </div>
               <button type="submit" class="btn btn-primary" id="add">Thêm</button>
             </form>

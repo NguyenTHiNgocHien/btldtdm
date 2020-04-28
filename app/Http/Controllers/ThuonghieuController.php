@@ -5,6 +5,7 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Validator;
 
 class ThuonghieuController extends Controller
 {
@@ -38,12 +39,19 @@ class ThuonghieuController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
+        $hinhanh = $request->file('hinhanh');
+        $tenhinhanh = $hinhanh->getClientOriginalName();
+        $rd = rand(1000,9999);
+        $thumuc = public_path('/upload/hinhanh');
+        $hinhanh->move($thumuc,$rd.$tenhinhanh);
         $thuonghieu = DB::table('thuonghieu')
                 ->insert(
                     [
                         'th_ten' =>$request->tenTH,
+                        
                         'created_at' => $now,
                         'updated_at' => $now,
+                        'th_logo'=>$rd.$tenhinhanh
                     ]
                 );
 
@@ -92,10 +100,16 @@ class ThuonghieuController extends Controller
     public function update(Request $request, $id)
     {
         $now = Carbon::now();
+        $hinhanh = $request->file('tenLG');
+        $tenhinhanh = $hinhanh->getClientOriginalName();
+        $rd = rand(1000,9999);
+        $thumuc = public_path('/upload/hinhanh');
+        $hinhanh->move($thumuc,$rd.$tenhinhanh);
         $data = DB::table('thuonghieu')->where('th_id',$id)
                     ->update(
                         [
                             'th_ten' => $request->tenTH,
+                            'th_logo'=>$rd.$tenhinhanh,
                             'updated_at' => $now,
                         ]
                     );
