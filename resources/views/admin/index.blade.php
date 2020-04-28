@@ -37,7 +37,7 @@
         <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Đơn hàng</span>
+          <span class="info-box-text">Đơn hàng mới</span>
           <span class="info-box-number">{{$countDH}}</span>
         </div>
         <!-- /.info-box-content -->
@@ -49,25 +49,14 @@
     <!-- fix for small devices only -->
     <div class="clearfix visible-sm-block"></div>
 
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
-        <div class="info-box-content">
-          <span class="info-box-text">Sản phẩm</span>
-        <span class="info-box-number">{{$countSP}}</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Khách hàng</span>
+          <span class="info-box-text">Khách hàng mới</span>
           <span class="info-box-number">{{$countKH}}</span>
         </div>
         <!-- /.info-box-content -->
@@ -75,6 +64,18 @@
       <!-- /.info-box -->
     </div>
     <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Tổng sản phẩm</span>
+        <span class="info-box-number">{{$countSP}}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
   </div>
   <!-- /.row -->
   <div class="row">

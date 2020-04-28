@@ -19,6 +19,7 @@
 Route::get('dang-nhap-admin', 'AuthController@getLogin')->name('getDangnhap');
 Route::post('dang-nhap-admin','AuthController@authLogin')->name('dangnhap');
 
+
 // ->middleware('checkUser')
 Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('/', function () {
@@ -173,9 +174,12 @@ Route::get('/gioi-thieu', function () {
 
 //Đăng nhập và đăng ký cho khách hàng
 Route::get('dang-ky', 'AuthController@getClientRegister')->name('dangkykhachhang');
-Route::get('dang-nhap', 'AuthController@getClientLogin')->name('dangnhapkhachhang');
 Route::post('dang-ky-1', 'AuthController@ClientRegister')->name('dang-ky');
 
+Route::get('dang-nhap', 'AuthController@getClientLogin')->name('dangnhapkhachhang');
+Route::post('dang-nhap-1', 'AuthController@ClientLogin')->name('dang-nhap');
+
+Route::get('/dang-xuat-kh','AuthController@logoutClient')->name('dangxuatkh');
 
 
 Route::get('/loai-san-pham/{idCategory}', 'TrangchuController@getCategory')->name('loaisanpham');

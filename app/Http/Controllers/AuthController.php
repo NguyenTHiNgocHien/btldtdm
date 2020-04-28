@@ -8,6 +8,7 @@ use Auth;
 use App\Nhanvien;
 use Illuminate\Support\Facades\Session;
 use Validator;
+use App\Khachhang;
 
 
 class AuthController extends Controller
@@ -66,6 +67,7 @@ class AuthController extends Controller
             dd('đăng nhập không thành công');
         }
     }
+    
     public function getClientRegister(){
         $capcha = rand(1000,9999);
         return view('client.register', compact('capcha'));
@@ -143,8 +145,48 @@ class AuthController extends Controller
             return redirect()->route('dangkykhachhang');
         }    
     }
-
+    // public function getLoginClient () {
+    //     return view('');
+    // }
+    public function getLoginClient() {
+        if(Auth::guard('khachhang')->check())
+        {
+            return redirect()->route('trangchu');
+        }
+        else
+        {
+            return view('admin.client.login');
+        }
+    }
     public function ClientLogin (Request $request){
+        $arr1 = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
+       
+            $taikhoan = Khachhang::where('username', '=' , $request->username)->orWhere('password', '=', $request->password)->first();
+            
+                 //$success = Session::put('username', $taikhoan->username);
+                
+                
+                    //truyền id qua truyền bằng session v đc hk
+                    //truyen di dau, truyền qua cho xuyên ssuốt quá trình sd, tại t cần gán nhân viên nào làm gì
+                    //xai auth
+                
+                     $abc = Session::put('kh', $taikhoan->username);
 
+                     // dd($taikhoan->username);
+                     return redirect()->route('trangchu');
+
+                    // return view()->share('dataNV', $dataNV);
+                    //return view('client.template.header',compact('$taikhoan'));
+                
+        
+    }
+    public function logoutClient ()
+    {
+        Auth::guard('khachhang')->logout();
+        Session::put('kh', null);
+        return redirect()->route('trangchu');
     }
 }

@@ -28,18 +28,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="login">
-                    <form action="#">
+                    <form method="POST" action="{{ route('dang-nhap') }}">
                         <div class="col-md-7">
                             <div class="email">
-                                <label for="your-email">Tài khoản <span class="required">*</span></label><br>
-                                <input type="text" name="your-email" value="" class="your-email" id="your-email">
+                                <label for="username">Tài khoản <span class="required">*</span></label><br>
+                                <input name="username" placeholder="Tên đăng nhập" type="text" required="">
                             </div>
                         </div>
                         
                         <div class="col-md-7">
                             <div class="password">
                                 <label for="password">Mật khẩu <span class="required">*</span></label><br>
-                                <input type="password" name="password" value="" class="password" id="password"><br>
+                                <input name="password" placeholder="Mật khẩu" type="password" required="">
                             </div>
                         </div>
                         <div class="col-md-6 text-center">
@@ -49,9 +49,10 @@
                         
                         <div class="col-md-6 text-center">
                             <div class="submit">
-                                <a href="#" class="trendify-btn default-bordered">Đăng nhập</a>
+                                <button>Đăng nhập</button>
                             </div>
                         </div>
+                        {{ csrf_field() }}
                     </form>
                     <div class="login-method">
                         <div class="col-md-3 col-sm-6">

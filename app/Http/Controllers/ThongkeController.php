@@ -23,8 +23,8 @@ class ThongkeController extends Controller
 
         $data ['fetchTopReferrers'] = Analytics::fetchTopReferrers(Period::days(29));
         
-
-        $countKH = DB::table('khachhang')->count();
+        $countDH = DB::table('donhang')->whereMonth('created_at',date('m'))->count('dh_id');
+        $countKH = DB::table('khachhang')->whereMonth('created_at',date('m'))->count('kh_id');
         $countSP = DB::table('sanpham')->count();
         $countDH = DB::table('donhang')->count();
         //$countLSP = DB::table('loai')->count();
@@ -33,6 +33,7 @@ class ThongkeController extends Controller
             //'countLSP',
             'countDH',
             'countKH',
+            'countDH',
             'data'
         ]));
     }
