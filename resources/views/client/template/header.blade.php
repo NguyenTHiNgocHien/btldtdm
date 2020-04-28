@@ -61,6 +61,7 @@
             <a href="{{ route('dangxuat') }}" style="float: right; margin-right: 20px;">Đăng xuất</a>
         </div>
         @endif
+        
     <!-- header -->
     <div class="header">
         <div class="header-top">
@@ -72,11 +73,26 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="right">
                             <ul>
-                                <li>
-                                    <a href="{{ route('dangnhapkhachhang') }}">Đăng nhập</a>
-                                    /
-                                    <a href="{{ route('dangkykhachhang') }}">Đăng ký</a>
-                                </li>
+                                {{-- <li class="toggle">
+                                    <span>USD</span> <i class="fa fa-angle-down"></i>
+                                    <ul>
+                                        <li>USD</li>
+                                        <li>EUR</li>
+                                    </ul>
+                                </li> --}}
+                                @if (Session::has('kh'))
+                                    <div class="">
+                                        <a href="{{ route('dangxuatkh') }}" style="float: right; margin-right: 20px;">Đăng xuất</a>
+                                        <a href="" style="float: right; margin-right: 20px;">Xin chào {{Session::get('kh')}}</a>
+                                    </div>
+                                @else
+                                    <li>
+                                        <a href="{{ route('dangnhapkhachhang') }}">Đăng nhập</a>
+                                        /
+                                        <a href="{{ route('dangkykhachhang') }}">Đăng ký</a>
+                                    </li>
+                                @endif
+                                
                             </ul>
                         </div>
                     </div>

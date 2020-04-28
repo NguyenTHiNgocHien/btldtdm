@@ -37,7 +37,7 @@
         <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Đơn hàng</span>
+          <span class="info-box-text">Đơn hàng mới</span>
           <span class="info-box-number">{{$countDH}}</span>
         </div>
         <!-- /.info-box-content -->
@@ -49,32 +49,33 @@
     <!-- fix for small devices only -->
     <div class="clearfix visible-sm-block"></div>
 
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
-        <div class="info-box-content">
-          <span class="info-box-text">Sản phẩm</span>
-        <span class="info-box-number">{{$countSP}}</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Loại sản phẩm</span>
-          <span class="info-box-number">{{$countLSP}}</span>
+          <span class="info-box-text">Khách hàng mới</span>
+          <span class="info-box-number">{{$countKH}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
       <!-- /.info-box -->
     </div>
     <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Tổng sản phẩm</span>
+        <span class="info-box-number">{{$countSP}}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
   </div>
   <!-- /.row -->
   <div class="row">
@@ -82,8 +83,8 @@
       <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
-                  <a href="javascript:void(0);">View Report</a>
+                  <h3 class="card-title">Biểu đồ lượt truy cập</h3>
+                  
                 </div>
               </div>
               <div class="card-body">
@@ -95,11 +96,11 @@
 
                 <div class="d-flex flex-row justify-content-end">
                   <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> Visitor
+                    <i class="fas fa-square text-primary"></i> Lượt truy cập
                   </span>
 
                   <span>
-                    <i class="fas fa-square text-gray"></i> Page View
+                    <i class="fas fa-square text-gray"></i> Trang truy cập
                   </span>
                 </div>
               </div>
@@ -111,23 +112,22 @@
     <div class="col-lg-12">
       <div class="card">
             <div class="card-header border-0">
-              <h3 class="card-title">Top Referrers</h3>
-              <div class="card-tools">
-                <a href="#" class="btn btn-tool btn-sm">
-                  <i class="fas fa-download"></i>
-                </a>
-                <a href="#" class="btn btn-tool btn-sm">
-                  <i class="fas fa-bars"></i>
-                </a>
-              </div>
+              <h3 class="card-title">Lượt truy cập trong tháng</h3>
+              
             </div>
             <div class="card-body table-responsive p-0">
               <table class="table table-striped table-valign-middle">
                 <thead>
                 <tr>
+<<<<<<< HEAD
                   <th>#</th>
                   <th>Nguồn truy cập</th>
                   <th>Lượt xem trang</th>
+=======
+                  <th>STT</th>
+                  <th>Địa chỉ</th>
+                  <th>Trang truy cập</th>
+>>>>>>> binhhere
                 </tr>
                 </thead>
                 <tbody>
@@ -153,15 +153,16 @@
   </div>
 
 </section>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164525157-1"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164120573-2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-164525157-1');
+  gtag('config', 'UA-164120573-2');
 </script>
+
 
 <script>
   $(function () {
@@ -228,7 +229,7 @@
           },
           ticks    : $.extend({
             beginAtZero : true,
-            suggestedMax: 10
+            suggestedMax: 20
           }, ticksStyle)
         }],
         xAxes: [{

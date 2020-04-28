@@ -55,6 +55,15 @@ return [
             'driver' => 'token',
             'provider' => 'nhanvien',
         ],
+        //Khach hang
+        'khachhang' => [
+            'driver' => 'session',
+            'provider' => 'khachhang',
+        ],
+        'khachhang-api' => [
+            'driver' => 'token',
+            'provider' => 'khachhang',
+        ],
     ],
 
     /*
@@ -88,6 +97,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Nhanvien::class,
         ],
+        'khachhang' => [
+            'driver' => 'eloquent',
+            'model' => App\Khachhang::class,
+        ],
     ],
 
     /*
@@ -113,6 +126,11 @@ return [
         ],
         'nhanvien' => [
             'provider' => 'nhanvien',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'khachhang' => [
+            'provider' => 'khachhang',
             'table' => 'password_resets',
             'expire' => 60,
         ],
