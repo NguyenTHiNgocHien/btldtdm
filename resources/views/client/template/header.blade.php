@@ -50,6 +50,7 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('front-end-2/img/apple-touch-icon-72x72.png') }}')}}">
 	<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front-end-2/img/apple-touch-icon-114x114.png') }}')}}">
     <script src="{{ asset('front-end-2/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('front-end-2/notify.js') }}"></script>
     
 </head>
 
@@ -71,13 +72,6 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="right">
                             <ul>
-                                {{-- <li class="toggle">
-                                    <span>USD</span> <i class="fa fa-angle-down"></i>
-                                    <ul>
-                                        <li>USD</li>
-                                        <li>EUR</li>
-                                    </ul>
-                                </li> --}}
                                 <li>
                                     <a href="{{ route('dangnhapkhachhang') }}">Đăng nhập</a>
                                     /
@@ -112,27 +106,21 @@
                             </a>
                         
 							<div class="cart-list hidden-xs">
-								<h5 class="title">your shopping cart <span>(2 items)</span></h5>
-								<div class="cart-item">
-									<img class="img-responsive" alt="Single product" src="{{ asset('front-end-2/img/products/1.jpg') }}">
-									<span class="icon_close close-icon"></span>
-									<div class="product-info">
-										<h5>New Yorker Suit</h5>
-										<div class="star-rating">
-											<ul>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-full"></i></li>
-											</ul>
-										</div><br>
-										<div class="price">
-											<del> $399 </del> $259
-										</div>
-									</div>
-								</div>
-								
+                                <h5 class="title">your shopping cart <span>{{ $countCart }}</span></h5>
+                                @foreach ($cart as $item)
+                                    <div class="cart-item">
+                                        <img class="img-responsive" alt="Single product" src="{{ asset('upload/sanpham/'.$item->associatedModel->sp_anhdaidien) }}">
+                                        <span class="icon_close close-icon"></span>
+                                        <div class="product-info">
+                                            <h5>{{ $item->name }}</h5>
+                                            <br>
+                                            <div class="price">
+                                                {{ $item->price }}
+                                                {{-- <del> $399 </del> $259 --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
 								<div class="order-total">
 									<h5 class="title">TOTAL ON YOUR CART<span class="amount">$166</span></h5>
 								</div>

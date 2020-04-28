@@ -14,7 +14,8 @@ class CreateTableKhachhang extends Migration
     public function up()
     {
         Schema::create('khachhang', function (Blueprint $table) {
-            $table->bigIncrements('kh_id');
+            $table->engine = 'InnoDB';
+            $table->bigIncrements('kh_id')->unsigned();
             $table->string('username');
             $table->string('password');
             $table->string('kh_hoten');
@@ -24,7 +25,6 @@ class CreateTableKhachhang extends Migration
             $table->string('kh_sdt');
             $table->bigInteger('lkh_id')->unsigned();
             $table->foreign('lkh_id')->references('lkh_id')->on('loaikhachhang');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

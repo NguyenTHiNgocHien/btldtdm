@@ -126,8 +126,8 @@
                 <thead>
                 <tr>
                   <th>#</th>
-                  <th>url</th>
-                  <th>PageViews</th>
+                  <th>Nguồn truy cập</th>
+                  <th>Lượt xem trang</th>
                 </tr>
                 </thead>
                 <tbody>

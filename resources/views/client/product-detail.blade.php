@@ -81,7 +81,7 @@
                                 <label>Số lượng</label><input type="number" step="1" min="0" max="99" name="cart" value="1" title="Qty" class="qty">
                             </div>
                             <div class="add-to-cart">
-                                <a href="#" class="trendify-btn black-bordered">Add To Cart</a>
+                                <a href="{{ route('add-cart', ['id'=> $product->sp_id]) }}" class="trendify-btn black-bordered">Add To Cart</a>
                             </div>
                         </div>
                         <br>

@@ -177,7 +177,6 @@ Route::get('dang-nhap', 'AuthController@getClientLogin')->name('dangnhapkhachhan
 Route::post('dang-ky-1', 'AuthController@ClientRegister')->name('dang-ky');
 
 
-
 Route::get('/loai-san-pham/{idCategory}', 'TrangchuController@getCategory')->name('loaisanpham');
 Route::get('/san-pham/{idProduct}', 'TrangchuController@getProduct')->name('sanpham');
 Route::get('/san-pham', 'TrangchuController@getAllProduct')->name('tatcasanpham');
@@ -194,3 +193,6 @@ Route::get('/lien-he', function () {
     return view('client.contact');
 })->name('lienhe');
 
+//Giỏ hàng
+Route::get('/add-to-cart/{idSP}','GiohangController@addCart')->name('add-cart');
+Route::get('content-cart','GiohangController@getCart')->name('content-cart');

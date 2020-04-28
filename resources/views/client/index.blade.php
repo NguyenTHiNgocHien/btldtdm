@@ -3,6 +3,7 @@
     Trang chủ
 @endsection
 @section('content')
+    
     <!-- content -->
     <div class="content">
         <div class="container">
