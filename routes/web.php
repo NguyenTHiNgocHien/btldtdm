@@ -197,4 +197,9 @@ Route::get('tim-kiem','TrangchuController@searchProduct')->name('search');
 Route::get('/lien-he', function () {
     return view('client.contact');
 })->name('lienhe');
+//Chi Tiết Khách Hàng
+Route::get('/ChiTietKhachHang/{username}','AuthController@getInfoClient')->name('chitietkhachhang');
 
+Route::get('/ChiTietKhachHang/{username}/edit','AuthController@edit')->name('suathongtintaikhoan');
+
+Route::post('/ChiTietKhachHang/{id}/update', 'AuthController@update')->name('capnhatthongtintaikhoan');

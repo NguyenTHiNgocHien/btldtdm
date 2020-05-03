@@ -9,6 +9,7 @@ use App\Nhanvien;
 use Illuminate\Support\Facades\Session;
 use Validator;
 use App\Khachhang;
+use Carbon\Carbon;
 
 
 class AuthController extends Controller
@@ -189,4 +190,40 @@ class AuthController extends Controller
         Session::put('kh', null);
         return redirect()->route('trangchu');
     }
+
+    public function getInfoClient($username)
+    {
+        $info = DB::table('khachhang')->where('username','=',$username)->first();
+        //dd($info);
+            return view('client.cusDetail',compact('info'));
+            // return dd($loai);
+    }
+
+    public function edit($id)
+    {
+        $khachhang = DB::table('khachhang')->where('kh_id', $id)->first();
+        return view('client.cusEdit', compact('khachhang'));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        $now = Carbon::now();
+        $data = DB::table('khachhang')->where('kh_id',$id)
+                    ->update(
+                        [
+                            'kh_hoten' => $request->hoten,
+                            'kh_sdt' => $request->sdt,
+                            'kh_gioitinh' => $request->gioitinh,
+                            'kh_diachi' => $request->diachi,
+                            'password' => $request->matkhau,
+                            'updated_at' => $now,
+                        ]
+                    );
+
+        //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
+        $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
+        return redirect()->back();
+    }
+
 }

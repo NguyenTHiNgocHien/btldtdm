@@ -11,7 +11,7 @@ class ThongkeController extends Controller
 {
     public function index(){
         $data = [];
-        $tongluotxem = Analytics::fetchVisitorsAndPageViews(Period::days(29));
+        $tongluotxem = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
         $data ['date'] = $tongluotxem->pluck("date");
         $data ['visitors'] = $tongluotxem->pluck("visitors");
         $data ['pageViews'] = $tongluotxem->pluck("pageViews");
@@ -21,7 +21,7 @@ class ThongkeController extends Controller
         // return view('admin.congdung.index',compact('congdung')); 
         //retrieve visitors and pageview data for the current day and the last seven days
 
-        $data ['fetchTopReferrers'] = Analytics::fetchTopReferrers(Period::days(29));
+        $data ['fetchTopReferrers'] = Analytics::fetchTopReferrers(Period::days(7));
         
         $countDH = DB::table('donhang')->whereMonth('created_at',date('m'))->count('dh_id');
         $countKH = DB::table('khachhang')->whereMonth('created_at',date('m'))->count('kh_id');

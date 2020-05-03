@@ -82,7 +82,7 @@
                                 @if (Session::has('kh'))
                                     <div class="">
                                         <a href="{{ route('dangxuatkh') }}" style="float: right; margin-right: 20px;">Đăng xuất</a>
-                                        <a href="" style="float: right; margin-right: 20px;">Xin chào {{Session::get('kh')}}</a>
+                                        <a href="{{ route('chitietkhachhang',[ 'username' => Session::get('kh')])}}" style="float: right; margin-right: 20px;">Xin chào {{Session::get('kh')}}</a>
                                     </div>
                                 @else
                                     <li>
