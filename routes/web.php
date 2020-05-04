@@ -179,6 +179,8 @@ Route::post('dang-ky-1', 'AuthController@ClientRegister')->name('dang-ky');
 Route::get('dang-nhap', 'AuthController@getClientLogin')->name('dangnhapkhachhang');
 Route::post('dang-nhap-1', 'AuthController@ClientLogin')->name('dang-nhap');
 
+Route::get('thong-tin/{username}','AuthController@getInfoClient')->name('thong-tin-khach-hang');
+
 Route::get('/dang-xuat-kh','AuthController@logoutClient')->name('dangxuatkh');
 
 Route::get('/loai-san-pham/{idCategory}', 'TrangchuController@getCategory')->name('loaisanpham');
@@ -202,3 +204,4 @@ Route::get('/add-to-cart/{idSP}','GiohangController@addCart')->name('add-cart');
 Route::get('content-cart','GiohangController@getCart')->name('content-cart');
 Route::get('clear-cart','GiohangController@clearCart')->name('clear-cart');
 Route::get('remove-product/{id}','GiohangController@remove')->name('remove');
+Route::get('thanh-toan','GiohangController@checkOut')->name('checkout');

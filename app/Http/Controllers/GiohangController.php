@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use DB;
 use Cart;
@@ -63,5 +63,16 @@ class GiohangController extends Controller
     public function clearCart() {
         Cart::clear();
         return redirect()->back();
+    }
+
+    public function checkOut() {
+        if(Session::has('kh')){
+            $username = Session::get('kh');
+            $cart = Cart::getContent();
+            $khachhang = DB::table('khachhang')->where('username','=',$username)->first();
+            return view('client.checkout',compact(['khachhang','cart']));
+        }else {
+            return redirect()->route('dangnhapkhachhang');
+        }
     }
 }

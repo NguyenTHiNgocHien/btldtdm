@@ -51,7 +51,8 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front-end-2/img/apple-touch-icon-114x114.png') }}')}}">
     <script src="{{ asset('front-end-2/js/jquery.min.js') }}"></script>
     <script src="{{ asset('front-end-2/notify.js') }}"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 
 <body class="home1">
@@ -83,7 +84,7 @@
                                 @if (Session::has('kh'))
                                     <div class="">
                                         <a href="{{ route('dangxuatkh') }}" style="float: right; margin-right: 20px;">Đăng xuất</a>
-                                        <a href="" style="float: right; margin-right: 20px;">Xin chào {{Session::get('kh')}}</a>
+                                        <a href="{{ route('thong-tin-khach-hang', ['username'=> Session::get('kh')]) }}" style="float: right; margin-right: 20px;">Xin chào {{Session::get('kh')}}</a>
                                     </div>
                                 @else
                                     <li>
@@ -139,8 +140,13 @@
 								<div class="order-total">
 									<h5 class="title">Tổng tiền:<span class="amount">{{ number_format($totalPrice) }}</span></h5>
 								</div>
-								<a href="{{ route('clear-cart') }}" class="trendify-btn black-bordered">Xóa hết</a>
-								<a href="checkout.html" class="trendify-btn black-bordered">Thanh toán</a>
+                                
+                                @if ($total == 0)
+                                    Chưa có sản phẩm nào trong giỏ hàng
+                                @else
+                                    <a href="{{ route('clear-cart') }}" class="trendify-btn black-bordered" id="clearAll">Xóa hết</a>
+    								<a href="{{ route('checkout') }}" class="trendify-btn black-bordered">Thanh toán</a>
+                                @endif
 							</div>
 						</div>
                     </div>
@@ -188,7 +194,7 @@
                             </ul>
                         </li>
                         <li class="{{ Request::path() == 'gioi-thieu' ? 'active' : '' }}"><a href="{{ route('gioithieu') }}">Giới thiệu</a></li>
-                        <li><a href="{{ route('lienhe') }}">Liên hệ</a></li>
+                        <li class="{{ Request::path() == 'lien-he' ? 'active' : '' }}"><a href="{{ route('lienhe') }}">Liên hệ</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -199,3 +205,6 @@
 
     </div>
     <!-- / header -->
+    <script>
+       
+    </script>

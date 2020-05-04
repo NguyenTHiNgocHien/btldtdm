@@ -3,68 +3,70 @@
 @endsection
 @include('client.template.header')
 
-<!-- page title -->
-<div class="page_title_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="page_title">
-                    <h1>Đăng nhập</h1>
+    
+    <!-- page title -->
+    <div class="page_title_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="page_title">
+                        <h1>Đăng nhập</h1>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="bredcrumb">
-                    <ul>
-                        
-                    </ul>
+                <div class="col-sm-4">
+                    <div class="bredcrumb">
+                        <ul>
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--/ page title -->
-<div class="margin-bottom-70px">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="login">
-                    <form method="POST" action="{{ route('dang-nhap') }}">
-                        <div class="col-md-7">
-                            <div class="email">
-                                <label for="username">Tài khoản <span class="required">*</span></label><br>
-                                <input name="username" placeholder="Tên đăng nhập" type="text" required="">
+    <!--/ page title -->
+    <div class="margin-bottom-70px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="login">
+                        <form method="POST" action="{{ route('dang-nhap') }}">
+                            <div class="col-md-7">
+                                <div class="email">
+                                    <label for="username">Tài khoản <span class="required">*</span></label><br>
+                                    <input name="username" placeholder="Tên đăng nhập" type="text" required="">
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="col-md-7">
-                            <div class="password">
-                                <label for="password">Mật khẩu <span class="required">*</span></label><br>
-                                <input name="password" placeholder="Mật khẩu" type="password" required="">
+                            
+                            <div class="col-md-7">
+                                <div class="password">
+                                    <label for="password">Mật khẩu <span class="required">*</span></label><br>
+                                    <input name="password" placeholder="Mật khẩu" type="password" required="">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <a href="#">Quên mật khẩu</a><br>
-                        </div>
-                        <div class="clear-fix"></div>
-                        
-                        <div class="col-md-6 text-center">
-                            <div class="submit">
-                                <button>Đăng nhập</button>
+                            <div class="col-md-6 text-center">
+                                <a href="#">Quên mật khẩu</a><br>
                             </div>
-                        </div>
-                        {{ csrf_field() }}
-                    </form>
-                    <div class="login-method">
-                        <div class="col-md-3 col-sm-6">
-                            <a class="method-facebook" href="#"><i class="fa fa-facebook"></i>Đăng nhập với Facebook</a>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <a class="method-gmail" href="#"><i class="fa fa-google"></i>Đăng nhập với Gmail</a>
+                            <div class="clear-fix"></div>
+                            
+                            <div class="col-md-6 text-center">
+                                <div class="submit">
+                                    <button>Đăng nhập</button>
+                                </div>
+                            </div>
+                            {{ csrf_field() }}
+                        </form>
+                        <div class="login-method">
+                            <div class="col-md-3 col-sm-6">
+                                <a class="method-facebook" href="#"><i class="fa fa-facebook"></i>Đăng nhập với Facebook</a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a class="method-gmail" href="#"><i class="fa fa-google"></i>Đăng nhập với Gmail</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 @include('client.template.footer')

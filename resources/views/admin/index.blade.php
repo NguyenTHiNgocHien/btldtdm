@@ -119,15 +119,9 @@
               <table class="table table-striped table-valign-middle">
                 <thead>
                 <tr>
-<<<<<<< HEAD
-                  <th>#</th>
-                  <th>Nguồn truy cập</th>
-                  <th>Lượt xem trang</th>
-=======
                   <th>STT</th>
                   <th>Địa chỉ</th>
-                  <th>Trang truy cập</th>
->>>>>>> binhhere
+                  <th>Lượt truy cập</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -136,7 +130,7 @@
                   <td>
                     {{$key+1}}
                   </td>
-                <td>{{ $item["url"] }}</td>
+                <td id="khongxacdinh">{{ $item["url"] }}</td>
                   <td>
                     {{ $item["pageViews"] }}
                   </td>
@@ -154,6 +148,11 @@
 
 </section>
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  $(document).ready(function () {
+    $('#khongxacdinh').text('Trang thường');
+  });
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164120573-2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

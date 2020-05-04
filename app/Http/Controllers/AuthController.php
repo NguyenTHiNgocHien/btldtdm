@@ -149,7 +149,7 @@ class AuthController extends Controller
     //     return view('');
     // }
     public function getLoginClient() {
-        if(Auth::guard('khachhang')->check())
+        if(Session::has('kh'))
         {
             return redirect()->route('trangchu');
         }
@@ -176,7 +176,7 @@ class AuthController extends Controller
                      $abc = Session::put('kh', $taikhoan->username);
 
                      // dd($taikhoan->username);
-                     return redirect()->route('trangchu');
+                    return redirect()->back();
 
                     // return view()->share('dataNV', $dataNV);
                     //return view('client.template.header',compact('$taikhoan'));
@@ -188,5 +188,10 @@ class AuthController extends Controller
         Auth::guard('khachhang')->logout();
         Session::put('kh', null);
         return redirect()->route('trangchu');
+    }
+
+    public function getInfoClient ($username) {
+        $info = DB::table('khachhang')->where('username','=',$username)->first();
+        dd($info);
     }
 }

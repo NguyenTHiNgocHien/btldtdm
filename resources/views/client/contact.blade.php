@@ -1,6 +1,6 @@
 @extends('client.template.master')
 @section('title')
-    Sản phẩm
+    Liên hệ
 @endsection
 @section('content')
 
