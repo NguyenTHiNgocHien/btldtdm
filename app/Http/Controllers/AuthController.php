@@ -9,6 +9,7 @@ use App\Nhanvien;
 use Illuminate\Support\Facades\Session;
 use Validator;
 use App\Khachhang;
+use Carbon\Carbon;
 
 
 class AuthController extends Controller
@@ -74,7 +75,15 @@ class AuthController extends Controller
     }
 
     public function getClientLogin(){
-        return view('client.login');
+        if(Session::has('kh'))
+        {
+            $khachhang = Session::get('kh');
+            return redirect()->route('chitietkhachhang',['username' => $khachhang]);
+        }
+        else
+        {
+            return view('client.login');
+        }
     }
 
     public function ClientRegister (Request $request) {
@@ -145,19 +154,7 @@ class AuthController extends Controller
             return redirect()->route('dangkykhachhang');
         }    
     }
-    // public function getLoginClient () {
-    //     return view('');
-    // }
-    public function getLoginClient() {
-        if(Session::has('kh'))
-        {
-            return redirect()->route('trangchu');
-        }
-        else
-        {
-            return view('admin.client.login');
-        }
-    }
+    
     public function ClientLogin (Request $request){
         $arr1 = [
             'username' => $request->username,
@@ -176,7 +173,7 @@ class AuthController extends Controller
                      $abc = Session::put('kh', $taikhoan->username);
 
                      // dd($taikhoan->username);
-                    return redirect()->back();
+                    return redirect()->route('trangchu');
 
                     // return view()->share('dataNV', $dataNV);
                     //return view('client.template.header',compact('$taikhoan'));
@@ -190,8 +187,39 @@ class AuthController extends Controller
         return redirect()->route('trangchu');
     }
 
-    public function getInfoClient ($username) {
+    public function getInfoClient($username)
+    {
         $info = DB::table('khachhang')->where('username','=',$username)->first();
-        dd($info);
+        //dd($info);
+            return view('client.cusDetail',compact('info'));
+            // return dd($loai);
     }
+
+    public function edit($id)
+    {
+        $khachhang = DB::table('khachhang')->where('kh_id', $id)->first();
+        return view('client.cusEdit', compact('khachhang'));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        $now = Carbon::now();
+        $data = DB::table('khachhang')->where('kh_id',$id)
+                    ->update(
+                        [
+                            'kh_hoten' => $request->hoten,
+                            'kh_sdt' => $request->sdt,
+                            'kh_gioitinh' => $request->gioitinh,
+                            'kh_diachi' => $request->diachi,
+                            'password' => $request->matkhau,
+                            'updated_at' => $now,
+                        ]
+                    );
+
+        //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
+        $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
+        return redirect()->back();
+    }
+
 }

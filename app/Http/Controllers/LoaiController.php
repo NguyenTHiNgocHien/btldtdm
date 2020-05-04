@@ -86,7 +86,7 @@ class LoaiController extends Controller
         return view('admin.loaisanpham.edit', compact('loai'));
 
     }
-
+ 
     /**
      * Update the specified resource in storage.
      *

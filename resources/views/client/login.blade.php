@@ -2,9 +2,10 @@
     Đăng nhập
 @endsection
 @include('client.template.header')
-
-    
-    <!-- page title -->
+    @if (Session::has('kh'))
+        
+    @else
+         <!-- page title -->
     <div class="page_title_area">
         <div class="container">
             <div class="row">
@@ -68,5 +69,7 @@
             </div>
         </div>
     </div>
+    @endif
+   
 
 @include('client.template.footer')
