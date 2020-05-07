@@ -74,13 +74,6 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="right">
                             <ul>
-                                {{-- <li class="toggle">
-                                    <span>USD</span> <i class="fa fa-angle-down"></i>
-                                    <ul>
-                                        <li>USD</li>
-                                        <li>EUR</li>
-                                    </ul>
-                                </li> --}}
                                 @if (Session::has('kh'))
                                     <div class="">
                                         <a href="{{ route('dangxuatkh') }}" style="float: right; margin-right: 20px;">Đăng xuất</a>

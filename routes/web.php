@@ -163,6 +163,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('banner/cap-nhat-trang-thai/{id}/{trangthai}','BannerController@CapNhatTrangThai')->name('capnhattrangthai');
     //Thống kê
     Route::get('thong-ke','ThongkeController@index')->name('thongke');
+
+
+
+    //Khách hàng
+    Route::get('khach-hang','KhachhangController@index')->name('khachhang');
 });
 
 
@@ -199,7 +204,7 @@ Route::get('/lien-he', function () {
     return view('client.contact');
 })->name('lienhe');
 //Chi Tiết Khách Hàng
-Route::get('/ChiTietKhachHang/{username}','AuthController@getInfoClient')->name('chitietkhachhang');
+Route::get('/khach-hang/{username}','AuthController@getInfoClient')->name('chitietkhachhang');
 
 //Giỏ hàng
 Route::get('/add-to-cart/{idSP}','GiohangController@addCart')->name('add-cart');
@@ -207,6 +212,11 @@ Route::get('content-cart','GiohangController@getCart')->name('content-cart');
 Route::get('clear-cart','GiohangController@clearCart')->name('clear-cart');
 Route::get('remove-product/{id}','GiohangController@remove')->name('remove');
 Route::get('thanh-toan','GiohangController@checkOut')->name('checkout');
-Route::get('/ChiTietKhachHang/{username}/edit','AuthController@edit')->name('suathongtintaikhoan');
+//Sản phẩm yêu thích
+Route::get('yeu-thich/{idProduct}','WishlistController@addWishList')->name('add-wish-list');
+Route::get('san-pham-yeu-thich','WishlistController@getWishList')->name('wish-list');
 
-Route::post('/ChiTietKhachHang/{id}/update', 'AuthController@update')->name('capnhatthongtintaikhoan');
+//Viết code nhơ comment và đặt URL giống mẫu giùm cám ơn nhiều
+Route::get('/khach-hang/{username}/cap-nhat','AuthController@edit')->name('suathongtintaikhoan');
+
+Route::post('/khach-hang/{id}/cap-nhat', 'AuthController@update')->name('capnhatthongtintaikhoan');

@@ -28,7 +28,7 @@
                                 <div class="actions">
                                     <ul>
                                         <li><a class="zoom" href="{{ asset('upload/sanpham/'.$value->sp_anhdaidien) }}"><i class="fa fa-search"></i></a></li>
-										<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+										<li><a href="{{ route('add-wish-list', ['idProduct'=> $value->sp_id]) }}"><i class="fa fa-heart-o"></i></a></li>
 										<li><a href="{{ route('sanpham', ['id'=>$value->sp_id]) }}"><i class="fa fa-expand"></i></a></li>
                                     </ul>
                                 </div>
@@ -62,7 +62,7 @@
                                 <div class="actions">
                                     <ul>
                                         <li><a class="zoom" href="{{ asset('upload/sanpham/'.$value->sp_anhdaidien) }}"><i class="fa fa-search"></i></a></li>
-										<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+										<li><a href="{{ route('add-wish-list', ['idProduct'=> $value->sp_id]) }}"><i class="fa fa-heart-o"></i></a></li>
 										<li><a href="product-details-1.html"><i class="fa fa-expand"></i></a></li>
                                     </ul>
                                 </div>

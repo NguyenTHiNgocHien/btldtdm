@@ -34,6 +34,8 @@ class KhuyenmaiVoucherController extends Controller
      */
     public function store(Request $request)
     {
+
+        //insert get id khuyenmai
         $khuyenmai = DB::table('khuyenmai')->insertGetId(
             [
                 'km_ten' => $request->km_ten,
@@ -45,19 +47,21 @@ class KhuyenmaiVoucherController extends Controller
             ]
         );
 
+        //insert get id vouchers
         $voucher = DB::table('vouchers')->inserGetId(
             [
-                'vc_code' => $request->vc_code
+                'vc_code' => $request->vc_code,
+                'vc_ngaybatdau' => null,
+                'vc_ngayketthuc' => null,
+                'vc_trangthai' => 1
             ]
         );
 
-        $ctl = DB::table('chitietlo')->insert([
-            'lo_id' => $lo,
-            'sp_id' => $request->id_sp,
-            'ctl_dongia' => $request->dongia,
-            'ctl_soluong' => $request->soluong,
-            'created_at' => $now->toDateString(),
-            'updated_at' => $now->toDateString()
+        $ctl = DB::table('kmvouchers')->insert([
+            // 'km_id' => $lo,
+            'vc_id' => $request->id_sp,
+            'km_giatri' => $request->dongia,
+            'km_soluong' => $request->soluong,
         ]);
     }
 

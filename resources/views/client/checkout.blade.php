@@ -54,7 +54,7 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<div class="cart-totals">
 						<h1 class="text-center">Giỏ hàng</h1>
 						<div class="info-sec">
@@ -91,29 +91,13 @@
 					</div>
 				</div>
 				
-				{{-- <div class="col-md-6">
+				<div class="col-md-6">
 					<div class="payment">
-						<h3>Phương thức thanh toán</h3>
+						<h3>Mã giảm giá:</h3>
 						<div class="payment-method">
 							<table>
 								<tbody>
 									<tr class="">
-										<th>
-											<img src="img/payment/p1.png" alt="">
-											<input type="radio" name="payment-method" id="paypal">
-										</th>
-										<th>
-											<img src="img/payment/p2.png" alt="">
-											<input type="radio" name="payment-method" id="visa">
-										</th>
-										<th>
-											<img src="img/payment/p3.png" alt="">
-											<input type="radio" name="payment-method" id="mastercard">
-										</th>
-										<th>
-											<img src="img/payment/p4.png" alt="">
-											<input type="radio" name="payment-method" id="direct-bank">
-										</th>
 										
 									</tr>		
 								</tbody>
@@ -126,7 +110,7 @@
 							<input type="submit" name="checkout" value="Chọn phương thức" class="btn-black calculate">
 						</div>
 					</div>
-				</div> --}}
+				</div>
 			</div>
 		</div>
 	</div>

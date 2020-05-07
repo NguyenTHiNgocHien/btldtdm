@@ -38,6 +38,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('khachhang') }}" class="nav-link {{ Request::path() == 'admin/khach-hang' ? 'active' : '' }}">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Khách hàng
+              </p>
+            </a>
+          </li>
           <li class="nav-item ">
             <a href="{{ route('danhsachloai') }}" class="nav-link  {{ Request::path() == 'admin/loai' ? 'active' : '' }}">
               <i class="nav-icon fa fa-cubes"></i>
@@ -46,6 +54,7 @@
               </p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="{{ route('danhsachxuatxu') }}" class="nav-link {{ Request::path() == 'admin/xuatxu' ? 'active' : '' }}">
               <i class="nav-icon fa fa-language"></i>
@@ -58,7 +67,7 @@
             <a href="{{ route('danhsachthuonghieu') }}" class="nav-link {{ Request::path() == 'admin/thuonghieu' ? 'active' : '' }}">
               <i class="nav-icon far fa-heart"></i>
               <p>
-                thương hiệu sản phẩm
+                Thương hiệu sản phẩm
               </p>
             </a>
           </li>

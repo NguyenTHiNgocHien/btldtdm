@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
+        Bhavinjr\Wishlist\Providers\WishlistServiceProvider::class,
 
 
     ],
@@ -228,7 +229,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        "Wishlist" => Bhavinjr\Wishlist\Facades\Wishlist::class,
     ],
 
 ];

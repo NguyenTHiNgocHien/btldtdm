@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 class KhachhangController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class KhachhangController extends Controller
      */
     public function index()
     {
-        //
+        $khachhang = DB::table('khachhang')->join('loaikhachhang','loaikhachhang.lkh_id','=','khachhang.lkh_id')->paginate(9);
+        return view('admin.khachhang.index',compact(['khachhang']));
     }
 
     /**

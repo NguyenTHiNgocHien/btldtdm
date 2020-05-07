@@ -24,7 +24,7 @@ class ThongkeController extends Controller
         $data ['fetchTopReferrers'] = Analytics::fetchTopReferrers(Period::days(7));
         
         $countDH = DB::table('donhang')->whereMonth('created_at',date('m'))->count('dh_id');
-        $countKH = DB::table('khachhang')->whereMonth('created_at',date('m'))->count('kh_id');
+        $countKH = DB::table('khachhang')->count();
         $countSP = DB::table('sanpham')->count();
         $countDH = DB::table('donhang')->count();
         //$countLSP = DB::table('loai')->count();

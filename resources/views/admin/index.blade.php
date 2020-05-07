@@ -56,7 +56,7 @@
         <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Khách hàng mới</span>
+          <span class="info-box-text">Khách hàng</span>
           <span class="info-box-number">{{$countKH}}</span>
         </div>
         <!-- /.info-box-content -->

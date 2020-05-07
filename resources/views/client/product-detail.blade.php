@@ -187,12 +187,16 @@
                     
                     <hr style="border: 2px solid black;">
                     <div class="related-products margin-top-70px">
-                        <h4>Sản phẩm vừa xem</h4>
+                        <h4>Sản phẩm liên quan</h4>
                         <ul class="related-products-slider">
+                            @foreach ($productCate as $item)
                             <li class="item">
                                 <div class="product-single">
                                     <div class="product-img">
-                                        <img class="img-responsive" alt="Single product" src="{{ asset('front-end-2') }}/img/single_1.jpg">
+                                        @if ($item->sp_anhdaidien == '')
+												<img class="img-responsive" style="width: 280px;" src="{{ asset('upload') }}/nothing.jpg" alt="">
+											@endif
+												<img class="img-responsive lazy-load" style="width: 280px;" src="{{ asset('upload/sanpham') }}/{{ $item->sp_anhdaidien }}" alt="">
                                         <div class="actions">
                                             <ul>
                                                 <li><a class="zoom" href="{{ asset('front-end-2') }}/img/single_1.jpg"><i class="fa fa-search"></i></a></li>
@@ -202,7 +206,7 @@
                                         </div>
                                     </div>
                                     <div class="product-info">
-                                        <h2>New Look Stripe T-Shirt</h2>
+                                        <h2><a href="{{ route('sanpham', ['id'=>$item->sp_id]) }}"><h2>{{ $item->sp_ten }}</h2></a></h2>
                                         <div class="star-rating">
                                             <ul>
                                                 <li><i class="fa fa-star"></i></li>
@@ -213,11 +217,19 @@
                                             </ul>
                                         </div>
                                         <div class="price">
-                                            <del> $50 </del> $40
+                                            @if (number_format($item->sp_giakhuyenmai) == 0)
+													{{ number_format($item->sp_giaban) }} đ
+												@else
+												
+												<del style="color: red"> {{ number_format($item->sp_giaban) }}đ </del>
+												<br>
+												{{ number_format($item->sp_giakhuyenmai) }}đ
+												@endif
                                         </div>
                                     </div>
                                 </div>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                     <!-- pagination -->

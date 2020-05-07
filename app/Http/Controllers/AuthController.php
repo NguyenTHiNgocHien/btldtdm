@@ -33,7 +33,7 @@ class AuthController extends Controller
     {
         Auth::guard('nhanvien')->logout();
         Session::put('username', null);
-        return redirect()->route('getDangnhap');
+        return redirect()->back();
     }
 
     public function authLogin(Request $request){

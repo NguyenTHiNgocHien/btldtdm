@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use DB;
 use Cart;
+use Illuminate\Support\Facades\Session;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -55,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('loai', $loai); // <= Truyền dữ liệu
         View::share('congdung', $congdung);
         View::share('demloai', $demloai);
+            
         Schema::defaultStringLength(191);
     }
 }

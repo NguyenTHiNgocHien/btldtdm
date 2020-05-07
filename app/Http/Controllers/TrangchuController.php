@@ -52,7 +52,7 @@ class TrangchuController extends Controller
         $category = DB::table('loai')->where('l_id','=',$product->l_id)->first();
         $productImage = DB::table('hinhanh')->where('sp_id', $idProduct)->get();
 
-        $productCate = DB::table('sanpham')->join('loai','loai.l_id', '=' , 'sanpham.l_id')->get();
+        $productCate = DB::table('sanpham')->where('l_id','=',$category->l_id)->where('sp_id','<>',$idProduct)->where('sp_trangthai','=',1)->get();
 
         // dd($productCate);
         return view('client.product-detail',compact(['product', 'productImage','productCate','category']));
