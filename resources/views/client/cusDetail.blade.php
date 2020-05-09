@@ -3,6 +3,13 @@
     Khách hàng
 @endsection
 @section('content')
+@if (Session::has('alert-info'))
+<div class="alert alert-success">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>{{Session::get('alert-info')}}</strong>
+</div>
+{{Session::put('alert-info',null)}}
+@endif
 {{-- <div class="row-12">
       
   <div class="col-4">
@@ -92,17 +99,18 @@
         <h2>Thông tin cá nhân</h2>
         <div class="col-md-12">
           <div class="contact login">
-            <form action="#">
+            <form action="#" method="get">
+              @csrf
               <div class="col-md-12 no-padding-left">
                 <div class="your-name">
                   <label for="your-name">Họ tên</label><br>
-                  <input type="text" name="your-name" value="" id="your-name">
+                  <input readonly type="text" name="your-name" value="{{$info->kh_hoten}}" id="your-name">
                 </div>
               </div>
               <div class="col-md-12 no-padding-left">
                 <div class="your-name">
                   <label for="your-name">Tài khoản</label><br>
-                  <input type="text" name="your-name" value="" id="your-name">
+                  <input readonly type="text" name="your-name" value="{{$info->username}}" id="your-name">
                 </div>
               </div>
 
@@ -110,13 +118,13 @@
               <div class="col-md-10 no-padding-left">
                 <div class="your-name">
                   <label for="your-name">Mật khẩu</label><br>
-                  <input type="text" name="your-name" value="********" id="your-name" readonly>
+                  <input  type="password" name="your-name" value="*******" id="your-name" readonly>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="your-name">
                   <br>
-                  <label for=""><a href="#" data-toggle="modal" data-target="#exampleModal">Thay đổi</a></label>
+                  <label for=""><a href="" data-toggle="modal" data-target="#exampleModal">Thay đổi</a></label>
                 </div>
               </div>
 
@@ -124,28 +132,28 @@
               <div class="col-md-12 no-padding-left">
                 <div class="email">
                   <label for="your-email">Email</label><br>
-                  <input type="email" name="your-email" value="" id="your-email">
+                  <input readonly type="email" name="your-email" value="{{$info->kh_email}}" id="your-email">
                 </div>
               </div>
               
               <div class="col-md-12 no-padding-left">
                 <div class="email">
                   <label for="your-subject">Số điện thoại</label><br>
-                  <input type="text" name="your-subject" value="" id="your-subject">
+                  <input readonly type="text" name="your-subject" value="{{$info->kh_sdt}}" id="your-subject">
                 </div>
               </div>
               
               <div class="col-md-6 no-padding-left">
                 <div class="your-website">
                   <label for="your-website">Giới tính</label>
-                  <input type="text" name="your-website" value="" id="your-website">	
+                  <input readonly type="text" name="your-website" value="{{$info->kh_gioitinh}}" id="your-website">	
                 </div>
               </div>
               
               <div class="col-md-12 no-padding-left">
                 <div class="your-message">
                   <label for="your-message">Địa chỉ</label><br>
-                  <textarea name="your-message" cols="10" rows="6" id="your-message"></textarea>
+                  <textarea readonly name="your-message" cols="10" rows="6" id="your-message" >{{$info->kh_diachi}}</textarea>
                 </div>
               </div>
               
@@ -153,7 +161,7 @@
               
               <div class="col-md-6 no-padding-left">	
                 <div class="submit col-md-12 no-padding-left">
-                  <a href="#" class="trendify-btn black-bordered">Cập nhật thông tin</a>
+                  <a href="{{ route('suathongtintaikhoan', ['id'=>$info->kh_id]) }}" class="trendify-btn black-bordered">Chỉnh sửa thông tin</a>
                 </div>
               </div>
             </form>
@@ -189,15 +197,18 @@
         </button>
       </div>
       <div class="modal-body" style="padding: 20px;">
-        <form action="">
+        <form method="POST" action="{{ route('capnhatmatkhau', ['username'=>$info->username])}}">
+          @csrf
           <div class="form-group">
-            <label for="">Mật khẩu</label>
+            <label for="">Mật khẩu mới</label>
             <input type="password" class="form-control" name="" id="">
           </div>
           <div class="form-group">
-            <label for="">Xác nhận mật khẩu</label>
-            <input type="password" class="form-control" name="" id="">
+            <label for="">Xác nhận mật khẩu mới</label>
+            <input type="password" class="form-control" name="matkhau" id="">
           </div>
+          <button type="submit" class="btn btn-success">Lưu</button>
+          <a href="{{route('chitietkhachhang', ['username'=>$info->username] )}}" class="btn btn-default">Quay về</a>
         </form>
       </div>
     </div>

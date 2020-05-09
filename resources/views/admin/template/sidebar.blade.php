@@ -65,7 +65,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('danhsachthuonghieu') }}" class="nav-link {{ Request::path() == 'admin/thuonghieu' ? 'active' : '' }}">
-              <i class="nav-icon far fa-heart"></i>
+              <i class="fas fa-warehouse"></i>
               <p>
                 Thương hiệu sản phẩm
               </p>

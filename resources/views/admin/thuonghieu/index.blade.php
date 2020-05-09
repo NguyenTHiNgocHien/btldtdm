@@ -53,6 +53,7 @@
                 <th>STT</th>
                 <th>Mã số</th>
                 <th>Tên thương hiệu</th>
+                <th>Logo</th>
                 <th>Ngày thêm</th>
                 <th>Ngày cập nhật</th>
                 <th>Thao tác</th>

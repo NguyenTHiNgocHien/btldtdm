@@ -13,7 +13,8 @@ class TrangchuController extends Controller
         $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->paginate(5);
         $flashsale = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_giakhuyenmai','>',0)->get();//Lấy banner ra ngoài
         $banner = DB::table('banner')->where('bn_trangthai','=',1)->get();
-        return view('client.index',compact(['sanphammoi','flashsale','banner']));
+        $thuonghieu = DB::table('thuonghieu')->get();
+        return view('client.index',compact(['sanphammoi','flashsale','banner','thuonghieu']));
     }
 
     public function getCategory ($idCategory)

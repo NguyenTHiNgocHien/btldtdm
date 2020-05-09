@@ -118,7 +118,8 @@ class SanphamController extends Controller
         $loai = DB::table('loai')->get();
         $congdung = DB::table('congdung')->get();
         $congdungphu = DB::table('congdungphu')->get();
-        return view('admin.sanpham.add-product',compact(['loai','congdung','congdungphu']));
+        $xuatxu = DB::table('xuatxu')->get();
+        return view('admin.sanpham.add-product',compact(['loai','congdung','congdungphu','xuatxu']));
     }
 
     /**
@@ -139,6 +140,7 @@ class SanphamController extends Controller
                         'l_id' => $request->loai,
                         'cd_id' => $request->congDung,
                         'cdp_id' => $request->congDungPhu,
+                        'xx_id' => $request->xuatXu,
                         'created_at' => $now,
                         'updated_at' => $now,
                     ]
@@ -193,8 +195,13 @@ class SanphamController extends Controller
      */
     public function edit($id)
     {
+        $loai = DB::table('loai')->get();
+        $congdung = DB::table('congdung')->get();
+        $congdungphu = DB::table('congdungphu')->get();
+        $xuatxu = DB::table('xuatxu')->get();
+        
         $sanpham = DB::table('sanpham')->where('sp_id','=',$id)->first();
-        return view('admin.sanpham.edit');
+        return view('admin.sanpham.edit', compact(['loai','congdung','congdungphu','xuatxu', 'sanpham']));
     }
 
     /**
@@ -206,7 +213,27 @@ class SanphamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $sanpham = DB::table('')
+        $now = Carbon::now();
+        $data = DB::table('sanpham')->where('sp_id',$id)
+                    ->update(
+                        [
+                            'sp_ten' => $request->tensanpham,
+                            //'sp_giagoc' => $request->tenSanpham,
+                            'sp_giaban' => $request->giaban,
+                            //'sp_giakhuyenmai' => $request->tenSanpham,
+                            'sp_thongtin' => $request->thongtin,
+                            //'sp_ten' => $request->tenSanpham,
+                            'l_id' => $request->loai,
+                            'cd_id' => $request->congdung,
+                            'cdp_id' => $request->congdungphu,
+                            'xx_id' =>$request->xuatxu,
+                            'updated_at' => $now,
+                        ]
+                    );
+
+        //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
+        $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
+        return redirect()->route('danhsachsanpham');
     }
 
     /**

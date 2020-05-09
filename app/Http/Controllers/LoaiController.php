@@ -108,7 +108,7 @@ class LoaiController extends Controller
         //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
         $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
         return redirect()->route('danhsachloai');
-    }
+    } 
 
     /**
      * Remove the specified resource from storage.

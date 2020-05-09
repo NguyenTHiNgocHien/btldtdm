@@ -220,3 +220,5 @@ Route::get('san-pham-yeu-thich','WishlistController@getWishList')->name('wish-li
 Route::get('/khach-hang/{username}/cap-nhat','AuthController@edit')->name('suathongtintaikhoan');
 
 Route::post('/khach-hang/{id}/cap-nhat', 'AuthController@update')->name('capnhatthongtintaikhoan');
+
+Route::post('/khach-hang/{username}/cap-nhat-mat-khau', 'AuthController@updatepassword')->name('capnhatmatkhau');

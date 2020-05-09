@@ -221,38 +221,13 @@
             <!-- /latest blogs -->
 
             <!-- clients -->
-            <div class="clients margin-bottom-80px">
+            <div class="clients margin-bottom-10px">
                 <ul class="client-carousel">
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/1.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/2.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/3.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/4.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/5.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/1.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/2.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/3.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/4.png') }}"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="clients logo" src="{{ asset('front-end-2/img/clients/5.png') }}"></a>
-                    </li>
+                    @foreach ($thuonghieu as $item => $value)
+                        <li>
+                            <a href="#"><img alt="logo" src="{{asset('/upload/hinhanh')}}/{{ $value->th_logo }}" style="width: 194px !important; height:194px !important "></a>
+                        </li>
+                    @endforeach 
                 </ul>
             </div>
             <!--/ clients -->

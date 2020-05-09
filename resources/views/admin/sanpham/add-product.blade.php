@@ -63,6 +63,14 @@
               @endforeach
           </select>
       </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Xuất xứ</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="xuatXu">
+            @foreach ($xuatxu as $item => $value)
+              <option value="{{$value->xx_id}}">{{$value->xx_ten}}</option>
+            @endforeach
+        </select>
+    </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Mô tả sản phẩm</label>
             {{-- <textarea name="thongTin" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> --}}

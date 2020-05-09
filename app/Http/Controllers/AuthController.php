@@ -11,6 +11,8 @@ use Validator;
 use App\Khachhang;
 use Carbon\Carbon;
 
+use Hash;
+
 
 class AuthController extends Controller
 {
@@ -186,7 +188,7 @@ class AuthController extends Controller
         Session::put('kh', null);
         return redirect()->route('trangchu');
     }
-
+//get thong tin tai khoan
     public function getInfoClient($username)
     {
         $info = DB::table('khachhang')->where('username','=',$username)->first();
@@ -199,9 +201,8 @@ class AuthController extends Controller
     {
         $khachhang = DB::table('khachhang')->where('kh_id', $id)->first();
         return view('client.cusEdit', compact('khachhang'));
-
     }
-
+// cap nhat thong tin khach hang
     public function update(Request $request, $id)
     {
         $now = Carbon::now();
@@ -212,14 +213,32 @@ class AuthController extends Controller
                             'kh_sdt' => $request->sdt,
                             'kh_gioitinh' => $request->gioitinh,
                             'kh_diachi' => $request->diachi,
-                            'password' => $request->matkhau,
+                            //'password' => $request->matkhau,
                             'updated_at' => $now,
                         ]
                     );
 
-        //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
+        
         $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
         return redirect()->back();
     }
+    //đổi pass
+    public function updatepassword(Request $request, $username)
+    {
+        $now = Carbon::now();
+        $data = DB::table('khachhang')->where('username',$username)
+                    ->update(
+                        [
+                            'password' => bcrypt($request->matkhau),
+                            'updated_at' => $now,
+                        ]
+                    );
+                  
+
+        //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
+        $success = Session::put('alert-info', 'Cập nhật mật khẩu thành công');
+        return redirect()->back();
+    }
+
 
 }
