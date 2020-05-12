@@ -163,6 +163,7 @@ class AuthController extends Controller
         //     'password' => $request->password,
         // ];
        
+<<<<<<< HEAD
         $taikhoan = Khachhang::where('username', '=' , $request->username)->first();
         if(Hash::check($request->password,$taikhoan['password']))
         {
@@ -187,12 +188,28 @@ class AuthController extends Controller
                     
                 
         
+=======
+        $taikhoan = Khachhang::where('username', '=' , $request->username)->orWhere('password', '=', $request->password)->first();
+        //truyền id qua truyền bằng session v đc hk
+        //truyen di dau, truyền qua cho xuyên ssuốt quá trình sd, tại t cần gán nhân viên nào làm gì
+        //xai auth
+        if ($taikhoan) {
+            # code...
+            $abc = Session::put('kh', $taikhoan->username);
+
+            // dd($taikhoan->username);
+            return redirect()->route('checkout');
+        }
+        else {
+            return view('client.login');
+        }
+>>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
     }
     public function logoutClient ()
     {
         Auth::guard('khachhang')->logout();
         Session::put('kh', null);
-        return redirect()->route('trangchu');
+        return redirect()->back();
     }
 //get thong tin tai khoan
     public function getInfoClient($username)

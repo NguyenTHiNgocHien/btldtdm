@@ -14,6 +14,21 @@ class DatabaseSeeder extends Seeder
 
         $now = Carbon::now();
 
+        $loaikhachhang = [
+            [
+                'lkh_ten' => 'Khách hàng thường',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'lkh_ten' => 'Khách hàng VIP',
+                'created_at' => $now,
+                'updated_at' => $now
+            ] 
+        ];
+
+        DB::table('loaikhachhang')->insert($loaikhachhang);
+
         $quyen = [
             [
                 'q_ten' => 'Admin',

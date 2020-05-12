@@ -144,10 +144,17 @@
       </div>
     </div>
           <!-- /.card -->
+<<<<<<< HEAD
     <div class="col-lg-6">
       <div class="card card-danger">
         <div class="card-header">
           <h3 class="card-title">Doanh thu theo loại sản phẩm</h3>
+=======
+    <div class="col-ld-12">
+      <div class="card card-danger">
+        <div class="card-header">
+          <h3 class="card-title">Donut Chart</h3>
+>>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -156,11 +163,16 @@
           </div>
         </div>
         <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+<<<<<<< HEAD
           <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 661px;" width="661" height="250" class="chartjs-render-monitor"></canvas>
+=======
+          <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 532px;" width="1064" height="500" class="chartjs-render-monitor"></canvas>
+>>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
         </div>
         <!-- /.card-body -->
       </div>
     </div>
+<<<<<<< HEAD
     <div class="col-lg-6">
       <div class="card card-primary card-outline">
         <div class="card-header">
@@ -184,6 +196,8 @@
         <!-- /.card-body-->
       </div>
     </div>
+=======
+>>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
   </div>
 
 </section>
@@ -284,7 +298,10 @@
   })
 
 </script>
+<<<<<<< HEAD
 {{-- Thong ke doanh thu theo loai --}}
+=======
+>>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
 <script>
   //-------------
     //- DONUT CHART -
@@ -319,6 +336,7 @@
       options: donutOptions      
     })
 </script>
+<<<<<<< HEAD
 {{-- Thong ke khach hang theo thang --}}
 <script>
   /*
@@ -348,4 +366,6 @@
     })
     /* END BAR CHART */
 </script>
+=======
+>>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
 @endsection

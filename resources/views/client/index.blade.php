@@ -3,7 +3,6 @@
     Trang chủ
 @endsection
 @section('content')
-    
     <!-- content -->
     <div class="content">
         <div class="container">
@@ -45,7 +44,14 @@
                                     </ul>
                                 </div>
                                 <div class="price">
-                                    <del> $50 </del> $40
+                                    @if (number_format($value->sp_giakhuyenmai) == 0)
+													{{ number_format($value->sp_giaban) }} đ
+												@else
+												
+												<del style="color: red"> {{ number_format($value->sp_giaban) }}đ </del>
+												<br>
+												{{ number_format($value->sp_giakhuyenmai) }}đ
+												@endif
                                 </div>
                             </div>
                         </div>
@@ -79,7 +85,14 @@
                                     </ul>
                                 </div>
                                 <div class="price">
-                                    <del> $50 </del> $40
+                                    @if (number_format($value->sp_giakhuyenmai) == 0)
+                                        {{ number_format($value->sp_giaban) }} đ
+                                    @else
+                                    
+                                    <del style="color: red"> {{ number_format($value->sp_giaban) }}đ </del>
+                                    <br>
+                                    {{ number_format($value->sp_giakhuyenmai) }}đ
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -101,73 +114,38 @@
                     </div>
                 </div>
                 <div class="row product-grid">
+                    @if (Session::has('products.recently_viewed'))
+                    @foreach ($spdaxem as $item)
                     <div class="col-md-4 col-sm-6">
                         <div class="single-latest-product margin-bottom-30px">
-                            <span class="price-label">$135</span>
-                            <img class="img-responsive" src="{{ asset('front-end-2/img/lastest-product-1.png') }}" alt="Shoe">
-                            <h4>Leather Shoes</h4>
+                            <span class="price-label">@if (number_format($item->sp_giakhuyenmai) == 0)
+                                {{ number_format($item->sp_giaban) }} đ
+                            @else
+                            
+                            <del style="color: red"> {{ number_format($item->sp_giaban) }}đ </del>
+                            <br>
+                            {{ number_format($item->sp_giakhuyenmai) }}đ
+                            @endif</span>
+                            <img class="img-responsive" src="{{ asset('upload/sanpham/'.$item->sp_anhdaidien) }}" alt="Shoe">
+                            <h4>{{ $item->sp_ten }}</h4>
                             <div class="actions">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <a href="#"><i class="fa fa-plus"></i>Add Cart</a>
+                                        <a href="{{ route('add-cart', ['id'=> $item->sp_id]) }}"><i class="fa fa-plus"></i>Thêm vào giỏ hàng</a>
                                     </div>
                                     <div class="col-md-6">
                                         <ul class="pull-right">
-                                            <li><a class="zoom" href="img/lastest-product-1.png"><i class="fa fa-search"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="product-details-2.html"><i class="fa fa-expand"></i></a></li>
+                                            <li><a class="zoom" href="{{ asset('upload/sanpham/'.$item->sp_anhdaidien) }}"><i class="fa fa-search"></i></a></li>
+                                            <li><a href="{{ route('add-wish-list', ['idProduct'=> $item->sp_id]) }}"><i class="fa fa-heart-o"></i></a></li>
+                                            <li><a href="{{ route('sanpham', ['id'=>$item->sp_id]) }}"><i class="fa fa-expand"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-latest-product margin-bottom-30px">
-                            <span class="price-label">$135</span>
-                            <span class="new">New</span>
-                            <img class="img-responsive" src="{{ asset('front-end-2/img/lastest-product-2.png') }}" alt="watch">
-                            <h4>Leather Yoga Watch Men</h4>
-                            <div class="actions">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a href="#"><i class="fa fa-plus"></i>Add Cart</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul class="pull-right">
-                                            <li><a class="zoom" href="img/lastest-product-2.png"><i class="fa fa-search"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="product-details-2.html"><i class="fa fa-expand"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-latest-product margin-bottom-30px">
-                            <span class="price-label">$135</span>
-                            <img class="img-responsive" src="{{ asset('front-end-2/img/lastest-product-3.png') }}" alt="watch">
-                            <h4>Grey Yoga Watch Men</h4>
-                            <div class="actions">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a href="#"><i class="fa fa-plus"></i>Add Cart</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul class="pull-right">
-                                            <li><a class="zoom" href="img/lastest-product-3.png"><i class="fa fa-search"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                            <li><a href="product-details-2.html"><i class="fa fa-expand"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    @endforeach
+                    @endif
                 </div>
             </div>
             <!-- our history -->
