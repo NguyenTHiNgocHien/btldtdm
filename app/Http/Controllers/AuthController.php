@@ -158,27 +158,31 @@ class AuthController extends Controller
     }
     
     public function ClientLogin (Request $request){
-        $arr1 = [
-            'username' => $request->username,
-            'password' => $request->password,
-        ];
-       
-            $taikhoan = Khachhang::where('username', '=' , $request->username)->orWhere('password', '=', $request->password)->first();
-            
+        // $arr1 = [
+        //     'username' => $request->username,
+        //     'password' => $request->password,
+        // ];
+        $taikhoan = Khachhang::where('username', '=' , $request->username)->first();
+        if(Hash::check($request->password,$taikhoan['password']))
+        {
                  //$success = Session::put('username', $taikhoan->username);
-                
                 
                     //truyền id qua truyền bằng session v đc hk
                     //truyen di dau, truyền qua cho xuyên ssuốt quá trình sd, tại t cần gán nhân viên nào làm gì
                     //xai auth
                 
-                     $abc = Session::put('kh', $taikhoan->username);
+            Session::put('kh', $taikhoan->username);
+            return redirect()->route('trangchu');
 
-                     // dd($taikhoan->username);
-                    return redirect()->route('trangchu');
-
+        }else{
+            return redirect()->route('dangnhapkhachhang');
+            Session::put('alert-info', 'Sai tài khoản hoặc mật khẩu');
+        }
                     // return view()->share('dataNV', $dataNV);
                     //return view('client.template.header',compact('$taikhoan'));
+
+
+                    
                 
         
     }
@@ -226,17 +230,18 @@ class AuthController extends Controller
     public function updatepassword(Request $request, $username)
     {
         $now = Carbon::now();
-        $data = DB::table('khachhang')->where('username',$username)
-                    ->update(
-                        [
-                            'password' => bcrypt($request->matkhau),
-                            'updated_at' => $now,
-                        ]
-                    );
-                  
-
-        //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
-        $success = Session::put('alert-info', 'Cập nhật mật khẩu thành công');
+        if($request->matkhau == $request->matkhau2){
+            $data = DB::table('khachhang')->where('username',$username)
+                        ->update(
+                            [
+                                'password' => bcrypt($request->matkhau2),
+                                'updated_at' => $now,
+                            ]
+                        );
+            $success = Session::put('alert-info', 'Cập nhật mật khẩu thành công');
+        }else {
+            $fails = Session::put('alert-info2', 'Mật khẩu không trùng khớp'); 
+        }
         return redirect()->back();
     }
 

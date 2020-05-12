@@ -183,6 +183,7 @@ Route::post('dang-ky-1', 'AuthController@ClientRegister')->name('dang-ky');
 
 Route::get('dang-nhap', 'AuthController@getClientLogin')->name('dangnhapkhachhang');
 Route::post('dang-nhap-1', 'AuthController@ClientLogin')->name('dang-nhap');
+Route::get('dang-nhap-1', 'AuthController@ClientLogin')->name('dang-nhap');
 
 Route::get('thong-tin/{username}','AuthController@getInfoClient')->name('thong-tin-khach-hang');
 

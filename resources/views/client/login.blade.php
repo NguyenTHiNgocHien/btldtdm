@@ -1,6 +1,15 @@
 @section('title')
     Đăng nhập
 @endsection
+
+@if (Session::has('alert-info'))
+<div class="alert alert-danger">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>{{Session::get('alert-info')}}</strong>
+</div>
+{{Session::put('alert-info',null)}}
+@endif
+
 @include('client.template.header')
     @if (Session::has('kh'))
         
@@ -31,6 +40,7 @@
                 <div class="col-md-12">
                     <div class="login">
                         <form method="POST" action="{{ route('dang-nhap') }}">
+                            @csrf
                             <div class="col-md-7">
                                 <div class="email">
                                     <label for="username">Tài khoản <span class="required">*</span></label><br>

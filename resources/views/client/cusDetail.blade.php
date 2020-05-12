@@ -10,6 +10,13 @@
 </div>
 {{Session::put('alert-info',null)}}
 @endif
+@if (Session::has('alert-info2'))
+<div class="alert alert-danger">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>{{Session::get('alert-info2')}}</strong>
+</div>
+{{Session::put('alert-info2',null)}}
+@endif
 {{-- <div class="row-12">
       
   <div class="col-4">
@@ -201,11 +208,11 @@
           @csrf
           <div class="form-group">
             <label for="">Mật khẩu mới</label>
-            <input type="password" class="form-control" name="" id="">
+            <input type="password" class="form-control" name="matkhau" id="">
           </div>
           <div class="form-group">
             <label for="">Xác nhận mật khẩu mới</label>
-            <input type="password" class="form-control" name="matkhau" id="">
+            <input type="password" class="form-control" name="matkhau2" id="">
           </div>
           <button type="submit" class="btn btn-success">Lưu</button>
           <a href="{{route('chitietkhachhang', ['username'=>$info->username] )}}" class="btn btn-default">Quay về</a>
