@@ -223,9 +223,6 @@ Route::get('/khach-hang/{username}/cap-nhat','AuthController@edit')->name('suath
 
 Route::post('/khach-hang/{id}/cap-nhat', 'AuthController@update')->name('capnhatthongtintaikhoan');
 
-<<<<<<< HEAD
-Route::post('/khach-hang/{username}/cap-nhat-mat-khau', 'AuthController@updatepassword')->name('capnhatmatkhau');
-=======
 //Đơn hàng của khách
 Route::get('don-hang','DonhangController@getOrders')->name('get-orders');
 
@@ -236,4 +233,3 @@ Route::post('binh-luan/{sanpham}','BinhluanController@comment')->name('comment')
 //Thanh toán
 Route::get('select-method','GiohangController@getMethodCheckout')->name('method-checkout');
 Route::get('VNPay','VNPayController@create')->name('vnpay');
->>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
