@@ -75,4 +75,29 @@ class GiohangController extends Controller
             return redirect()->route('dangnhapkhachhang');
         }
     }
+
+    public function checkOut2() {
+        if(Session::has('kh')){
+            $username = Session::get('kh');
+            $cart = Cart::getContent();
+            $khachhang = DB::table('khachhang')->where('username','=',$username)->first();
+            return view('client.checkout-2',compact(['khachhang','cart']));
+        }else {
+            return redirect()->route('dangnhapkhachhang');
+        }
+    }
+
+    public function getMethodCheckout (Request $request){
+        $method = $request->get('thanhtoan');
+        switch ($method) {
+            case 'vnpay':
+                # code...
+                return redirect()->route('vnpay');
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
 }

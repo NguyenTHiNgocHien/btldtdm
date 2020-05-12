@@ -8,11 +8,25 @@ use Cart;
 class TrangchuController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->paginate(5);
         $flashsale = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_giakhuyenmai','>',0)->get();//Lấy banner ra ngoài
         $banner = DB::table('banner')->where('bn_trangthai','=',1)->get();
+
+        //Đây là cái mảng nè
+        $products_viewed = session()->get('products.recently_viewed');
+        // $request->session()->forget('products.recently_viewed');
+        // $count_products = count($products);
+        if($products_viewed)
+        {
+            $spdaxem = DB::table('sanpham')->whereIn('sp_id',$products_viewed)->get();
+            return view('client.index',compact(['sanphammoi','flashsale','banner','spdaxem']));
+        }
+        
+        // dd($products_viewed);
+        // dd($spdaxem);
+        
         return view('client.index',compact(['sanphammoi','flashsale','banner']));
     }
 
@@ -54,8 +68,14 @@ class TrangchuController extends Controller
 
         $productCate = DB::table('sanpham')->where('l_id','=',$category->l_id)->where('sp_id','<>',$idProduct)->where('sp_trangthai','=',1)->get();
 
+        //Đánh dấu sản phẩm đã xem lưu vào session để lấy sản phẩm đã xem
+        session()->push('products.recently_viewed', $idProduct);
+
+        //Lấy comment của sản phẩm đó ra
+        $comment = DB::table('binhluan')->where('sp_id','=',$idProduct)->join('khachhang','khachhang.kh_id','=','binhluan.kh_id')->get();
+
         // dd($productCate);
-        return view('client.product-detail',compact(['product', 'productImage','productCate','category']));
+        return view('client.product-detail',compact(['product', 'productImage','productCate','category','comment']));
     }
 
     public function getAllProduct (){

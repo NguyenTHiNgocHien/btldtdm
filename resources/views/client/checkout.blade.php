@@ -24,18 +24,17 @@
 		</div>
 	</div>
 	<!--/ page title -->
-	
+	<form action="{{ route('checkout2') }}">
 	<div class="checkout margin-bottom-70px">
 		<div class="container">
 			<div class="row">
-				<form action="#">
 					<div class="col-md-12">
 						<div class="billing margin-bottom-50px">
 							<h1 class="text-center">Thông tin khách hàng</h1>
 							<div class="info-sec">
 								<div class="last-name col-md-12 no-padding-left no-padding-right">
 									<label for="last-name">Họ tên <span class="required">*</span></label><br>
-									<input type="text" name="last-name" value="{{ $khachhang->kh_hoten }}" id="last-name">
+									<input type="text" name="last-name" value="{{ $khachhang->kh_hoten }}"  id="last-name">
 								</div>
 								
 								<div class="company-name">
@@ -50,7 +49,6 @@
 							</div>
 						</div>
 					</div>
-				</form>
 			</div>
 			
 			<div class="row">
@@ -61,7 +59,7 @@
 							<table>
 								<tbody>
 									<tr class="cart-subtotal" >
-										<td colspan="3" style="padding-left: 35px; font-weight: bold;   ">Giá tiền</td>
+										<td colspan="3" style="padding-left: 35px; font-weight: bold;">Giá tiền</td>
 										<td class="subtotal">$904</td>
                                     </tr>
                                     @foreach ($cart as $item)
@@ -90,15 +88,15 @@
 						</div>
 					</div>
 				</div>
+				{{-- comment --}}
 				
-				<div class="col-md-6">
+				{{-- <div class="col-md-6">
 					<div class="payment">
 						<h3>Mã giảm giá:</h3>
 						<div class="payment-method">
 							<table>
 								<tbody>
 									<tr class="">
-										
 									</tr>		
 								</tbody>
 							</table>
@@ -110,8 +108,10 @@
 							<input type="submit" name="checkout" value="Chọn phương thức" class="btn-black calculate">
 						</div>
 					</div>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 	</div>
+	</form>
+
 @endsection

@@ -212,6 +212,7 @@ Route::get('content-cart','GiohangController@getCart')->name('content-cart');
 Route::get('clear-cart','GiohangController@clearCart')->name('clear-cart');
 Route::get('remove-product/{id}','GiohangController@remove')->name('remove');
 Route::get('thanh-toan','GiohangController@checkOut')->name('checkout');
+Route::get('chon-phuong-thuc-thanh-toan','GiohangController@checkOut2')->name('checkout2');
 //Sản phẩm yêu thích
 Route::get('yeu-thich/{idProduct}','WishlistController@addWishList')->name('add-wish-list');
 Route::get('san-pham-yeu-thich','WishlistController@getWishList')->name('wish-list');
@@ -220,3 +221,14 @@ Route::get('san-pham-yeu-thich','WishlistController@getWishList')->name('wish-li
 Route::get('/khach-hang/{username}/cap-nhat','AuthController@edit')->name('suathongtintaikhoan');
 
 Route::post('/khach-hang/{id}/cap-nhat', 'AuthController@update')->name('capnhatthongtintaikhoan');
+
+//Đơn hàng của khách
+Route::get('don-hang','DonhangController@getOrders')->name('get-orders');
+
+//Bình luận nằm ở đây nè
+Route::post('binh-luan/{sanpham}','BinhluanController@comment')->name('comment');
+
+
+//Thanh toán
+Route::get('select-method','GiohangController@getMethodCheckout')->name('method-checkout');
+Route::get('VNPay','VNPayController@create')->name('vnpay');

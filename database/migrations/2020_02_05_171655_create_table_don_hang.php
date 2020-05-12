@@ -15,12 +15,15 @@ class CreateTableDonhang extends Migration
     {
         Schema::create('donhang', function (Blueprint $table) {
             $table->bigIncrements('dh_id');
+            $table->integer('dh_madon');
             $table->string('dh_nguoinhan');
             $table->string('dh_noinhan');
             $table->string('dh_thoigiandathang');
-            $table->string('dh_thpogiannhanhang');
+            $table->string('dh_thoigiannhanhang')->nullable();
+            $table->integer('dh_trangthai')->default(1);
+            $table->integer('dh_quatrinhvanchuyen')->default(1);
             $table->bigInteger('kh_id')->unsigned();
-            $table->foreign('kh_id')->references('kh_id')->on('khachhang');
+            $table->foreign('kh_id')->references('kh_id')->on('khachhang')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->bigInteger('htvc_id')->unsigned();
             $table->foreign('htvc_id')->references('htvc_id')->on('hinhthucvanchuyen');
             $table->bigInteger('httt_id')->unsigned();

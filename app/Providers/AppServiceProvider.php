@@ -54,6 +54,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('totalPrice', Cart::getTotal());    
         }); 
 
+
         View::share('loai', $loai); // <= Truyền dữ liệu
         View::share('congdung', $congdung);
         View::share('demloai', $demloai);

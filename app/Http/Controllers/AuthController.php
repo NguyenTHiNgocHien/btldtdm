@@ -161,30 +161,26 @@ class AuthController extends Controller
             'password' => $request->password,
         ];
        
-            $taikhoan = Khachhang::where('username', '=' , $request->username)->orWhere('password', '=', $request->password)->first();
-            
-                 //$success = Session::put('username', $taikhoan->username);
-                
-                
-                    //truyền id qua truyền bằng session v đc hk
-                    //truyen di dau, truyền qua cho xuyên ssuốt quá trình sd, tại t cần gán nhân viên nào làm gì
-                    //xai auth
-                
-                     $abc = Session::put('kh', $taikhoan->username);
+        $taikhoan = Khachhang::where('username', '=' , $request->username)->orWhere('password', '=', $request->password)->first();
+        //truyền id qua truyền bằng session v đc hk
+        //truyen di dau, truyền qua cho xuyên ssuốt quá trình sd, tại t cần gán nhân viên nào làm gì
+        //xai auth
+        if ($taikhoan) {
+            # code...
+            $abc = Session::put('kh', $taikhoan->username);
 
-                     // dd($taikhoan->username);
-                    return redirect()->route('trangchu');
-
-                    // return view()->share('dataNV', $dataNV);
-                    //return view('client.template.header',compact('$taikhoan'));
-                
-        
+            // dd($taikhoan->username);
+            return redirect()->route('checkout');
+        }
+        else {
+            return view('client.login');
+        }
     }
     public function logoutClient ()
     {
         Auth::guard('khachhang')->logout();
         Session::put('kh', null);
-        return redirect()->route('trangchu');
+        return redirect()->back();
     }
 
     public function getInfoClient($username)
