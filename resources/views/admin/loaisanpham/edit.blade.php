@@ -1,11 +1,20 @@
 @extends('admin.template.master')
 @section('content')
+
 <div class="col-12">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">
             Sửa thông tin loại sản phẩm
         </h3>
+      </br>
+        @if (Session::has('alert-del'))
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{Session::get('alert-del')}}</strong>
+        </div>
+        {{Session::put('alert-del',null)}}
+      @endif
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-2">

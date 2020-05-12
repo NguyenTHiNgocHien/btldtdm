@@ -38,6 +38,10 @@ class XuatxuController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
+        if($request->tenXX==''){
+            $success = Session::put('alert-del', 'Nơi xuất xứ không được trống');
+            return redirect()->route('danhsachxuatxu');
+        }
         $xuatxu = DB::table('xuatxu')
                 ->insert(
                     [
@@ -92,6 +96,10 @@ class XuatxuController extends Controller
     public function update(Request $request, $id)
     {
         $now = Carbon::now();
+        if($request->tenXX==''){
+            $success = Session::put('alert-del', 'Nơi xuất xứ không được trống');
+            return redirect()->back();
+        }
         $data = DB::table('xuatxu')->where('xx_id',$id)
                     ->update(
                         [

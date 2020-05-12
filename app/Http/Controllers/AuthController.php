@@ -162,6 +162,7 @@ class AuthController extends Controller
         //     'username' => $request->username,
         //     'password' => $request->password,
         // ];
+       
         $taikhoan = Khachhang::where('username', '=' , $request->username)->first();
         if(Hash::check($request->password,$taikhoan['password']))
         {
@@ -175,8 +176,9 @@ class AuthController extends Controller
             return redirect()->route('trangchu');
 
         }else{
-            return redirect()->route('dangnhapkhachhang');
             Session::put('alert-info', 'Sai tài khoản hoặc mật khẩu');
+            return redirect()->route('dangnhapkhachhang');
+            
         }
                     // return view()->share('dataNV', $dataNV);
                     //return view('client.template.header',compact('$taikhoan'));

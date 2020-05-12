@@ -39,33 +39,47 @@ class ThuonghieuController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
-        $hinhanh = $request->file('hinhanh');
-        $tenhinhanh = $hinhanh->getClientOriginalName();
-        $rd = rand(1000,9999);
-        $thumuc = public_path('/upload/hinhanh');
-        $hinhanh->move($thumuc,$rd.$tenhinhanh);
-        $thuonghieu = DB::table('thuonghieu')
-                ->insert(
-                    [
-                        'th_ten' =>$request->tenTH,
-                        
-                        'created_at' => $now,
-                        'updated_at' => $now,
-                        'th_logo'=>$rd.$tenhinhanh
-                    ]
-                );
+        if ($request->hasFile('hinhanh')) {
+            if ($request->tenTH != '') {
+                # code...
+                $hinhanh = $request->file('hinhanh');
+                $tenhinhanh = $hinhanh->getClientOriginalName();
+                // if($request->tenTH=='' || $tenhinhanh == ''){
+                //     $success = Session::put('alert-del', 'Thiếu tên thương hiệu hoặc logo');
+                //     return redirect()->route('danhsachthuonghieu');
+                // }
+                $rd = rand(1000,9999);
+                $thumuc = public_path('/upload/hinhanh');
+                $hinhanh->move($thumuc,$rd.$tenhinhanh);
+                $thuonghieu = DB::table('thuonghieu')
+                        ->insert(
+                            [
+                                'th_ten' =>$request->tenTH,
+                                'created_at' => $now,
+                                'updated_at' => $now,
+                                'th_logo'=>$rd.$tenhinhanh
+                            ]
+                        );
+                if($thuonghieu)
+                {
+                    $success = Session::put('alert-info', 'Thêm dữ liệu thành công');
+                    return redirect()->route('danhsachthuonghieu');
+                }
+                else
+                {
+                    $success = Session::put('alert-info', 'Thêm dữ liệu không thành công');
+                    return redirect()->route('danhsachthuonghieu');
+                }
+            }
+            
+        }else{
+                $success = Session::put('alert-del', 'Dữ liệu không được trống');
+                return redirect()->route('danhsachthuonghieu');
 
-        if($thuonghieu)
-        {
-            $success = Session::put('alert-info', 'Thêm dữ liệu thành công');
-            return redirect()->route('danhsachthuonghieu');
-        }
-        else
-        {
-            $success = Session::put('alert-info', 'Thêm dữ liệu không thành công');
-            return redirect()->route('danhsachthuonghieu');
+                
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -99,25 +113,43 @@ class ThuonghieuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $now = Carbon::now();
-        $hinhanh = $request->file('tenLG');
-        $tenhinhanh = $hinhanh->getClientOriginalName();
-        $rd = rand(1000,9999);
-        $thumuc = public_path('/upload/hinhanh');
-        $hinhanh->move($thumuc,$rd.$tenhinhanh);
-        $data = DB::table('thuonghieu')->where('th_id',$id)
-                    ->update(
-                        [
-                            'th_ten' => $request->tenTH,
-                            'th_logo'=>$rd.$tenhinhanh,
-                            'updated_at' => $now,
-                        ]
-                    );
+        if($request->tenTH == '' ){
+            $success = Session::put('alert-del', 'Tên thương hiệu không được trống');
+            return redirect()->back();
+        }
+        if ($request->hasFile('hinhanh')) {
+            $now = Carbon::now();
+            $hinhanh = $request->file('tenLG');
+            $tenhinhanh = $hinhanh->getClientOriginalName();
+            $rd = rand(1000,9999);
+            $thumuc = public_path('/upload/hinhanh');
+            $hinhanh->move($thumuc,$rd.$tenhinhanh);
+            $data = DB::table('thuonghieu')->where('th_id',$id)
+                        ->update(
+                            [
+                                'th_ten' => $request->tenTH,
+                                'th_logo'=>$rd.$tenhinhanh,
+                                'updated_at' => $now,
+                            ]
+                        );
 
-        //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
-        $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
-        return redirect()->route('danhsachthuonghieu');
-    }
+            //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
+            $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
+            return redirect()->route('danhsachthuonghieu');
+        }else{
+            $now = Carbon::now();
+            $data = DB::table('thuonghieu')->where('th_id',$id)
+                        ->update(
+                            [
+                                'th_ten' => $request->tenTH,
+                                'updated_at' => $now,
+                            ]
+                        );
+            //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
+            $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
+            return redirect()->route('danhsachthuonghieu');
+        }
+}
 
     /**
      * Remove the specified resource from storage.

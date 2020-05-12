@@ -39,6 +39,10 @@ class CongdungController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
+        if($request->tenCD==''){
+            $success = Session::put('alert-del', 'Tên công dụng không được trống');
+            return redirect()->route('danhsachcongdung');
+        }
         $congdung = DB::table('congdung')
                 ->insert(
                     [
@@ -94,6 +98,10 @@ class CongdungController extends Controller
     public function update(Request $request, $id)
     {
         $now = Carbon::now();
+        if($request->tenCD==''){
+            $success = Session::put('alert-del', 'Tên công dụng không được trống');
+            return redirect()->back();
+        }
         $data = DB::table('congdung')->where('cd_id',$id)
                     ->update(
                         [

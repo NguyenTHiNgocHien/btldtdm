@@ -39,6 +39,10 @@ class HinhthucthanhtoanController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
+        if($request->tenHTTT == '' ){
+            $success = Session::put('alert-del', 'Dữ liệu không được trống');
+            return redirect()->route('danhsachhinhthucthanhtoan');
+        }
         $hinhthucthanhtoan = DB::table('hinhthucthanhtoan')
                 ->insert(
                     [
@@ -94,6 +98,10 @@ class HinhthucthanhtoanController extends Controller
     public function update(Request $request, $id)
     {
         $now = Carbon::now();
+        if($request->tenHTTT == '' ){
+            $success = Session::put('alert-del', 'Dữ liệu không được trống');
+            return redirect()->back();
+        }
         $data = DB::table('hinhthucthanhtoan')->where('httt_id',$id)
                     ->update(
                         [

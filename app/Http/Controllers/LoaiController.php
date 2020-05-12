@@ -42,6 +42,10 @@ class LoaiController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
+        if($request->tenLoai==''){
+            $success = Session::put('alert-del', 'Tên loại không được trống');
+            return redirect()->route('danhsachloai');
+        }
         $loai = DB::table('loai')
                 ->insert(
                     [
@@ -97,6 +101,10 @@ class LoaiController extends Controller
     public function update(Request $request, $id)
     {
         $now = Carbon::now();
+        if($request->tenLoai==''){
+            $success = Session::put('alert-del', 'Tên loại không được trống');
+            return redirect()->back();
+        }
         $data = DB::table('loai')->where('l_id',$id)
                     ->update(
                         [

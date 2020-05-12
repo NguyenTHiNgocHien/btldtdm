@@ -59,10 +59,16 @@
   <script src="{{ asset('front-end/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('front-end/dist/js/adminlte.js') }}"></script>
+
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   {{-- <script src="{{ asset('front-end/dist/js/pages/dashboard.js') }}"></script> --}}
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('front-end/dist/js/demo.js') }}"></script>
+
+
+
+
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     .checked {
