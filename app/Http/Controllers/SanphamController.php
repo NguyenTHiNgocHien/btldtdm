@@ -252,7 +252,7 @@ class SanphamController extends Controller
         DB::table('sanpham')->where('sp_id',$id)->update(['sp_anhdaidien'=> $tenHA]);
         return redirect()->route('chitietsanpham', ['id' => $id]);
     }
-
+ 
     public function khuyenmai($id, Request $request)
     {
         $sanpham = DB::table('sanpham')->where('sp_id',$id)->first();

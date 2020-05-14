@@ -13,11 +13,8 @@ class TrangchuController extends Controller
         $sanphammoi = DB::table('sanpham')->where('sp_trangthai','=',1)->orderBy('created_at','desc')->paginate(5);
         $flashsale = DB::table('sanpham')->where('sp_trangthai','=',1)->where('sp_giakhuyenmai','>',0)->get();//Lấy banner ra ngoài
         $banner = DB::table('banner')->where('bn_trangthai','=',1)->get();
-<<<<<<< HEAD
         $thuonghieu = DB::table('thuonghieu')->get();
-        return view('client.index',compact(['sanphammoi','flashsale','banner','thuonghieu']));
-=======
-
+        //dd($thuonghieu);
         //Đây là cái mảng nè
         $products_viewed = session()->get('products.recently_viewed');
         // $request->session()->forget('products.recently_viewed');
@@ -25,14 +22,14 @@ class TrangchuController extends Controller
         if($products_viewed)
         {
             $spdaxem = DB::table('sanpham')->whereIn('sp_id',$products_viewed)->get();
-            return view('client.index',compact(['sanphammoi','flashsale','banner','spdaxem']));
+            return view('client.index',compact(['sanphammoi','flashsale','banner','spdaxem','thuonghieu']));
         }
+        
         
         // dd($products_viewed);
         // dd($spdaxem);
         
-        return view('client.index',compact(['sanphammoi','flashsale','banner']));
->>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
+        return view('client.index',compact(['sanphammoi','flashsale','banner','thuonghieu']));
     }
 
     public function getCategory ($idCategory)

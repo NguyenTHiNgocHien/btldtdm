@@ -163,7 +163,6 @@ class AuthController extends Controller
         //     'password' => $request->password,
         // ];
        
-<<<<<<< HEAD
         $taikhoan = Khachhang::where('username', '=' , $request->username)->first();
         if(Hash::check($request->password,$taikhoan['password']))
         {
@@ -188,7 +187,6 @@ class AuthController extends Controller
                     
                 
         
-=======
         $taikhoan = Khachhang::where('username', '=' , $request->username)->orWhere('password', '=', $request->password)->first();
         //truyền id qua truyền bằng session v đc hk
         //truyen di dau, truyền qua cho xuyên ssuốt quá trình sd, tại t cần gán nhân viên nào làm gì
@@ -203,7 +201,6 @@ class AuthController extends Controller
         else {
             return view('client.login');
         }
->>>>>>> 39a110db4ec139cd320c5774c1e7d7af611a0b6e
     }
     public function logoutClient ()
     {

@@ -40,6 +40,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('loai/{id}/delete','LoaiController@destroy')->name('xoaloai');
 
     Route::get('loai/search', 'LoaiController@search')->name('search-category');
+
+    //Don hang
+    Route::get('donhang', 'DonhangController@getOrdersAdmin')->name('danhsachdonhang');
+    Route::get('donhang/{id}/{user}/detail','DonhangController@show')->name('chitietdonhang');
+    Route::get('donhang/trangthai/{id}', 'DonhangController@trangthai')->name('trangthaidonhang');
+    Route::get('donhang/{id}/edit', 'DonhangController@update')->name('capnhattrangthaidonhang');
+
     //thương hiệu nà
     Route::get('thuonghieu', 'ThuonghieuController@index')->name('danhsachthuonghieu');
 
@@ -223,6 +230,7 @@ Route::get('/khach-hang/{username}/cap-nhat','AuthController@edit')->name('suath
 
 Route::post('/khach-hang/{id}/cap-nhat', 'AuthController@update')->name('capnhatthongtintaikhoan');
 
+Route::post('/khach-hang/{username}/cap-nhat-mat-khau', 'AuthController@updatepassword')->name('capnhatmatkhau');
 //Đơn hàng của khách
 Route::get('don-hang','DonhangController@getOrders')->name('get-orders');
 
