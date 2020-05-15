@@ -25,7 +25,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Tổng doanh thu</span>
-          <span class="info-box-number">90<small>%</small></span>
+          <span class="info-box-number">{{ number_format($countTT) }} VND </span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -38,7 +38,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">ĐH chưa duyệt</span>
-          {{-- <span class="info-box-number">{{$countDH}}</span> --}}
+          <span class="info-box-number">{{$countDHCD}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -144,10 +144,10 @@
       </div>
     </div>
           <!-- /.card -->
-    <div class="col-ld-12">
+    <div class="col-lg-6">
       <div class="card card-danger">
         <div class="card-header">
-          <h3 class="card-title">Donut Chart</h3>
+          <h3 class="card-title">Doanh thu theo loại sản phẩm</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -156,7 +156,7 @@
           </div>
         </div>
         <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-          <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 532px;" width="1064" height="500" class="chartjs-render-monitor"></canvas>
+          <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 661px;" width="661" height="250" class="chartjs-render-monitor"></canvas>
         </div>
         <!-- /.card-body -->
       </div>

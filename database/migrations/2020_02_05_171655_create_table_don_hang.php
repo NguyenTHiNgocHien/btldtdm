@@ -15,6 +15,7 @@ class CreateTableDonhang extends Migration
     {
         Schema::create('donhang', function (Blueprint $table) {
             $table->bigIncrements('dh_id');
+            $table->integer('dh_tongtien');
             $table->integer('dh_madon');
             $table->string('dh_nguoinhan');
             $table->string('dh_noinhan');

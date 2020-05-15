@@ -40,6 +40,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('loai/{id}/delete','LoaiController@destroy')->name('xoaloai');
 
     Route::get('loai/search', 'LoaiController@search')->name('search-category');
+
+    //Don hang
+    Route::get('donhang', 'DonhangController@getOrdersAdmin')->name('danhsachdonhang');
+    Route::get('donhang/{id}/{user}/detail','DonhangController@show')->name('chitietdonhang');
+    Route::get('donhang/trangthai/{id}', 'DonhangController@trangthai')->name('trangthaidonhang');
+    Route::get('donhang/{id}/edit', 'DonhangController@update')->name('capnhattrangthaidonhang');
+
     //thương hiệu nà
     Route::get('thuonghieu', 'ThuonghieuController@index')->name('danhsachthuonghieu');
 
