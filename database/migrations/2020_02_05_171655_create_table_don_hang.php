@@ -21,6 +21,7 @@ class CreateTableDonhang extends Migration
             $table->string('dh_thoigiandathang');
             $table->string('dh_thoigiannhanhang')->nullable();
             $table->integer('dh_trangthai')->default(1);
+            $table->integer('dh_tongtien');
             $table->integer('dh_quatrinhvanchuyen')->default(1);
             $table->bigInteger('kh_id')->unsigned();
             $table->foreign('kh_id')->references('kh_id')->on('khachhang')->onDelete('CASCADE')->onUpdate('CASCADE');
@@ -30,7 +31,7 @@ class CreateTableDonhang extends Migration
             $table->foreign('httt_id')->references('httt_id')->on('hinhthucthanhtoan');
             $table->timestamps();
         });
-    }
+    }   
 
     /**
      * Reverse the migrations.

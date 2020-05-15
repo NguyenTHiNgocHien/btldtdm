@@ -40,7 +40,7 @@ class KhuyenmaiVoucherController extends Controller
             [
                 'km_ten' => $request->km_ten,
                 'km_noidung' => $request->km_noidung,
-                'km_giatri' => null,
+                'km_giatri' => $request->km_giatri,
                 'km_batdau' => $request->km_batdau,
                 'km_ketthuc' => $request->km_ketthuc,
                 'km_trangthai' => 1
@@ -48,21 +48,23 @@ class KhuyenmaiVoucherController extends Controller
         );
 
         //insert get id vouchers
-        $voucher = DB::table('vouchers')->inserGetId(
+        $voucher = DB::table('vouchers')->insertGetId(
             [
                 'vc_code' => $request->vc_code,
-                'vc_ngaybatdau' => null,
-                'vc_ngayketthuc' => null,
+                'vc_ngaybatdau' => $request->km_batdau,
+                'vc_ngayketthuc' => $request->km_ketthuc,
                 'vc_trangthai' => 1
             ]
         );
 
         $ctl = DB::table('kmvouchers')->insert([
-            // 'km_id' => $lo,
-            'vc_id' => $request->id_sp,
-            'km_giatri' => $request->dongia,
-            'km_soluong' => $request->soluong,
+            'km_id' => $khuyenmai,
+            'vc_id' => $voucher,
+            'kmvc_giatri' => $request->km_giatri,
+            'kmvc_soluong' => $request->km_soluong,
         ]);
+            
+        return redirect()->back();
     }
 
     /**

@@ -68,35 +68,35 @@
           </button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="">
+          <form method="POST" action="{{ route('add-voucher') }}">
             @csrf
             <div class="form-group">
               <label  >Tên khuyến mãi</label>
-              <input name="tenCD" type="text" class="form-control" placeholder="Tên khuyến mãi . . . ">
+              <input name="km_ten" type="text" class="form-control" placeholder="Tên khuyến mãi . . . ">
             </div>
             <div class="form-group">
                 <label  >Nội dung khuyến mãi</label>
-                <textarea name="" class="form-control" cols="20" rows="4"></textarea>
+                <textarea name="km_noidung" class="form-control" cols="20" rows="4"></textarea>
               </div>
               <div class="form-group">
                 <label  >Mã voucher</label>
-                <input name="tenCD" type="text" class="form-control" placeholder="Mã voucher ">
+                <input name="vc_code" type="text" class="form-control" placeholder="Mã voucher ">
               </div>
               <div class="form-group">
                 <label  >Số lượng voucher</label>
-                <input name="tenCD" type="number" class="form-control">
+                <input name="km_soluong" type="number" class="form-control">
               </div>
               <div class="form-group">
                 <label  >Giá trị voucher</label>
-                <input name="tenCD" type="number" class="form-control">
+                <input name="km_giatri" type="number" class="form-control">
               </div>
               <div class="form-group">
                 <label  >Ngày bắt đầu</label>
-                <input name="tenCD" type="date" class="form-control">
+                <input name="km_batdau" type="date" class="form-control">
               </div>
               <div class="form-group">
                 <label  >Ngày kết thúc</label>
-                <input name="tenCD" type="date" class="form-control">
+                <input name="km_ketthuc" type="date" class="form-control">
               </div>
             <button type="submit" class="btn btn-primary" id="add">Thêm</button>
           </form>

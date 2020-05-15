@@ -22,6 +22,7 @@ class VNPayController extends Controller
                 'dh_madon' => $madon,
                 'dh_nguoinhan' => $username->kh_hoten,
                 'dh_noinhan' => $username->kh_diachi,
+                'dh_tongtien' => Cart::getTotal(),
                 'dh_thoigiandathang' => $now,
                 'kh_id' => $username->kh_id,
                 'htvc_id' => 1,
