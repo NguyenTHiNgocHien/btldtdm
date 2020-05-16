@@ -56,13 +56,6 @@
 </head>
 
 <body class="home1">
-        @if (Session::has('username'))
-        <div class="">
-            <a href="{{ route('admin') }}" style="margin-left: 20px;"><i class="fa fa-reply"></i> Quay về trang admin</a>
-            <a href="{{ route('dangxuat') }}" style="float: right; margin-right: 20px;">Đăng xuất</a>
-        </div>
-        @endif
-        
     <!-- header -->
     <div class="header">
         <div class="header-top">

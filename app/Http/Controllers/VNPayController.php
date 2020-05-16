@@ -35,7 +35,8 @@ class VNPayController extends Controller
             DB::table('chitietdonhang')->insert([
                 'sp_id' => $value->id,
                 'dh_id' => $hoadon,
-                
+                'sp_dongia' => $value->price,
+                'sp_soluong' => $value->qquantity
             ]);
         }
 

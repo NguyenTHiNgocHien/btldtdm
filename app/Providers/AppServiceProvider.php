@@ -31,7 +31,9 @@ class AppServiceProvider extends ServiceProvider
         $loai = DB::table('loai')->get();
         $demloai = DB::table('loai')->count();
         $congdung = DB::table('congdung')->get();
-
+        View::share('loai', $loai); // <= Truyền dữ liệu
+        View::share('congdung', $congdung);
+        View::share('demloai', $demloai);
         // $countCart = Cart::getContent()->count();
         // View::share('countCart',$countCart);
         // $total = Cart::getTotal();
@@ -55,9 +57,7 @@ class AppServiceProvider extends ServiceProvider
         }); 
 
 
-        View::share('loai', $loai); // <= Truyền dữ liệu
-        View::share('congdung', $congdung);
-        View::share('demloai', $demloai);
+        
             
         Schema::defaultStringLength(191);
     }

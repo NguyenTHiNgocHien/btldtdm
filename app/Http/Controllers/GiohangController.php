@@ -94,7 +94,9 @@ class GiohangController extends Controller
                 # code...
                 return redirect()->route('vnpay');
                 break;
-            
+            case 'shipcod':
+                return redirect()->route('');
+
             default:
                 # code...
                 break;

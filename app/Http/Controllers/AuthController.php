@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         if (Auth::guard('nhanvien')->attempt($arr, true))
         {
-            $taikhoan = Nhanvien::where('username', '=' , $request->username)->orWhere('password', '=', $request->password)->first();
+            $taikhoan = Nhanvien::where('username', '=' , $request->username)->where('password', '=', $request->password)->first();
             
                 // $success = Session::put('username', $taikhoan->username);
                 $quyen_ten=\Auth::guard('nhanvien')->user()->load('quyen')->quyen->q_ten;
@@ -58,10 +58,7 @@ class AuthController extends Controller
                     //xai auth
                     $nv_id = \Auth::guard('nhanvien')->user()->nv_id;
                     $dataNV = Nhanvien::where('nv_id','=', $nv_id)->first();
-                    Session::put('username', $taikhoan->username);
-                    // View::share('dataNV',$dataNV);
                     return redirect()->route('admin');
-                    // return view()->share('dataNV', $dataNV);
                 }
                 else{
                     return (123);
