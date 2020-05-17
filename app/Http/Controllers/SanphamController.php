@@ -227,7 +227,7 @@ class SanphamController extends Controller
                             'cd_id' => $request->congdung,
                             'cdp_id' => $request->congdungphu,
                             'xx_id' =>$request->xuatxu,
-                            'updated_at' => $now,
+                            'updated_at' => $now
                         ]
                     );
 

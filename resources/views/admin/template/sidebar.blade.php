@@ -218,6 +218,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('danhsachngoaite') }}" class="nav-link ">
+              <i class="nav-icon fa fa-sticky-note"></i>
+              <p>
+                Ngoại tệ
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

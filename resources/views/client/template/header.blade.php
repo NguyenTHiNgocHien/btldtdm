@@ -80,8 +80,21 @@
                                     </li>
                                 @endif
                                 
+                                    <li class="toggle">
+                                        
+                                        <span>Ngoại tệ</span>
+                                        <select style="color: black">
+                                            @foreach ($ngoaite as $item => $value)
+                                            <a href="{{ route('trangchu', ['idngoaite'=>$value->nt_id]) }}" class="btn btn-primary"><option style="color: black">{{$value->nt_ten}}</option></a>
+                                            @endforeach
+                                        </select>
+                                        
+                                    </li>
+                                
                             </ul>
+                           
                         </div>
+                         
                     </div>
                 </div>
             </div>
