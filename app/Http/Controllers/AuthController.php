@@ -45,7 +45,7 @@ class AuthController extends Controller
         ];
 
         //ADMIN cũng là nhân viên
-
+        // dd(Auth::guard('nhanvien')->attempt($arr, true));
         if (Auth::guard('nhanvien')->attempt($arr, true))
         {
             $taikhoan = Nhanvien::where('username', '=' , $request->username)->where('password', '=', $request->password)->first();

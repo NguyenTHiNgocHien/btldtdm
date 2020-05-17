@@ -35,11 +35,13 @@ class Nhanvien extends Authenticatable
     protected $hidden = [
         'password','remember_token'
     ];
-public function quyen()
-{
-    return $this->belongsTo(Quyen::class, 'q_id','q_id');
-}
-    //table vậy đúng hk
-    //làm g
-    //làm sao phân quyền được vd như ad min vs nv
+
+    
+    public function quyen()
+    {
+        return $this->belongsTo(Quyen::class, 'q_id','q_id');
+    }
+        //table vậy đúng hk
+        //làm g
+        //làm sao phân quyền được vd như ad min vs nv
 }
