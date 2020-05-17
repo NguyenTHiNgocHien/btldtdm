@@ -88,7 +88,6 @@ class LoaiController extends Controller
     {
         $loai = DB::table('loai')->where('l_id', $id)->first();
         return view('admin.loaisanpham.edit', compact('loai'));
-
     }
  
     /**

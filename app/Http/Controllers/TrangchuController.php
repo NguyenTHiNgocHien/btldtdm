@@ -24,12 +24,14 @@ class TrangchuController extends Controller
             $spdaxem = DB::table('sanpham')->whereIn('sp_id',$products_viewed)->get();
             return view('client.index',compact(['sanphammoi','flashsale','banner','spdaxem','thuonghieu']));
         }
+        $ngoaite = DB::table('ngoaite')->get();
+       
         
         
         // dd($products_viewed);
         // dd($spdaxem);
         
-        return view('client.index',compact(['sanphammoi','flashsale','banner','thuonghieu']));
+        return view('client.index',compact(['sanphammoi','flashsale','banner','thuonghieu','ngoaite']));
     }
 
     public function getCategory ($idCategory)
@@ -111,4 +113,6 @@ class TrangchuController extends Controller
         $banner = DB::table('banner')->where('bn_id','=',$idBanner)->first();
         return view('client.banner',compact('banner'));
     }
+
+    
 }
