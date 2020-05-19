@@ -81,14 +81,19 @@
                                 @endif
                                 
                                     <li class="toggle">
-                                        
-                                        <span>Ngoại tệ</span>
-                                        <select style="color: black">
-                                            @foreach ($ngoaite as $item => $value)
-                                            <a href="{{ route('trangchu', ['idngoaite'=>$value->nt_id]) }}" class="btn btn-primary"><option style="color: black">{{$value->nt_ten}}</option></a>
-                                            @endforeach
-                                        </select>
-                                        
+                                        <span>
+                                            @if (Session::has('ngoaite'))
+                                                {{ Session::get('ngoaite') }}
+                                            @else
+                                                VNĐ
+                                            @endif
+                                        </span> <i class="fa fa-angle-down"></i>
+                                        <ul>
+                                                <li><a href="{{ route('doingoaite', ['ngoaite'=> 0]) }}">VNĐ</a></li>
+                                                @foreach ($ngoaite as $item => $value)
+                                                    <li><a href="{{ route('doingoaite', ['ngoaite'=> $value->nt_id]) }}">{{$value->nt_ten}}</a></li>
+                                                @endforeach
+                                        </ul>
                                     </li>
                                 
                             </ul>
@@ -130,14 +135,26 @@
                                         <div class="product-info">
                                             <h5>{{ $item->name }} X {{ $item->quantity }}</h5>
                                             <div class="price">
-                                                {{ number_format($item->price) }}
+                                                @if (Session::has('ngoaite'))
+                                                    {{ number_format($item->price/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                                @else
+                                                    {{ number_format($item->price) }} VND
+                                                @endif
+                                                
                                                 {{-- <del> $399 </del> $259 --}}
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
 								<div class="order-total">
-									<h5 class="title">Tổng tiền:<span class="amount">{{ number_format($totalPrice) }}</span></h5>
+									<h5 class="title">Tổng tiền:<span class="amount">
+                                        @if (Session::has('ngoaite'))
+                                            {{ number_format($totalPrice/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                        @else
+                                            {{ number_format($totalPrice) }} VND
+                                        @endif
+                                            </span>
+                                        </h5>
 								</div>
                                 
                                 @if ($total == 0)

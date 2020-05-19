@@ -19,7 +19,7 @@ class CreateTableChiTietDonHang extends Migration
             
             $table->bigInteger('sp_id')->unsigned();
             $table->integer('sp_dongia');
-            $table->integer('sp_soluong');
+            $table->integer('sp_soluongsp');
             $table->foreign('sp_id')->references('sp_id')->on('sanpham')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->bigInteger('dh_id')->unsigned();
             $table->foreign('dh_id')->references('dh_id')->on('donhang')->onDelete('CASCADE')->onUpdate('CASCADE');

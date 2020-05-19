@@ -44,14 +44,21 @@
                                     </ul>
                                 </div>
                                 <div class="price">
-                                    @if (number_format($value->sp_giakhuyenmai) == 0)
-													{{ number_format($value->sp_giaban) }} đ
-												@else
-												
-												<del style="color: red"> {{ number_format($value->sp_giaban) }}đ </del>
-												<br>
-												{{ number_format($value->sp_giakhuyenmai) }}đ
-												@endif
+                                    @if (Session::has('ngoaite'))
+                                        @if (number_format($value->sp_giakhuyenmai) == 0)
+                                            {{ number_format($value->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                        @else
+                                            <p style="text-decoration: line-through">{{ number_format($value->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}</p>
+                                            {{ number_format($value->sp_giakhuyenmai/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                        @endif
+                                    @else
+                                        @if (number_format($value->sp_giakhuyenmai) == 0)
+                                            {{ number_format($value->sp_giaban) }} VNĐ
+                                        @else
+                                            <p style="text-decoration: line-through">{{ number_format($value->sp_giaban) }} đ</p>
+                                            {{ number_format($value->sp_giakhuyenmai) }} VNĐ
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -85,14 +92,21 @@
                                     </ul>
                                 </div>
                                 <div class="price">
+                                    @if (Session::has('ngoaite'))
                                     @if (number_format($value->sp_giakhuyenmai) == 0)
-                                        {{ number_format($value->sp_giaban) }} đ
+                                        {{ number_format($value->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
                                     @else
-                                    
-                                    <del style="color: red"> {{ number_format($value->sp_giaban) }}đ </del>
-                                    <br>
-                                    {{ number_format($value->sp_giakhuyenmai) }}đ
+                                        <p style="text-decoration: line-through">{{ number_format($value->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}</p>
+                                        {{ number_format($value->sp_giakhuyenmai/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
                                     @endif
+                                @else
+                                    @if (number_format($value->sp_giakhuyenmai) == 0)
+                                        {{ number_format($value->sp_giaban) }} VNĐ
+                                    @else
+                                        <p style="text-decoration: line-through">{{ number_format($value->sp_giaban) }} đ</p>
+                                        {{ number_format($value->sp_giakhuyenmai) }} VNĐ
+                                    @endif
+                                @endif
                                 </div>
                             </div>
                         </div>
@@ -118,13 +132,20 @@
                         @foreach ($spdaxem as $item)
                         <div class="col-md-4 col-sm-6">
                             <div class="single-latest-product margin-bottom-30px">
-                                <span class="price-label">@if (number_format($item->sp_giakhuyenmai) == 0)
-                                    {{ number_format($item->sp_giaban) }} đ
+                                <span class="price-label">@if (Session::has('ngoaite'))
+                                    @if (number_format($item->sp_giakhuyenmai) == 0)
+                                        {{ number_format($item->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                    @else
+                                        <p style="text-decoration: line-through">{{ number_format($item->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}</p>
+                                        {{ number_format($item->sp_giakhuyenmai/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                    @endif
                                 @else
-                                
-                                <del style="color: red"> {{ number_format($item->sp_giaban) }}đ </del>
-                                <br>
-                                {{ number_format($item->sp_giakhuyenmai) }}đ
+                                    @if (number_format($item->sp_giakhuyenmai) == 0)
+                                        {{ number_format($item->sp_giaban) }} VNĐ
+                                    @else
+                                        <p style="text-decoration: line-through">{{ number_format($item->sp_giaban) }} đ</p>
+                                        {{ number_format($item->sp_giakhuyenmai) }} VNĐ
+                                    @endif
                                 @endif</span>
                                 <img class="img-responsive" src="{{ asset('upload/sanpham/'.$item->sp_anhdaidien) }}" alt="Shoe">
                                 <h4>{{ $item->sp_ten }}</h4>

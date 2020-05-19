@@ -72,8 +72,26 @@
                 <td id="dh_noinhan">{{$value->dh_noinhan}}</td>
                 <td id="dh_thoigiandathang">{{$value->dh_thoigiandathang}}</td>
                 <td id="dh_thoigiannhanhang">{{$value->dh_thoigiannhanhang}}</td>
-                <td id="dh_trangthai">{{$value->dh_trangthai}}</td>
-                <td id="dh_quatrinhvanchuyen">{{$value->dh_quatrinhvanchuyen}}</td>
+                <td id="dh_trangthai">
+                  @if ($value->dh_trangthai == 2)
+                  <span class="badge bg-yellow">Đang xử lý</span>
+                  @elseif ($value->dh_trangthai == 1)
+                  <span class="badge bg-yellow">Chưa duyệt</span>
+                  @elseif ($value->dh_trangthai == 3)
+                  <span class="badge bg-green">Đã duyệt</span>
+                  @else
+                  <span class="badge bg-red">Hủy đơn</span>
+                  @endif
+                </td>
+                <td id="dh_quatrinhvanchuyen">         
+                  @if ($value->dh_quatrinhvanchuyen == 1)
+                  <span class="badge bg-yellow">Đang lưu kho</span>
+                  @elseif ($value->dh_quatrinhvanchuyen == 2)
+                  <span class="badge bg-yellow">Đang vận chuyển</span>
+                  @else
+                  <span class="badge bg-green">Đã nhận hàng</span>
+                  @endif         
+               </td>
                 <td>
                   
                   <a href="{{ route('chitietdonhang', ['id'=>$value->dh_madon,'user'=>$value->dh_nguoinhan]) }}" class="btn btn-default">Chi tiết</a>

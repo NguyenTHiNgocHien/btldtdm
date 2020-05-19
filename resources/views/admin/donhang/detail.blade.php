@@ -56,7 +56,7 @@
               @elseif ($donhang->dh_trangthai == 1)
                 <span class="badge bg-yellow">Chưa duyệt</span>
               @elseif ($donhang->dh_trangthai == 3)
-                <span class="badge bg-green">Đã duyệt</span>
+                <span class="badge bg-green">Đã thanh toán</span>
               @else
                 <span class="badge bg-red">Hủy đơn</span>
               @endif
@@ -66,15 +66,10 @@
                 <a href="{{ route('conhang', ['id'=> $sanpham->sp_id ]) }}" class="btn-xs btn-danger">Hết hàng</a>
               @endif --}}
             </p> 
-            <form action="{{ route('trangthaidonhang', ['id'=> $donhang->dh_id]) }}" method="get">
+            <form action="{{ route('trangthaidonhang', ['id'=> $donhang->dh_id,'trangthaihientai' => $donhang->dh_trangthai]) }}" method="get">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Thay đổi trạng thái đơn hàng</label>
                 <select class="form-control" name="trangthai">
-                  <option value="1" 
-                  @if ($donhang->dh_trangthai == 1)
-                    selected
-                  @endif
-                  >Chưa duyệt</option>
                   <option value="2"
                   @if ($donhang->dh_trangthai == 2)
                     selected
@@ -163,6 +158,7 @@
                 <th>Tên sản phẩm</th>
                 <th>Ảnh sản phẩm</th>
                 <th>Đơn giá</th>
+                <th>Số lượng</th>
                 {{-- <th>Số lượng đặt</th> --}}
               </tr>
               </thead>
@@ -175,7 +171,8 @@
                   <td>
                       <img src="{{ asset('upload/sanpham') }}/{{$value->sp_anhdaidien}}" width="200px" height="200px">
                   </td>
-                  <td>{{$value->sp_giaban}}</td>
+                  <td>{{ number_format($value->sp_giaban)}} VND</td>
+                  <td>{{ $value->sp_soluongsp }}</td>
                   {{-- <td>{{$stt++}}</td> --}}
                 </tr>
                 @endforeach

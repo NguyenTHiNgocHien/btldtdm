@@ -71,7 +71,7 @@
                 <td>{{$stt++}}</td>
                 
                 <td>{{$value->nt_ten}}</td>
-                <td>{{$value->nt_tigia}}</td>
+                <td>1 {{$value->nt_ten}} = {{ number_format($value->nt_tigia)}} VNĐ</td>
                 <td>
                   <a href="{{ route('suangoaite', ['id'=>$value->nt_id]) }}" class="btn btn-primary">Sửa</a>
                   <a href="{{ route('xoangoaite', ['id'=>$value->nt_id]) }}" class="btn btn-danger">Xóa</a>

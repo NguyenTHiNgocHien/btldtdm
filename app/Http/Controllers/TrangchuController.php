@@ -16,6 +16,7 @@ class TrangchuController extends Controller
         $thuonghieu = DB::table('thuonghieu')->get();
         //Đây là cái mảng nè
         $products_viewed = session()->get('products.recently_viewed');
+        
         // $request->session()->forget('products.recently_viewed');
         // $count_products = count($products);
         if($products_viewed)
@@ -23,14 +24,13 @@ class TrangchuController extends Controller
             $spdaxem = DB::table('sanpham')->whereIn('sp_id',$products_viewed)->get();
             return view('client.index',compact(['sanphammoi','flashsale','banner','spdaxem','thuonghieu']));
         }
-        $ngoaite = DB::table('ngoaite')->get();
        
         
         
         // dd($products_viewed);
         // dd($spdaxem);
         
-        return view('client.index',compact(['sanphammoi','flashsale','banner','thuonghieu','ngoaite']));
+        return view('client.index',compact(['sanphammoi','flashsale','banner','thuonghieu']));
     }
 
     public function getCategory ($idCategory)

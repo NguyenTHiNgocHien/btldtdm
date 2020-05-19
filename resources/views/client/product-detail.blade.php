@@ -63,12 +63,21 @@
                             </ul>
                             <span>(24 reviews)</span>
                         </div>
-                        @if ($product->sp_giakhuyenmai == '')
-                            <span class="amount">{{ number_format($product->sp_giaban) }}đ</span>
-                        @else
-                            <span class="amount off">{{ number_format($product->sp_giaban) }}đ</span>
-                            <span class="amount">{{ number_format($product->sp_giakhuyenmai) }}đ</span>
-                        @endif
+                        @if (Session::has('ngoaite'))
+                                            @if (number_format($product->sp_giakhuyenmai) == 0)
+                                                {{ number_format($product->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                            @else
+                                                <p style="text-decoration: line-through">{{ number_format($product->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}</p>
+                                                {{ number_format($product->sp_giakhuyenmai/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                            @endif
+                                        @else
+                                            @if (number_format($product->sp_giakhuyenmai) == 0)
+                                                {{ number_format($product->sp_giaban) }} VNĐ
+                                            @else
+                                                <p style="text-decoration: line-through">{{ number_format($product->sp_giaban) }} đ</p>
+                                                {{ number_format($product->sp_giakhuyenmai) }} VNĐ
+                                            @endif
+                                        @endif
                         <br>
                         <span class="sku">Còn {{ $product->sp_soluong }} sản phẩm trong kho</span>
                         

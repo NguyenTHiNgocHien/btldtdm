@@ -128,5 +128,18 @@ class NgoaiteController extends Controller
         return redirect()->route('danhsachngoaite');
     }
 
-    
+    public function doingoaite($ngoaite) {
+        if ($ngoaite == 0) {
+            # code...
+            Session::forget('ngoaite');
+            Session::forget('tigia');
+            return redirect()->back();
+        } else {
+            # code...
+            $ngoaite = DB::table('ngoaite')->where('nt_id','=',$ngoaite)->first();
+            Session::put('ngoaite',$ngoaite->nt_ten);
+            Session::put('tigia',$ngoaite->nt_tigia);
+            return redirect()->back();
+        }
+    }
 }

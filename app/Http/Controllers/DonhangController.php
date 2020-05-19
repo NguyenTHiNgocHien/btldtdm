@@ -49,14 +49,67 @@ class DonhangController extends Controller
 
     }
 
-    public function trangthai($id,  Request $request)
+    public function trangthai($id, $trangthaihientai, Request $request)
     {
         $donhang = DB::table('donhang')->where('dh_id',$id)->first();
         $trangthai = $request->trangthai;
         $donhang1 = DB::table('donhang')->join('khachhang','khachhang.kh_id','=','donhang.kh_id')->where('dh_madon','=',$id)->first();
         DB::table('donhang')->where('dh_id',$id)->update(['dh_trangthai' => $trangthai]);
-        $success = Session::put('alert-info', 'Cập nhật trạng thái thành công');
-        return redirect()->back();
+        $donhang2 = DB::table('chitietdonhang')
+        ->join('donhang','donhang.dh_id','=','chitietdonhang.dh_id')
+        ->where('dh_madon','=',$donhang->dh_madon)
+        ->get();
+
+
+        //Trạng thái đã thanh toán
+        if($trangthaihientai == 3 && $trangthai != 3){
+            foreach ($donhang2 as $key => $value1) {
+                # code...
+                $chitietlo = DB::table('chitietlo')->where('sp_id','=',$value1->sp_id)->get();
+                // dd($chitietlo);
+                foreach ($chitietlo as $key => $value2) {
+                    # code...
+                    $chitietloedit = DB::table('chitietlo')->where('sp_id','=', $value2->sp_id)->update([
+                        'ctl_soluong' => $value2->ctl_soluong + $value1->sp_soluongsp
+                    ]);
+                }
+            }
+            $success = Session::put('alert-info', 'Cập nhật trạng thái thành công');
+            return redirect()->back();
+        }
+        //Thanh toán thành công thì trừ số lượng đi
+        else if($trangthai == 3)
+        {
+            foreach ($donhang2 as $key => $value1) {
+                # code...
+                $chitietlo = DB::table('chitietlo')->where('sp_id','=',$value1->sp_id)->get();
+                // dd($chitietlo);
+                foreach ($chitietlo as $key => $value2) {
+                    # code...
+                    $chitietloedit = DB::table('chitietlo')->where('sp_id','=', $value2->sp_id)->update([
+                        'ctl_soluong' => $value2->ctl_soluong - $value1->sp_soluongsp
+                    ]);
+                    
+                }
+            }
+            $success = Session::put('alert-info', 'Cập nhật trạng thái thành công');
+            return redirect()->back();
+            // dd('thành công');
+            // dd($chitietlo);
+    
+            
+        }
+        else if($trangthai == $trangthaihientai){
+            $success = Session::put('alert-info', 'Cập nhật trạng thái thành công');
+            return redirect()->back();
+        }
+        //Còn lại thì cộng số lượng lại
+        else {
+            
+            $success = Session::put('alert-info', 'Cập nhật trạng thái thành công');
+            return redirect()->back();
+        }
+        
     }
 
     public function update($id)

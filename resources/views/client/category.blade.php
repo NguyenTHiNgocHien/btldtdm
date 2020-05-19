@@ -71,11 +71,20 @@
                                         <span> (24 lượt mua) </span>
                                     </div>
                                     <div class="price">
-                                        @if (number_format($item->sp_giakhuyenmai) == 0)
-                                            {{ number_format($item->sp_giaban) }} đ
+                                        @if (Session::has('ngoaite'))
+                                            @if (number_format($item->sp_giakhuyenmai) == 0)
+                                                {{ number_format($item->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                            @else
+                                                <p style="text-decoration: line-through">{{ number_format($item->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}</p>
+                                                {{ number_format($item->sp_giakhuyenmai/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                            @endif
                                         @else
-                                            <p style="text-decoration: line-through">{{ number_format($item->sp_giaban) }} đ</p>
-                                            {{ number_format($item->sp_giakhuyenmai) }} đ
+                                            @if (number_format($item->sp_giakhuyenmai) == 0)
+                                                {{ number_format($item->sp_giaban) }} VNĐ
+                                            @else
+                                                <p style="text-decoration: line-through">{{ number_format($item->sp_giaban) }} đ</p>
+                                                {{ number_format($item->sp_giakhuyenmai) }} VNĐ
+                                            @endif
                                         @endif
                                     </div>
                                     <div class="link-button">
@@ -143,7 +152,21 @@
                                         </ul>
                                     </div>
                                     <div class="price">
-                                        {{ number_format($item->sp_giaban)  }}
+                                        @if (Session::has('ngoaite'))
+                                            @if (number_format($item->sp_giakhuyenmai) == 0)
+                                                {{ number_format($item->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                            @else
+                                                <p style="text-decoration: line-through">{{ number_format($item->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}</p>
+                                                {{ number_format($item->sp_giakhuyenmai/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                            @endif
+                                        @else
+                                            @if (number_format($item->sp_giakhuyenmai) == 0)
+                                                {{ number_format($item->sp_giaban) }} VNĐ
+                                            @else
+                                                <p style="text-decoration: line-through">{{ number_format($item->sp_giaban) }} đ</p>
+                                                {{ number_format($item->sp_giakhuyenmai) }} VNĐ
+                                            @endif
+                                        @endif
                                     </div>
                                 </div>
                             </div>	
@@ -180,8 +203,21 @@
                                         </ul>
                                     </div>
                                     <div class="price">
-                                        <p style="text-decoration: line-through">{{ number_format($item->sp_giaban) }} đ</p>
-                                        <p style="color: red;">Giá khuyễn mãi: <p>{{ number_format($item->sp_giakhuyenmai) }} đ</p>
+                                        @if (Session::has('ngoaite'))
+                                            @if (number_format($item->sp_giakhuyenmai) == 0)
+                                                {{ number_format($item->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                            @else
+                                                <p style="text-decoration: line-through">{{ number_format($item->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}</p>
+                                                {{ number_format($item->sp_giakhuyenmai/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
+                                            @endif
+                                        @else
+                                            @if (number_format($item->sp_giakhuyenmai) == 0)
+                                                {{ number_format($item->sp_giaban) }} VNĐ
+                                            @else
+                                                <p style="text-decoration: line-through">{{ number_format($item->sp_giaban) }} đ</p>
+                                                {{ number_format($item->sp_giakhuyenmai) }} VNĐ
+                                            @endif
+                                        @endif
                                     </div>
                                 </div>
                             </div>	

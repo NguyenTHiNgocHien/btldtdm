@@ -42,19 +42,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('loai/search', 'LoaiController@search')->name('search-category');
 
 
-    //Các route này của Ngoại tệ
-    Route::get('ngoaite', 'NgoaiteController@index')->name('danhsachngoaite');
-    Route::post('ngoaite','NgoaiteController@store')->name('themngoaite');
-    Route::get('ngoaite/{id}/edit','NgoaiteController@edit')->name('suangoaite');
-    Route::post('ngoaite/{id}/edit', 'NgoaiteController@update')->name('capnhatngoaite');  
-    Route::get('ngoaite/{id}/delete','NgoaiteController@destroy')->name('xoangoaite');  
-
-    //Don hang
-    Route::get('donhang', 'DonhangController@getOrdersAdmin')->name('danhsachdonhang');
-    Route::get('donhang/{id}/{user}/detail','DonhangController@show')->name('chitietdonhang');
-    Route::get('donhang/trangthai/{id}', 'DonhangController@trangthai')->name('trangthaidonhang');
-    Route::get('donhang/{id}/edit', 'DonhangController@update')->name('capnhattrangthaidonhang');
-
     //thương hiệu nà
     Route::get('thuonghieu', 'ThuonghieuController@index')->name('danhsachthuonghieu');
 
@@ -183,6 +170,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
 
 
+    //Các route này của Ngoại tệ
+    Route::get('ngoaite', 'NgoaiteController@index')->name('danhsachngoaite');
+    Route::post('ngoaite','NgoaiteController@store')->name('themngoaite');
+    Route::get('ngoaite/{id}/edit','NgoaiteController@edit')->name('suangoaite');
+    Route::post('ngoaite/{id}/edit', 'NgoaiteController@update')->name('capnhatngoaite');  
+    Route::get('ngoaite/{id}/delete','NgoaiteController@destroy')->name('xoangoaite');  
+
+    //Don hang
+    Route::get('donhang', 'DonhangController@getOrdersAdmin')->name('danhsachdonhang');
+    Route::get('donhang/{id}/{user}/detail','DonhangController@show')->name('chitietdonhang');
+    Route::get('donhang/trangthai/{id}/{trangthaihientai}', 'DonhangController@trangthai')->name('trangthaidonhang');
+    Route::get('donhang/{id}/edit', 'DonhangController@update')->name('capnhattrangthaidonhang');
+
     //Khách hàng
     Route::get('khach-hang','KhachhangController@index')->name('khachhang');
 });
@@ -251,3 +251,6 @@ Route::post('binh-luan/{sanpham}','BinhluanController@comment')->name('comment')
 //Thanh toán
 Route::get('select-method','GiohangController@getMethodCheckout')->name('method-checkout');
 Route::get('VNPay','VNPayController@create')->name('vnpay');
+
+//Ngoại tệ
+Route::get('thay-doi-ngoai-te/{ngoaite}', 'NgoaiteController@doingoaite')->name('doingoaite');

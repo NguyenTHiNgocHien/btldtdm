@@ -219,7 +219,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('danhsachngoaite') }}" class="nav-link ">
+            <a href="{{ route('danhsachngoaite') }}" class="nav-link @if (Request::path() == 'admin/ngoaite')
+            active
+          @endif">
               <i class="nav-icon fa fa-sticky-note"></i>
               <p>
                 Ngoại tệ

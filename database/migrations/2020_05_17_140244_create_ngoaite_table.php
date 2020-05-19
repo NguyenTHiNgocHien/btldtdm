@@ -16,7 +16,7 @@ class CreateNgoaiteTable extends Migration
         Schema::create('ngoaite', function (Blueprint $table) {
             $table->bigIncrements('nt_id');
             $table->string('nt_ten');
-            $table->float('nt_tigia', 4, 2);
+            $table->float('nt_tigia');
             $table->timestamps();
         });
     }
