@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
         return view('admin.index');
     })->name('admin');
 
+
     Route::get('/dang-xuat','AuthController@logoutAdmin')->name('dangxuat');
      Route::get('/', 'ThongkeController@index')->name('admin');
     //Các route này của Loại sản phẩm

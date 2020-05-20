@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use DB;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +20,7 @@ class CheckUser
         // dd(Auth::guard('nhanvien')->check());
         if(Auth::guard('nhanvien')->check())
         {
+            
             return $next($request);
         }
         else

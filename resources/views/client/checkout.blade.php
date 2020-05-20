@@ -90,25 +90,20 @@
 				</div>
 				{{-- comment --}}
 				
-				{{-- <div class="col-md-6">
-					<div class="payment">
-						<h3>Mã giảm giá:</h3>
-						<div class="payment-method">
-							<table>
-								<tbody>
-									<tr class="">
-									</tr>		
-								</tbody>
-							</table>
-							<span>PayPal</span>
-							<p>At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed. More information here.</p>
-							
+				<div class="col-md-6">
+					<form action="" method="get">
+						<div class="payment">
+							<h3>Mã giảm giá:</h3>
+							<div class="payment-method">
+								<span>Nhập mã giảm giá</span>
+								<p><input type="text" placeholder="Nhập mã giảm giá"></p>							
+							</div>
+							<div class="cupon-code text-right margin-top-20px">
+								<input type="submit" name="checkout" value="Áp dụng" class="btn-black calculate">
+							</div>
 						</div>
-						<div class="cupon-code text-right margin-top-20px">
-							<input type="submit" name="checkout" value="Chọn phương thức" class="btn-black calculate">
-						</div>
-					</div>
-				</div> --}}
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

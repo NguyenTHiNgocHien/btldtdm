@@ -11,10 +11,8 @@ class DonhangController extends Controller
     public function getOrders()
     {
         $user = DB::table('khachhang')->where('username','=',Session::get('kh'))->first();
-        $orders = DB::table('chitietdonhang')
-                ->join('donhang','donhang.dh_id','=','chitietdonhang.dh_id')
+        $orders = DB::table('donhang')
                 ->where('kh_id','=',$user->kh_id)
-                ->distinct('dh_ma')
                 ->get();
         // dd($orders);
         return view('client.orders',compact('orders'));
@@ -66,11 +64,17 @@ class DonhangController extends Controller
             foreach ($donhang2 as $key => $value1) {
                 # code...
                 $chitietlo = DB::table('chitietlo')->where('sp_id','=',$value1->sp_id)->get();
-                // dd($chitietlo);
+                $sanpham = DB::table('sanpham')->where('sp_id','=',$value1->sp_id)->get();
                 foreach ($chitietlo as $key => $value2) {
                     # code...
                     $chitietloedit = DB::table('chitietlo')->where('sp_id','=', $value2->sp_id)->update([
                         'ctl_soluong' => $value2->ctl_soluong + $value1->sp_soluongsp
+                    ]);
+                }
+                foreach ($sanpham as $key => $value3) {
+                    # code...
+                    $sanphamedit = DB::table('sanpham')->where('sp_id','=',$value3->sp_id)->update([
+                        'sp_soluong' => $value3->sp_soluong + $value1->sp_soluongsp
                     ]);
                 }
             }
@@ -89,7 +93,12 @@ class DonhangController extends Controller
                     $chitietloedit = DB::table('chitietlo')->where('sp_id','=', $value2->sp_id)->update([
                         'ctl_soluong' => $value2->ctl_soluong - $value1->sp_soluongsp
                     ]);
-                    
+                }
+                foreach ($sanpham as $key => $value3) {
+                    # code...
+                    $sanphamedit = DB::table('sanpham')->where('sp_id','=',$value3->sp_id)->update([
+                        'sp_soluong' => $value3->sp_soluong - $value1->sp_soluongsp
+                    ]);
                 }
             }
             $success = Session::put('alert-info', 'Cập nhật trạng thái thành công');
