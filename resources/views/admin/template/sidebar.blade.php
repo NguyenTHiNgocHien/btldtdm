@@ -220,7 +220,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('danhsachngoaite') }}" class="nav-link ">
-              <i class="nav-icon fa fa-sticky-note"></i>
+              <i class="fas fa-search-dollar"></i>
               <p>
                 Ngoại tệ
               </p>

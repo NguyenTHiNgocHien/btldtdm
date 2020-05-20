@@ -54,6 +54,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('donhang/{id}/{user}/detail','DonhangController@show')->name('chitietdonhang');
     Route::get('donhang/trangthai/{id}', 'DonhangController@trangthai')->name('trangthaidonhang');
     Route::get('donhang/{id}/edit', 'DonhangController@update')->name('capnhattrangthaidonhang');
+    Route::get('donhang/vanchuyen/{id}', 'DonhangController@vanchuyen')->name('vanchuyendonhang');
+   // Route::get('donhang/{id}/edit', 'DonhangController@capnhatvanchuyen')->name('capnhatvanchuyendonhang');
 
     //thương hiệu nà
     Route::get('thuonghieu', 'ThuonghieuController@index')->name('danhsachthuonghieu');

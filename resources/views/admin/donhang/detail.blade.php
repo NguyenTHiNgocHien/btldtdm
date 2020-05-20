@@ -102,11 +102,6 @@
             <p>Giá gốc: Chưa nhập hàng</p>
             <p><a href="#" data-toggle="modal" data-target="#exampleModal1">Nhập hàng</a> </p>
             @endif --}}
-            <p>Tổng tiền đơn hàng: {{number_format($donhang->dh_tongtien)}} VND</p>
-            <p>Họ tên khách hàng: {{$donhang->dh_nguoinhan}}</p>
-            <p>Nơi nhận: {{$donhang->dh_noinhan}}</p>
-            <p>Thời gian đặt hàng: {{$donhang->dh_thoigiandathang}}</p>
-            <p>Thời gian nhận hàng: {{$donhang->dh_thoigiannhanhang}}</p>
             <p>Quá trình vận chuyển: 
               @if ($donhang->dh_quatrinhvanchuyen == 1)
                 <span class="badge bg-yellow">Đang lưu kho</span>
@@ -116,6 +111,40 @@
                 <span class="badge bg-green">Đã nhận hàng</span>
               @endif
             </p>
+
+            <form action="{{ route('vanchuyendonhang', ['id'=> $donhang->dh_id]) }}" method="get">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Thay đổi vận chuyển đơn hàng</label>
+                <select class="form-control" name="vanchuyen">
+                  <option value="1" 
+                  @if ($donhang->dh_quatrinhvanchuyen == 1)
+                    selected
+                  @endif
+                  >Đang lưu kho</option>
+                  <option value="2"
+                  @if ($donhang->dh_quatrinhvanchuyen == 2)
+                    selected
+                  @endif
+                  >Đang vận chuyển</option>
+                  <option value="3"
+                  @if ($donhang->dh_quatrinhvanchuyen == 2)
+                    selected
+                  @endif
+                  >Đã nhận hàng</option>
+                </select>
+              </div>
+              <button type="submit">Xác nhận</button>
+            </form>
+
+            <p>Tổng tiền đơn hàng: {{number_format($donhang->dh_tongtien)}} VND</p>
+            <p>Họ tên khách hàng: {{$donhang->dh_nguoinhan}}</p>
+            <p>Nơi nhận: {{$donhang->dh_noinhan}}</p>
+            <p>Thời gian đặt hàng: {{$donhang->dh_thoigiandathang}}</p>
+            <p>Thời gian nhận hàng: {{$donhang->dh_thoigiannhanhang}}</p>
+           
+
+            
+
             {{-- @if ($chitietlo)
               <p>Giá gốc: {{number_format($chitietlo->ctl_dongia)}}</p>
             @else
