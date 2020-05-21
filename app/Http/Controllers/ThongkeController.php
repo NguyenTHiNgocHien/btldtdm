@@ -26,7 +26,7 @@ class ThongkeController extends Controller
         //$countDH = DB::table('donhang')->where('dh_trangthai'=='1')->count('dh_id');
         $countKH = DB::table('khachhang')->count();
         $countSP = DB::table('sanpham')->count();
-        $countDHCD = DB::table('donhang')->where('dh_trangthai','=',1)->count();
+        $countDHCD = DB::table('donhang')->where('dh_trangthai','=',3)->count();
         $countTT = DB::table('donhang')->whereMonth('dh_thoigiandathang', Carbon::now())->sum('dh_tongtien');
 
         //$countLSP = DB::table('loai')->count();

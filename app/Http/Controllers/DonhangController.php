@@ -87,7 +87,8 @@ class DonhangController extends Controller
             foreach ($donhang2 as $key => $value1) {
                 # code...
                 $chitietlo = DB::table('chitietlo')->where('sp_id','=',$value1->sp_id)->get();
-                // dd($chitietlo);
+                $sanpham = DB::table('sanpham')->where('sp_id','=',$value1->sp_id)->get();
+                // dd($sanpham);
                 foreach ($chitietlo as $key => $value2) {
                     # code...
                     $chitietloedit = DB::table('chitietlo')->where('sp_id','=', $value2->sp_id)->update([
@@ -136,5 +137,31 @@ class DonhangController extends Controller
         $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
         return redirect()->route('danhsachdonhang');
     } 
+
+    public function vanchuyen($id,  Request $request)
+    {
+        $donhang = DB::table('donhang')->where('dh_id',$id)->first();
+        $vanchuyen = $request->vanchuyen;
+        $donhang1 = DB::table('donhang')->join('khachhang','khachhang.kh_id','=','donhang.kh_id')->where('dh_madon','=',$id)->first();
+        DB::table('donhang')->where('dh_id',$id)->update(['dh_quatrinhvanchuyen' => $vanchuyen]);
+        $success = Session::put('alert-info', 'Cập nhật thành công');
+        return redirect()->back();
+    }
+
+    // public function capnhatvanchuyen($id)
+    // {
+    //     $now = Carbon::now();
+    //     $data = DB::table('donhang')->where('dh_madon',$id)
+    //                 ->update(
+    //                     [
+    //                         'dh_quatrinhvanchuyen' => 3,
+    //                         'updated_at' => $now,
+    //                     ]
+    //                 );
+
+    //     //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
+    //     $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
+    //     return redirect()->route('danhsachdonhang');
+    // } 
 
 }

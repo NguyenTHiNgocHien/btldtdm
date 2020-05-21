@@ -135,16 +135,6 @@
               </p>
             </a>
             <ul class="nav nav-treeview ">
-              <li class="nav-item">
-                <a href="#" class="nav-link 
-                {{-- @if (Request::path() == 'admin/khuyenmai/voucher')
-                  active
-                @endif --}}
-                ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách khuyến mãi</p>
-                </a>
-              </li>
               <li class="nav-item ">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -168,7 +158,7 @@
                   @endif
                 ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tạo voucher</p>
+                  <p>Voucher</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -195,7 +185,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('danhsachdonhang') }}" class="nav-link ">
+            <a href="{{ route('danhsachdonhang') }}" class="nav-link @if (Request::path() == 'admin/donhang')
+            active
+          @endif">
               <i class="nav-icon fa fa-sticky-note"></i>
               <p>
                 Đơn hàng

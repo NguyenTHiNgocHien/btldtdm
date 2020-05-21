@@ -43,6 +43,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('loai/search', 'LoaiController@search')->name('search-category');
 
 
+    //Các route này của Ngoại tệ
+    Route::get('ngoaite', 'NgoaiteController@index')->name('danhsachngoaite');
+    Route::post('ngoaite','NgoaiteController@store')->name('themngoaite');
+    Route::get('ngoaite/{id}/edit','NgoaiteController@edit')->name('suangoaite');
+    Route::post('ngoaite/{id}/edit', 'NgoaiteController@update')->name('capnhatngoaite');  
+    Route::get('ngoaite/{id}/delete','NgoaiteController@destroy')->name('xoangoaite');  
+
+    //Don hang
+    Route::get('donhang', 'DonhangController@getOrdersAdmin')->name('danhsachdonhang');
+    Route::get('donhang/{id}/{user}/detail','DonhangController@show')->name('chitietdonhang');
+    Route::get('donhang/trangthai/{id}', 'DonhangController@trangthai')->name('trangthaidonhang');
+    Route::get('donhang/{id}/edit', 'DonhangController@update')->name('capnhattrangthaidonhang');
+    Route::get('donhang/vanchuyen/{id}', 'DonhangController@vanchuyen')->name('vanchuyendonhang');
+   // Route::get('donhang/{id}/edit', 'DonhangController@capnhatvanchuyen')->name('capnhatvanchuyendonhang');
+
     //thương hiệu nà
     Route::get('thuonghieu', 'ThuonghieuController@index')->name('danhsachthuonghieu');
 

@@ -92,6 +92,19 @@
                   <span class="badge bg-green">Đã nhận hàng</span>
                   @endif         
                </td>
+
+                </td>
+                <td id="dh_quatrinhvanchuyen">
+                
+                @if ($value->dh_quatrinhvanchuyen == 1)
+                <span class="badge bg-yellow">Đang lưu kho</span>
+                @elseif ($value->dh_quatrinhvanchuyen == 2)
+                <span class="badge bg-yellow">Đang vận chuyển</span>
+                @else
+                <span class="badge bg-green">Đã nhận hàng</span>
+                @endif
+                
+                </td>
                 <td>
                   
                   <a href="{{ route('chitietdonhang', ['id'=>$value->dh_madon,'user'=>$value->dh_nguoinhan]) }}" class="btn btn-default">Chi tiết</a>
