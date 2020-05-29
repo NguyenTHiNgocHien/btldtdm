@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Session;
+
 class KhuyenmaiVoucherController extends Controller
 {
     /**
@@ -11,9 +13,29 @@ class KhuyenmaiVoucherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function useVoucher($code){
+        $vccode =  DB::table('kmvouchers')
+            ->join('khuyenmai','khuyenmai.km_id','=','kmvouchers.km_id')
+            ->join('vouchers','vouchers.vc_id','=','kmvouchers.vc_id')
+            ->where('vc_code','=',$code)
+            ->first();
+        if($vccode){
+            Session::put('sotiengiam',$vccode->kmvc_giatri);
+            
+        }
+        else{
+            Session::put('alert','Voucher không tồn tại');
+        }
+    }
+
     public function index()
-    {
-        return view('admin.khuyenmai.voucher');
+    {   
+        $voucher = DB::table('kmvouchers')
+                    ->join('khuyenmai','khuyenmai.km_id','=','kmvouchers.km_id')
+                    ->join('vouchers','vouchers.vc_id','=','kmvouchers.vc_id')
+                    ->get();
+        return view('admin.khuyenmai.voucher',compact('voucher'));
     }
 
     /**

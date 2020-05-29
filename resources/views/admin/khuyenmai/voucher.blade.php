@@ -40,13 +40,34 @@
               <th>STT</th>
               <th>Tên khuyến mãi</th>
               <th>Mã code</th>
-              <th>Ngày tạo</th>
-              <th>Ngày cập nhật</th>
+              <th>Ngày bắt đầu</th>
+              <th>Ngày kết thúc</th>
+              <th>Trạng thái</th>
               <th>Thao tác</th>
             </tr>
           </thead>
           <tbody id="category_table">
-            
+            <?php $stt = 1; ?>
+            @foreach ($voucher as $item)                
+            <tr>
+              <td>{{ $stt++ }}</td>
+              <td>{{ $item->km_ten }}</td>
+              <td>{{ $item->vc_code }}</td>
+              <td>{{ $item->vc_ngaybatdau }}</td>
+              <td>{{ $item->vc_ngayketthuc }}</td>
+              <td>
+                @if ($item->vc_trangthai == 1)
+                    <h5><span class="badge badge-success">Đang diễn ra</span></h5>
+                @else
+                  <span class="badge badge-lg badge-danger">Đã kết thúc</span>
+                @endif
+              </td>
+              <td>
+                <a href="" class="btn btn-primary">Sửa</a>
+                <a href="" class="btn btn-default">Chi tiết</a>
+              </td>
+            </tr>
+            @endforeach  
           </tbody>
           
         </table>

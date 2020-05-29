@@ -49,6 +49,7 @@ class VNPayController extends Controller
         $vnp_TxnRef = $hoadon; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
         $vnp_OrderType = 'billpayment';
+        
         $vnp_Amount =  Cart::getTotal() * 100;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = request()->ip();
