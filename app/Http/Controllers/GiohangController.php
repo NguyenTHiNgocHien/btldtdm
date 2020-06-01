@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use DB;
@@ -94,12 +95,77 @@ class GiohangController extends Controller
                 # code...
                 return redirect()->route('vnpay');
                 break;
+
+            //Ship code
             case 'shipcod':
-                return redirect()->route('');
+                $now = Carbon::now();
+                $username = DB::table('khachhang')->where('username','=',Session::get('kh'))->first();
+                $sanpham = Cart::getContent();
+                
+                $madon = rand(1000,9999);
+
+                $hoadon = DB::table('donhang')->insertGetId(
+                    [
+                        'dh_madon' => $madon,
+                        'dh_nguoinhan' => $username->kh_hoten,
+                        'dh_noinhan' => $username->kh_diachi,
+                        'dh_tongtien' => Cart::getTotal() + 30000,
+                        'dh_thoigiandathang' => $now,
+                        'kh_id' => $username->kh_id,
+                        'htvc_id' => 1,
+                        'httt_id' => 1
+                    ]
+                );
+
+                foreach ($sanpham as $key => $value) {
+                    # code...
+                    DB::table('chitietdonhang')->insert([
+                        'sp_id' => $value->id,
+                        'dh_id' => $hoadon,
+                        'sp_dongia' => $value->price,
+                        'sp_soluongsp' => $value->quantity
+                    ]);
+                }
+
+
+                Cart::clear();
+                return redirect()->route('trangchu');
 
             default:
                 # code...
                 break;
+        }
+    }
+
+
+    public function shipCod (Request $request) {
+        $now = Carbon::now();
+        $username = DB::table('khachhang')->where('username','=',Session::get('kh'))->first();
+        $sanpham = Cart::getContent();
+        
+        $madon = rand(1000,9999);
+
+        $hoadon = DB::table('donhang')->insertGetId(
+            [
+                'dh_madon' => $madon,
+                'dh_nguoinhan' => $username->kh_hoten,
+                'dh_noinhan' => $username->kh_diachi,
+                'dh_tongtien' => Cart::getTotal() + 30000,
+                'dh_thoigiandathang' => $now,
+                'kh_id' => $username->kh_id,
+                'htvc_id' => 1,
+                'httt_id' => 1
+            ]
+        );
+
+        foreach ($sanpham as $key => $value) {
+            # code...
+            DB::table('chitietdonhang')->insert([
+                'sp_id' => $value->id,
+                'dh_id' => $hoadon,
+                'sp_dongia' => $value->price,
+                'sp_soluongsp' => $value->quantity
+            ]);
         }
     }
 }

@@ -2,6 +2,7 @@
 @section('title')
     Thanh toán
 @endsection
+
 @section('content')
     <!-- page title -->
 	<div class="page_title_area">
@@ -60,9 +61,7 @@
                                         </tr>
                                         <tr class="product-info">
                                             <td style="padding-left: 35px; font-weight: bold;"><input type="radio" name="thanhtoan" id="" value="vnpay">VNPay</td>
-                                            <td style="padding-left: 35px; font-weight: bold;"><input type="radio" name="thanhtoan" id="" value="momo">Momo</td>
-                                            <td style="padding-left: 35px; font-weight: bold;"><input type="radio" name="thanhtoan" id="" value="zalopay">Zalo Pay</td>
-                                            <td style="padding-left: 35px; font-weight: bold;"><input type="radio" name="thanhtoan" id="" value="shipcod">Ship cod</td>
+                                            <td style="padding-left: 35px; font-weight: bold;"><input type="radio" name="thanhtoan" id="" value="shipcod">Ship cod (phí ship 30.000)</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -74,64 +73,6 @@
                     </form>
                 </div>
 			</div>
-			
-            {{-- <div class="col-md-6">
-                <div class="cart-totals">
-                    <h1 class="text-center">Giỏ hàng</h1>
-                    <div class="info-sec">
-                        <table>
-                            <tbody>
-                                <tr class="cart-subtotal" >
-                                    <td colspan="3" style="padding-left: 35px; font-weight: bold;   ">Giá tiền</td>
-                                    <td class="subtotal">$904</td>
-                                </tr>
-                                @foreach ($cart as $item)
-                                <tr class="product-info">
-                                    <td colspan="3">
-                                    <span class="quantity">{{ $item->quantity }}</span>
-                                    <span class="product-name">{{ $item->name }}</span>
-                                    </td>
-                                    <td>{{ number_format($item->price) }}</td>
-                                </tr>
-                                @endforeach
-                                
-                                <tr class="order-shipping">
-                                    <th colspan="3">Phí ship</th>
-                                    <td class="shipping">30.000</td>
-                                </tr>
-                                <tr class="order-total">
-                                    <th colspan="3">Tổng tiền</th>
-                                    <td class="amount"><strong>{{ number_format($totalPrice + 30000) }}</strong></td>
-                                </tr>			
-                            </tbody>
-                        </table>
-                        <div class="cupon-code margin-top-20px">
-                            <input type="submit" name="checkout" value="Đặt hàng" class="btn-black calculate">
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- comment --}}
-            
-            {{-- <div class="col-md-6">
-                <div class="payment">
-                    <h3>Mã giảm giá:</h3>
-                    <div class="payment-method">
-                        <table>
-                            <tbody>
-                                <tr class="">
-                                </tr>		
-                            </tbody>
-                        </table>
-                        <span>PayPal</span>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed. More information here.</p>
-                        
-                    </div>
-                    <div class="cupon-code text-right margin-top-20px">
-                        <input type="submit" name="checkout" value="Chọn phương thức" class="btn-black calculate">
-                    </div>
-                </div>
-            </div> --}}
 		</div>
 	</div>
 

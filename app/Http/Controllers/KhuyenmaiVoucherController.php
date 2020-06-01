@@ -14,19 +14,33 @@ class KhuyenmaiVoucherController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function useVoucher($code){
+    public function useVoucher(Request $request){
         $vccode =  DB::table('kmvouchers')
             ->join('khuyenmai','khuyenmai.km_id','=','kmvouchers.km_id')
             ->join('vouchers','vouchers.vc_id','=','kmvouchers.vc_id')
-            ->where('vc_code','=',$code)
+            ->where('vc_code','=',$request->get('code'))
             ->first();
         if($vccode){
+
+            // dd($vccode->kmvc_giatri);
+            Session::put('thanh-cong','Áp dụng voucher thành công');
             Session::put('sotiengiam',$vccode->kmvc_giatri);
-            
+            Session::put('code',$request->get('code'));
+            return redirect()->back();
         }
         else{
+            // dd('vouchers không tồn tại');
             Session::put('alert','Voucher không tồn tại');
+            return redirect()->back();
         }
+    }
+
+    public function clearVoucher ()
+    {
+        Session::put('thanh-cong',null);
+        Session::put('sotiengiam',null);
+        Session::put('code',null);
+        return redirect()->back();
     }
 
     public function index()

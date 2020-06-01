@@ -12,7 +12,7 @@
         <div class="col-sm-4">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('danhsachsanpham') }}">Lô hàng</a></li>
+            {{-- <li class="breadcrumb-item"><a href="{{ route('danhsachsanpham') }}">Lô hàng</a></li> --}}
             <li class="breadcrumb-item active">Chi tiết lô hàng</li>
           </ol>
         </div>

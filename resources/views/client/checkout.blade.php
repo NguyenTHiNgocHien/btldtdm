@@ -59,8 +59,8 @@
 							<table>
 								<tbody>
 									<tr class="cart-subtotal" >
-										<td colspan="3" style="padding-left: 35px; font-weight: bold;">Giá tiền</td>
-										<td class="subtotal">$904</td>
+										<td colspan="3" style="padding-left: 35px; font-weight: bold;">Tên sản phẩm</td>
+										<td class="subtotal" style=" font-weight: bold;">Giá tiền</td>
                                     </tr>
                                     @foreach ($cart as $item)
 									<tr class="product-info">
@@ -72,13 +72,18 @@
                                     </tr>
                                     @endforeach
 									
-									<tr class="order-shipping">
-										<th colspan="3">Phí ship</th>
-										<td class="shipping">30.000</td>
-									</tr>
 									<tr class="order-total">
 										<th colspan="3">Tổng tiền</th>
-										<td class="amount"><strong>{{ number_format($totalPrice + 30000) }}</strong></td>
+										<td class="amount"><strong>
+											{{-- Tính toán lại số tiền giảm --}}
+											@if (Session::has('sotiengiam'))
+												<span style="text-decoration: line-through;">{{ number_format($totalPrice) }}</span>
+												<br>
+												<span>{{ number_format($totalPrice - Session::get('sotiengiam'))  }}</span>
+											@else
+												{{ number_format($totalPrice) }}
+											@endif
+										</strong></td>
 									</tr>			
 								</tbody>
 							</table>
@@ -89,24 +94,53 @@
 					</div>
 				</div>
 				{{-- comment --}}
+				</form>
 				
 				<div class="col-md-6">
-					<form action="" method="get">
+					@if (Session::has('alert'))
+						<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>{{Session::get('alert')}}</strong>
+						</div>
+						{{Session::put('alert',null)}}
+					@endif
+					@if (Session::has('thanh-cong'))
+						<div class="alert alert-success">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>{{Session::get('thanh-cong')}}</strong>
+						</div>
+						{{Session::put('thanh-cong',null)}}
+					@endif
+					<form action="{{ route('ap-dung-voucher') }}" method="get">
 						<div class="payment">
 							<h3>Mã giảm giá:</h3>
-							<div class="payment-method">
-								<span>Nhập mã giảm giá</span>
-								<p><input type="text" placeholder="Nhập mã giảm giá"></p>							
-							</div>
-							<div class="cupon-code text-right margin-top-20px">
-								<input type="submit" name="checkout" value="Áp dụng" class="btn-black calculate">
-							</div>
+							
+							@if (Session::has('code'))
+								<div class="payment-method">
+									<span>Nhập mã giảm giá</span>
+									<p><input type="text" name="code" readonly value="{{ Session::get('code') }}"></p>							
+								</div>
+							@else
+								<div class="payment-method">
+									<span>Nhập mã giảm giá</span>
+									<p><input type="text" name="code" placeholder="Nhập mã giảm giá"></p>							
+								</div>
+							@endif
+							@if (Session::has('code'))
+								<div class="cupon-code text-right margin-top-20px">
+									<a href="{{ route('bo-ap-dung-voucher') }}" class="btn-black calculate">Bỏ áp dụng voucher</a>
+								</div>
+							@else
+								<div class="cupon-code text-right margin-top-20px">
+									<input type="submit" value="Áp dụng" class="btn-black calculate">
+								</div>
+							@endif
+							
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	</form>
 
 @endsection

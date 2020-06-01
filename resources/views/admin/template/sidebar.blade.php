@@ -16,7 +16,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">Xin chào 
-{{-- {{ \Auth::guard('nhanvien')->user()->nv_id}} --}}
+{{-- {{ \Auth::guard('nhanvien')->user()->q_id}} --}}
             @if (Auth::guard('nhanvien')->user()->q_id == 1)
                 ADMIN
             @else
@@ -135,22 +135,6 @@
               </p>
             </a>
             <ul class="nav nav-treeview ">
-              <li class="nav-item ">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Theo loại sản phẩm</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link 
-                {{-- @if (Request::path() == 'admin/khuyenmai/voucher')
-                  active
-                @endif --}}
-                ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Theo khách hàng</p>
-                </a>
-              </li>
               <li class="nav-item">
                 <a href="{{ route('voucher') }}" class="nav-link
                   @if (Request::path() == 'admin/khuyenmai/voucher')
@@ -161,17 +145,6 @@
                   <p>Voucher</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link 
-                {{-- @if (Request::path() == 'admin/khuyenmai/voucher')
-                  active
-                @endif --}}
-                ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Flash Sale</p>
-                </a>
-              </li>
-              
             </ul>
           </li>
           <li class="nav-item ">

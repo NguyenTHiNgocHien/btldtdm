@@ -76,9 +76,9 @@
                   @if ($value->dh_trangthai == 2)
                   <span class="badge bg-yellow">Đang xử lý</span>
                   @elseif ($value->dh_trangthai == 1)
-                  <span class="badge bg-yellow">Chưa duyệt</span>
+                  <span class="badge bg-yellow">Đã duyệt</span>
                   @elseif ($value->dh_trangthai == 3)
-                  <span class="badge bg-green">Đã duyệt</span>
+                  <span class="badge bg-green">Đã thanh toán</span>
                   @else
                   <span class="badge bg-red">Hủy đơn</span>
                   @endif
@@ -93,17 +93,6 @@
                   @endif         
                </td>
 
-                </td>
-                <td id="dh_quatrinhvanchuyen">
-                
-                @if ($value->dh_quatrinhvanchuyen == 1)
-                <span class="badge bg-yellow">Đang lưu kho</span>
-                @elseif ($value->dh_quatrinhvanchuyen == 2)
-                <span class="badge bg-yellow">Đang vận chuyển</span>
-                @else
-                <span class="badge bg-green">Đã nhận hàng</span>
-                @endif
-                
                 </td>
                 <td>
                   

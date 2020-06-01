@@ -17,6 +17,25 @@ class VNPayController extends Controller
         
         $madon = rand(1000,9999);
 
+        if (Session::has('sotiengiam')) {
+            # code...
+            $hoadon = DB::table('donhang')->insertGetId(
+                [
+                    'dh_madon' => $madon,
+                    'dh_nguoinhan' => $username->kh_hoten,
+                    'dh_noinhan' => $username->kh_diachi,
+                    'dh_tongtien' => Cart::getTotal(),
+                    'dh_thoigiandathang' => $now,
+                    'kh_id' => $username->kh_id,
+                    'htvc_id' => 1,
+                    'httt_id' => 1
+                ]
+            );
+        } else {
+            # code...
+        }
+        
+
         $hoadon = DB::table('donhang')->insertGetId(
             [
                 'dh_madon' => $madon,

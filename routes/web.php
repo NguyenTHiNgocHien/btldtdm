@@ -13,7 +13,6 @@
 
 
 
-
 /* Phần này là các route của trang admin */
 // Xử lý đăng nhập cho trang admin
 Route::get('dang-nhap-admin', 'AuthController@getLogin')->name('getDangnhap');
@@ -160,6 +159,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('khuyenmai/voucher', 'KhuyenmaiVoucherController@index')->name('voucher');
     Route::post('khuyenmai/voucher/add-voucher', 'KhuyenmaiVoucherController@store')->name('add-voucher');
 
+
+
+
     Route::post('hinhthucthanhtoan/{id}/edit', 'HinhthucthanhtoanController@update')->name('capnhathinhthucthanhtoan');
 
     Route::get('hinhthucthanhtoan/{id}/delete','HinhthucthanhtoanController@destroy')->name('xoahinhthucthanhtoan');
@@ -270,3 +272,7 @@ Route::get('VNPay','VNPayController@create')->name('vnpay');
 
 //Ngoại tệ
 Route::get('thay-doi-ngoai-te/{ngoaite}', 'NgoaiteController@doingoaite')->name('doingoaite');
+
+//Áp dụng khuyến mãi
+Route::get('ap-dung-voucher', 'KhuyenmaiVoucherController@useVoucher')->name('ap-dung-voucher');
+Route::get('bo-voucher','KhuyenmaiVoucherController@clearVoucher')->name('bo-ap-dung-voucher');

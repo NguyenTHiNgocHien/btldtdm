@@ -54,7 +54,7 @@
               @if ($donhang->dh_trangthai == 2)
                 <span class="badge bg-yellow">Đang xử lý</span>
               @elseif ($donhang->dh_trangthai == 1)
-                <span class="badge bg-yellow">Chưa duyệt</span>
+                <span class="badge bg-yellow">Đã duyệt</span>
               @elseif ($donhang->dh_trangthai == 3)
                 <span class="badge bg-green">Đã thanh toán</span>
               @else

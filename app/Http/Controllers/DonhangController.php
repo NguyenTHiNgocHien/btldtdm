@@ -78,6 +78,7 @@ class DonhangController extends Controller
                     ]);
                 }
             }
+            DB::table('donhang')->where('dh_id',$id)->update(['dh_thoigiannhanhang' => null]);
             $success = Session::put('alert-info', 'Cập nhật trạng thái thành công');
             return redirect()->back();
         }
@@ -101,11 +102,11 @@ class DonhangController extends Controller
                         'sp_soluong' => $value3->sp_soluong - $value1->sp_soluongsp
                     ]);
                 }
+                
             }
+            DB::table('donhang')->where('dh_id',$id)->update(['dh_thoigiannhanhang' => Carbon::now()]);
             $success = Session::put('alert-info', 'Cập nhật trạng thái thành công');
             return redirect()->back();
-            // dd('thành công');
-            // dd($chitietlo);
     
             
         }
@@ -147,21 +148,5 @@ class DonhangController extends Controller
         $success = Session::put('alert-info', 'Cập nhật thành công');
         return redirect()->back();
     }
-
-    // public function capnhatvanchuyen($id)
-    // {
-    //     $now = Carbon::now();
-    //     $data = DB::table('donhang')->where('dh_madon',$id)
-    //                 ->update(
-    //                     [
-    //                         'dh_quatrinhvanchuyen' => 3,
-    //                         'updated_at' => $now,
-    //                     ]
-    //                 );
-
-    //     //Cập nhật xong cập nhật lại loại để show ra kèm theo thông báo
-    //     $success = Session::put('alert-info', 'Cập nhật dữ liệu thành công');
-    //     return redirect()->route('danhsachdonhang');
-    // } 
 
 }

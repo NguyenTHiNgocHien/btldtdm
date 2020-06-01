@@ -18,6 +18,9 @@ class CreateTableNhanvien extends Migration
             $table->bigIncrements('nv_id');
             $table->string('username');
             $table->string('password');
+            $table->string('nv_diachi')->nullable();
+            $table->string('nv_sdt')->nullable();
+            $table->string('nv_email')->nullable();
             //Khóa ngoại đây
             $table->bigInteger('q_id')->unsigned();//khóa ngoại
             $table->foreign('q_id')->references('q_id')->on('quyen');

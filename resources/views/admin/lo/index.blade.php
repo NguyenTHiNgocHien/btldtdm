@@ -56,7 +56,6 @@
                 <th>Số lượng sản phẩm</th>
                 <th>Hạn sử dụng</th>
                 <th>Ngày nhập</th>
-                <th>Ngày cập nhật</th>
                 <th>Thao tác</th>
               </tr>
             </thead>
@@ -68,11 +67,11 @@
                 <td>{{$value->lo_id}}</td>
                 <td>{{$value->lo_ten}}</td>
                 <td>{{ $value->ctl_soluong }}</td>
-                <td>{{$value->created_at}}</td>
-                <td>{{$value->updated_at}}</td>
+                <td>{{$value->lo_ngaysanxuat}}</td>
+                <td>{{$value->lo_hansudung}}</td>
                 <td>
                   <a href="{{ route('chitietlo', ['id'=>$value->lo_id]) }}" class="btn btn-default">Chi tiết</a>
-                  <a href="{{ route('sualo', ['id'=>$value->lo_id]) }}" class="btn btn-primary">Sửa</a>
+                  <a href="" class="btn btn-warning">Thanh lý</a>
                 </td>
               </tr>
               @endforeach
