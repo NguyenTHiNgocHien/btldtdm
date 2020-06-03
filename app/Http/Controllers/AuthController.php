@@ -48,23 +48,14 @@ class AuthController extends Controller
         // dd(Auth::guard('nhanvien')->attempt($arr, true));
         if (Auth::guard('nhanvien')->attempt($arr, true))
         {
-            $taikhoan = Nhanvien::where('username', '=' , $request->username)->where('password', '=', $request->password)->first();
             
-                // $success = Session::put('username', $taikhoan->username);
-                $quyen_ten=\Auth::guard('nhanvien')->user()->load('quyen')->quyen->q_ten;
-                if($quyen_ten=="Admin"){
-                    //truyền id qua truyền bằng session v đc hk
-                    //truyen di dau, truyền qua cho xuyên ssuốt quá trình sd, tại t cần gán nhân viên nào làm gì
-                    //xai auth
-                    $nv_id = \Auth::guard('nhanvien')->user()->nv_id;
-                    $dataNV = Nhanvien::where('nv_id','=', $nv_id)->first();
-                    return redirect()->route('admin');
-                }
-                else{
-                    return (123);
-                }
-        } else {
-            dd('đăng nhập không thành công');
+                $nv_id = \Auth::guard('nhanvien')->user()->nv_id;
+                $dataNV = Nhanvien::where('nv_id','=', $nv_id)->first();
+                return redirect()->route('admin');
+            
+        }
+        else {
+            dd("Sai tên tài khoản hoặc mật khẩu");
         }
     }
     

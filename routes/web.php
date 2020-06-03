@@ -15,16 +15,18 @@
 
 /* Phần này là các route của trang admin */
 // Xử lý đăng nhập cho trang admin
-Route::get('dang-nhap-admin', 'AuthController@getLogin')->name('getDangnhap');
-Route::post('dang-nhap-admin','AuthController@authLogin')->name('dangnhap');
+Route::get('dang-nhap-admin-1', 'AuthController@getLogin')->name('getDangnhap');
+Route::post('dang-nhap-admin-2','AuthController@authLogin')->name('dangnhap');
 
 
-// ->middleware('checkUser')
+// middleware admin
 Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('admin');
 
+    //Quản lý nhân viên
+    Route::get('nhan-vien','NhanvienController@index')->name('nhan-vien');
 
     Route::get('/dang-xuat','AuthController@logoutAdmin')->name('dangxuat');
      Route::get('/', 'ThongkeController@index')->name('admin');
@@ -204,7 +206,29 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     //Khách hàng
     Route::get('khach-hang','KhachhangController@index')->name('khachhang');
 });
+//middleware nhân viên bình thường
+// Route::group(['prefix' => 'nhan-vien', 'middleware' => 'checkUser2'], function () {
+//     Route::get('/', function () {
+//         return view('admin.index');
+//     })->name('admin');
+//      //Quản lý nhân viên
+//      Route::get('nhan-vien','NhanvienController@index')->name('nhan-vien');
 
+//      Route::get('/dang-xuat','AuthController@logoutAdmin')->name('dangxuat');
+//       Route::get('/', 'ThongkeController@index')->name('admin');
+//      //Các route này của Loại sản phẩm
+//      Route::get('loai', 'LoaiController@index')->name('danhsachloai');
+ 
+//      Route::post('loai','LoaiController@store')->name('themloai');
+ 
+//      Route::get('loai/{id}/edit','LoaiController@edit')->name('sualoai');
+ 
+//      Route::post('loai/{id}/edit', 'LoaiController@update')->name('capnhatloai');
+ 
+//      Route::get('loai/{id}/delete','LoaiController@destroy')->name('xoaloai');
+ 
+//      Route::get('loai/search', 'LoaiController@search')->name('search-category');
+// });
 
 //Xử lý trang chủ cho người dùng
 Route::get('/', 'TrangchuController@index')->name('trangchu');

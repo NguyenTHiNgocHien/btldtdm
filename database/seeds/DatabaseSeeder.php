@@ -48,16 +48,19 @@ class DatabaseSeeder extends Seeder
             [
                 'username' => 'admin1',
                 'password' => bcrypt('12345'),
+                'nv_ten' => 'Lê Ngọc Đức',
                 'q_id'     => 1
             ],
             [
                 'username' => 'admin2',
                 'password' => bcrypt('12345'),
+                'nv_ten' => 'Lương Quốc Bình',
                 'q_id'     => 2
             ],
             [
                 'username' => 'admin3',
                 'password' => bcrypt('12345'),
+                'nv_ten' => 'Đỗ Thị Ngọc Nguyên',
                 'q_id'     => 2
             ],
         ];

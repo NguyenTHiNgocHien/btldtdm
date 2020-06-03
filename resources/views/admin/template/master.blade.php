@@ -24,7 +24,11 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <p class="nav-link">Xin chào {{ \Auth::guard('nhanvien')->user()->username}}</p>
+        <p class="nav-link">Xin chào  @if (Auth::guard('nhanvien')->user()->q_id == 1)
+          {{ Auth::guard('nhanvien')->user()->nv_ten }} <b style="color: red">(admin)</b>
+          @else
+            {{ Auth::guard('nhanvien')->user()->nv_ten }}
+          @endif</p>
         {{-- <p>{{ \Auth::guard('nhanvien')->user() }}</p> --}}
         {{-- <p>{{ \Auth::guard('nhanvien')->user() }}</p> --}}
       </li>

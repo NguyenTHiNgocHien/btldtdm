@@ -1,12 +1,17 @@
 @extends('admin.template.master')
 @section('content')
+
 <section class="content">
    {{-- {{ (\Auth::guard('nhanvien')->user()->load('quyen')->quyen->q_ten) }} --}}
    <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-4">
+          @if (Auth::guard('nhanvien')->user()->q_id == 1)
           <h1>Thông báo nhanh</h1>
+          @else
+           <h1>Xin chào bạn, {{ Auth::guard('nhanvien')->user()->nv_ten }}</h1>
+          @endif
         </div>
         <div class="col-sm-4">
         </div>
@@ -18,6 +23,7 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
+  @if (Auth::guard('nhanvien')->user()->q_id == 1)
    <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
@@ -77,96 +83,104 @@
       <!-- /.info-box -->
     </div>
   </div>
-  <!-- /.row -->
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Biểu đồ lượt truy cập</h3>
+  @else
+
+  @endif
+  @if (Auth::guard('nhanvien')->user()->q_id == 1)
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+                <div class="card-header border-0">
+                  <div class="d-flex justify-content-between">
+                    <h3 class="card-title">Biểu đồ lượt truy cập</h3>
+                    
+                  </div>
+                </div>
+                <div class="card-body">
                   
+
+                  <div class="position-relative mb-4">
+                    <canvas id="visitors-chart" height="200"></canvas>
+                  </div>
+
+                  <div class="d-flex flex-row justify-content-end">
+                    <span class="mr-2">
+                      <i class="fas fa-square text-primary"></i> Lượt truy cập
+                    </span>
+
+                    <span>
+                      <i class="fas fa-square text-gray"></i> Trang truy cập
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div class="card-body">
-                
-
-                <div class="position-relative mb-4">
-                  <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> Lượt truy cập
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Trang truy cập
-                  </span>
-                </div>
-              </div>
-      </div>
-            <!-- /.card -->   
-    </div>
-          <!-- /.col-md-6 -->
-
-    <div class="col-lg-12">
-      <div class="card">
-            <div class="card-header border-0">
-              <h3 class="card-title">Lượt truy cập trong tháng</h3>
-              
-            </div>
-            <div class="card-body table-responsive p-0">
-              <table class="table table-striped table-valign-middle">
-                <thead>
-                <tr>
-                  <th>STT</th>
-                  <th>Địa chỉ</th>
-                  <th>Lượt truy cập</th>
-                </tr>
-                </thead>
-                <tbody>
-                {{-- @foreach($data['fetchTopReferrers'] as $key=>$item)
-                <tr>
-                  <td>
-                    {{$key+1}}
-                  </td>
-                <td id="khongxacdinh">{{ $item["url"] }}</td>
-                  <td>
-                    {{ $item["pageViews"] }}
-                  </td>
-                 
-                </tr>
-                @endforeach --}}
-                
-                </tbody>
-              </table>
-            </div>
-      </div>
-    </div>
-          <!-- /.card -->
-    <div class="col-md-12">
-      <div class="card card-primary card-outline">
-        <div class="card-header">
-            <h3 class="card-title">
-                <i class="far fa-chart-bar"></i>
-                Biểu đồ doanh thu trong năm
-            </h3>
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
         </div>
-        <div class="card-body">
-            <canvas id="line-chart"></canvas>
+              <!-- /.card -->   
+      </div>
+            <!-- /.col-md-6 -->
+
+      <div class="col-lg-12">
+        <div class="card">
+              <div class="card-header border-0">
+                <h3 class="card-title">Lượt truy cập trong tháng</h3>
+                
+              </div>
+              <div class="card-body table-responsive p-0">
+                <table class="table table-striped table-valign-middle">
+                  <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Địa chỉ</th>
+                    <th>Lượt truy cập</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {{-- @foreach($data['fetchTopReferrers'] as $key=>$item)
+                  <tr>
+                    <td>
+                      {{$key+1}}
+                    </td>
+                  <td id="khongxacdinh">{{ $item["url"] }}</td>
+                    <td>
+                      {{ $item["pageViews"] }}
+                    </td>
+                  
+                  </tr>
+                  @endforeach --}}
+                  
+                  </tbody>
+                </table>
+              </div>
         </div>
-        <!-- /.card-body-->
+      </div>
+            <!-- /.card -->
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+              <h3 class="card-title">
+                  <i class="far fa-chart-bar"></i>
+                  Biểu đồ doanh thu trong năm
+              </h3>
+              <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                  </button>
+              </div>
+          </div>
+          <div class="card-body">
+              <canvas id="line-chart"></canvas>
+          </div>
+          <!-- /.card-body-->
+      </div>
+      </div>
     </div>
-    </div>
-  </div>
+  @else
+    
+  @endif
+  <!-- /.row -->
+  
 
 </section>
 <!-- Global site tag (gtag.js) - Google Analytics -->

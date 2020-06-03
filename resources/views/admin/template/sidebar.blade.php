@@ -15,18 +15,20 @@
           <img src="{{asset('front-end')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Xin chào 
-{{-- {{ \Auth::guard('nhanvien')->user()->q_id}} --}}
+          <a href="#" class="d-block">
             @if (Auth::guard('nhanvien')->user()->q_id == 1)
-                ADMIN
+            {{ Auth::guard('nhanvien')->user()->nv_ten }} <b style="color: red">(admin)</b>
             @else
-              Nhân viên
+              {{ Auth::guard('nhanvien')->user()->nv_ten }}
             @endif
           </a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
+      
+      <!-- /.sidebar-menu -->
+      @if (Auth::guard('nhanvien')->user()->q_id == 1)
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           {{-- Cái sidebar sửa ở đây là được --}}
@@ -43,6 +45,14 @@
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Khách hàng
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('nhan-vien') }}" class="nav-link {{ Request::path() == 'admin/nhan-vien' ? 'active' : '' }}">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Nhân viên
               </p>
             </a>
           </li>
@@ -195,7 +205,109 @@
           </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
+      @else
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          {{-- Cái sidebar sửa ở đây là được --}}
+          <li class="nav-item ">
+            <a href="{{ route('admin') }}" class="nav-link  {{ Request::path() == 'admin' ? 'active' : '' }}">
+              <i class="nav-icon fa fa-tachometer"></i>
+              <p>
+                Trang chính
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('khachhang') }}" class="nav-link {{ Request::path() == 'admin/khach-hang' ? 'active' : '' }}">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Khách hàng
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item ">
+            <a href="{{ route('danhsachloai') }}" class="nav-link  {{ Request::path() == 'admin/loai' ? 'active' : '' }}">
+              <i class="nav-icon fa fa-cubes"></i>
+              <p>
+                Loại sản phẩm
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="{{ route('danhsachlo') }}" class="nav-link {{ Request::path() == 'admin/lo' ? 'active' : '' }}">
+              <i class="nav-icon fa fa-archive"></i>
+              <p>
+                Lô hàng
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('danhsachsanpham', ['sort'=> 'danh-sach']) }}" class="nav-link
+              @if (
+                Request::path() == 'admin/san-pham/danh-sach' || 
+                Request::path() == 'admin/san-pham/gia-tang' ||
+                Request::path() == 'admin/san-pham/gia-giam'
+                )
+                active
+              @endif
+              ">
+              <i class="nav-icon far fa-heart"></i>
+              <p>
+                Sản phẩm
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item has-treeview
+            @if (Request::path() == 'admin/khuyenmai/voucher')
+              menu-open
+            @endif 
+            ">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fa fa-gift"></i>
+              <p>
+                Khuyến mãi
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview ">
+              <li class="nav-item">
+                <a href="{{ route('voucher') }}" class="nav-link
+                  @if (Request::path() == 'admin/khuyenmai/voucher')
+                    active
+                  @endif
+                ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Voucher</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item ">
+            <a href="{{ route('banner') }}" class="nav-link @if (Request::path() == 'admin/banner')
+            active
+          @endif">
+              <i class="nav-icon far fa fa-picture-o"></i>
+              <p>
+                Banner
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('danhsachdonhang') }}" class="nav-link @if (Request::path() == 'admin/donhang')
+            active
+          @endif">
+              <i class="nav-icon fa fa-sticky-note"></i>
+              <p>
+                Đơn hàng
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      @endif
     </div>
     <!-- /.sidebar -->
   </aside>

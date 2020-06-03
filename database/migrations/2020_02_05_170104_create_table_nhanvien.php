@@ -18,6 +18,7 @@ class CreateTableNhanvien extends Migration
             $table->bigIncrements('nv_id');
             $table->string('username');
             $table->string('password');
+            $table->string('nv_ten')->nullable();   
             $table->string('nv_diachi')->nullable();
             $table->string('nv_sdt')->nullable();
             $table->string('nv_email')->nullable();
