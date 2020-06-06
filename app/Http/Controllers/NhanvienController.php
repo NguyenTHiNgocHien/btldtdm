@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Nhanvien;
 use Illuminate\Http\Request;
 use DB;
 
@@ -58,7 +59,8 @@ class NhanvienController extends Controller
      */
     public function edit($id)
     {
-        //
+            $data = Nhanvien::findOrFail($id);
+            return response()->json($data,200);
     }
 
     /**
@@ -70,7 +72,16 @@ class NhanvienController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nv_ten = $request->nv_ten;
+        DB::table('nhanvien')->where('nv_id','=',$id)->update(
+            [
+                'nv_ten' => $nv_ten,
+                'nv_diachi' => $request->nv_diachi,
+                'nv_sdt' => $request->nv_sdt,
+                'nv_email' => $request->nv_email
+            ]
+        );
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +92,7 @@ class NhanvienController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('nhanvien')->where('nv_id','=',$id)->delete();
+        return back();
     }
 }

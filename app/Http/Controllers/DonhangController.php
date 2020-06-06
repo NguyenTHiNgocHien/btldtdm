@@ -129,7 +129,7 @@ class DonhangController extends Controller
         $data = DB::table('donhang')->where('dh_madon',$id)
                     ->update(
                         [
-                            'dh_trangthai' => 3,
+                            'dh_trangthai' => 2,
                             'updated_at' => $now,
                         ]
                     );
@@ -149,4 +149,6 @@ class DonhangController extends Controller
         return redirect()->back();
     }
 
+
+    
 }

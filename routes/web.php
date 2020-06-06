@@ -27,6 +27,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
 
     //Quản lý nhân viên
     Route::get('nhan-vien','NhanvienController@index')->name('nhan-vien');
+    //test ajax
+    Route::get('nhan-vien/edit/{id}','NhanvienController@edit')->name('edit-nhan-vien');
+    Route::post('nhan-vien/update/{id}','NhanvienController@update')->name('update-nhan-vien');
+    Route::get('nhan-vien/delete/{id}','NhanvienController@destroy')->name('delete-nhan-vien');
 
     Route::get('/dang-xuat','AuthController@logoutAdmin')->name('dangxuat');
      Route::get('/', 'ThongkeController@index')->name('admin');

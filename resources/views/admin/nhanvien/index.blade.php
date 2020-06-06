@@ -55,10 +55,10 @@
                 </div>
                 <div class="card-footer">
                   <div class="text-right">
-                    <a href="#" class="btn btn-sm btn-primary">
+                    <a href="#" data-id="{!! $item->nv_id !!}" data-toggle="modal" data-target="#ModalEdit" class="btn btn-sm btn-primary editModalBtn">
                         <i class="fas fa-user"></i> Chỉnh sửa
                     </a>
-                    <a href="#" class="btn btn-sm bg-danger">
+                    <a href="#" class="btn btn-sm bg-danger deleteUser" data-id="{!! $item->nv_id !!}" data-toggle="modal" data-target="#ModalDelete">
                       <i class="fas fa-trash"></i>
                     </a>
                   </div>
@@ -79,7 +79,120 @@
         <!-- /.card-footer -->
       </div>
       <!-- /.card -->
-
     </section>
     <!-- /.content -->
+
+    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="nhanvien"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="formEdit" method="POST">
+              @csrf
+              {{-- <div class="form-group">
+                <label>Mã số nhân viên: </label>
+                <input type="text" class="form-control" id="nv_ma">
+              </div> --}}
+              <div class="form-group">
+                <label>Tên nhân viên</label>
+                <input type="text" class="form-control" name="nv_ten" id="nv_ten">
+              </div>
+              <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="text" class="form-control" name="nv_diachi" id="nv_diachi">
+              </div>
+              <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="text" class="form-control" name="nv_sdt" id="nv_sdt">
+              </div>
+              <div class="form-group">
+                <label>Email:</label>
+                <input type="text" class="form-control" name="nv_email" id="nv_email">
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Sửa</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{-- Modal xóa --}}
+    <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="nhanvienDelete"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="formDelete" method="GET">
+              {{-- <div class="form-group">
+                <label>Mã số nhân viên: </label>
+                <input type="text" class="form-control" id="nv_ma">
+              </div> --}}
+              <div class="form-group">
+                <label>Tên nhân viên</label>
+                <input type="text" class="form-control" disabled name="nv_ten" id="nv_tenDel">
+              </div>
+              {{-- <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div> --}}
+              <button type="submit" class="btn btn-danger">Xóa</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $('.editModalBtn').click(function () { 
+          var id = $(this).data('id');
+          var action ='{{URL::to('admin/nhan-vien/edit/')}}/'+id;
+          var url_update = '{{URL::to('admin/nhan-vien/update/')}}/' + id;
+          $.ajax({
+            type: "get",
+            url: action,
+            // data: "{'id' : id}",
+            dataType: "json",
+            success: function (response) {
+              $('#nhanvien').text('Sửa thông tin nhân viên');
+              $('#nv_ten').val(response.nv_ten);
+              $('#nv_diachi').val(response.nv_diachi);
+              $('#nv_sdt').val(response.nv_sdt);
+              $('#nv_email').val(response.nv_email);
+              $('#formEdit').attr('action', url_update);
+            }
+          });
+        });
+        $('.deleteUser').click(function (e) { 
+          e.preventDefault();
+          var id = $(this).data('id');
+          var action ='{{URL::to('admin/nhan-vien/edit/')}}/'+id;
+          var url_del = '{{URL::to('admin/nhan-vien/delete/')}}/' + id;
+          $.ajax({
+            type: "get",
+            url: action,
+            // data: "{'id' : id}",
+            dataType: "json",
+            success: function (response) {
+              console.log(response);
+              $('#nhanvienDelete').text('Xác nhận xóa nhân viên');
+              $('#nv_tenDel').val(response.nv_ten);
+              $('#formDelete').attr('action', url_del);
+            }
+          });
+        });
+      });
+    </script>
 @endsection

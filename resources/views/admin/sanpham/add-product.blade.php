@@ -79,7 +79,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Giá bán</label>
-            <input name="giaBan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập tên loại sản phẩm . . . ">
+            <input name="giaBan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập tên giá bán . . . ">
           </div>
             <button type="submit" class="btn btn-primary" id="add">Thêm</button>
             <a href="{{ route('danhsachsanpham', ['sort'=> 'danh-sach']) }}" class="btn btn-default">Quay về</a>

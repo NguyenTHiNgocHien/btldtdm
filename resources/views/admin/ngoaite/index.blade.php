@@ -45,12 +45,7 @@
             
           </div>
         </div>
-        <div class="card-header">
-          <div class="form-group ml-1 mr-1">
-            {{-- <label>Tìm kiếm</label> --}}
-            <input type="text" class="form-control" name="search" id="search" placeholder="Nhập tên sản phẩm">
-          </div>
-        </div>
+        
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
           <table class="table table-hover text-nowrap" >

@@ -51,9 +51,9 @@
         <div class="row invoice-info">
           <div class="col-sm-4 invoice-col">
             <p>Trạng thái:
-              @if ($donhang->dh_trangthai == 2)
+              @if ($donhang->dh_trangthai == 1)
                 <span class="badge bg-yellow">Đang xử lý</span>
-              @elseif ($donhang->dh_trangthai == 1)
+              @elseif ($donhang->dh_trangthai == 2)
                 <span class="badge bg-yellow">Đã duyệt</span>
               @elseif ($donhang->dh_trangthai == 3)
                 <span class="badge bg-green">Đã thanh toán</span>
@@ -70,11 +70,16 @@
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Thay đổi trạng thái đơn hàng</label>
                 <select class="form-control" name="trangthai">
+                  <option value="1"
+                  @if ($donhang->dh_trangthai == 1)
+                    selected
+                  @endif
+                  >Đang chờ xử lý</option>
                   <option value="2"
                   @if ($donhang->dh_trangthai == 2)
                     selected
                   @endif
-                  >Đang chờ xử lý</option>
+                  >Đã duyệt</option>
                   <option value="3"
                   @if ($donhang->dh_trangthai == 3)
                     selected

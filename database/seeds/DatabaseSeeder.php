@@ -49,18 +49,36 @@ class DatabaseSeeder extends Seeder
                 'username' => 'admin1',
                 'password' => bcrypt('12345'),
                 'nv_ten' => 'Lê Ngọc Đức',
+                'nv_diachi' => 'Cần Thơ',
+                'nv_sdt' => '0837068434',
+                'nv_email' => 'ducb1605271',
                 'q_id'     => 1
             ],
             [
                 'username' => 'admin2',
                 'password' => bcrypt('12345'),
                 'nv_ten' => 'Lương Quốc Bình',
+                'nv_diachi' => 'Cần Thơ',
+                'nv_sdt' => '0837068434',
+                'nv_email' => 'binhb1605202@student.ctu.edu.vn',
                 'q_id'     => 2
             ],
             [
                 'username' => 'admin3',
                 'password' => bcrypt('12345'),
                 'nv_ten' => 'Đỗ Thị Ngọc Nguyên',
+                'nv_diachi' => 'Cần Thơ',
+                'nv_sdt' => '0837068434',
+                'nv_email' => 'nguyenb1605292@student.ctu.edu.vn',
+                'q_id'     => 2
+            ],
+            [
+                'username' => 'admin3',
+                'password' => bcrypt('12345'),
+                'nv_ten' => 'Đặng Thị Tường Vy',
+                'nv_diachi' => 'Vĩnh Long',
+                'nv_sdt' => '0837068434',
+                'nv_email' => 'vyb1605319@student.ctu.edu.vn',
                 'q_id'     => 2
             ],
         ];

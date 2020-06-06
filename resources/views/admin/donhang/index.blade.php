@@ -73,9 +73,9 @@
                 <td id="dh_thoigiandathang">{{$value->dh_thoigiandathang}}</td>
                 <td id="dh_thoigiannhanhang">{{$value->dh_thoigiannhanhang}}</td>
                 <td id="dh_trangthai">
-                  @if ($value->dh_trangthai == 2)
+                  @if ($value->dh_trangthai == 1)
                   <span class="badge bg-yellow">Đang xử lý</span>
-                  @elseif ($value->dh_trangthai == 1)
+                  @elseif ($value->dh_trangthai == 2)
                   <span class="badge bg-yellow">Đã duyệt</span>
                   @elseif ($value->dh_trangthai == 3)
                   <span class="badge bg-green">Đã thanh toán</span>

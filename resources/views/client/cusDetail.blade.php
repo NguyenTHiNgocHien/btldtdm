@@ -180,8 +180,7 @@
           <div class="sidebar-list widget">
             <h4>Tài khoản cá nhân</h4>
             <ul>
-              <li><a href="#" class="triangle">Thông tin cá nhân</a></li>
-              <li><a href="#" class="triangle">Ví voucher</a></li>
+              <li><a href="{{ route('thong-tin-khach-hang', [ 'username' => Session::get('kh')]) }}" class="triangle">Thông tin cá nhân</a></li>
               <li><a href="{{ route('get-orders') }}" class="triangle">Đơn hàng</a></li>
               <li><a href="{{ route('wish-list') }}" class="triangle">Sản phẩm yêu thích</a></li>
             </ul>

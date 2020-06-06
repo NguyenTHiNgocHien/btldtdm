@@ -25,10 +25,10 @@ class CreateTableDonhang extends Migration
             $table->integer('dh_quatrinhvanchuyen')->default(1);
             $table->bigInteger('kh_id')->unsigned();
             $table->foreign('kh_id')->references('kh_id')->on('khachhang')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->bigInteger('htvc_id')->unsigned();
-            $table->foreign('htvc_id')->references('htvc_id')->on('hinhthucvanchuyen');
-            $table->bigInteger('httt_id')->unsigned();
-            $table->foreign('httt_id')->references('httt_id')->on('hinhthucthanhtoan');
+            // $table->bigInteger('htvc_id')->unsigned();
+            // $table->foreign('htvc_id')->references('htvc_id')->on('hinhthucvanchuyen');
+            // $table->bigInteger('httt_id')->unsigned();
+            // $table->foreign('httt_id')->references('httt_id')->on('hinhthucthanhtoan');
             $table->timestamps();
         });
     }   

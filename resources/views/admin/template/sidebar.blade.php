@@ -177,7 +177,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{ route('danhsachhinhthucthanhtoan') }}" class="nav-link ">
               <i class="nav-icon fa fa fa-money"></i>
               <p>
@@ -192,12 +192,12 @@
                 Hình thức vận chuyển
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="{{ route('danhsachngoaite') }}" class="nav-link @if (Request::path() == 'admin/ngoaite')
             active
           @endif">
-              <i class="nav-icon fa fa-sticky-note"></i>
+            <i class="nav-icon fa fa-money"></i>
               <p>
                 Ngoại tệ
               </p>
