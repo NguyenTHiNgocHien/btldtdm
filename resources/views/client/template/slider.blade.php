@@ -1,33 +1,40 @@
     @if (Request::path() == '/')
         <!-- slider -->
     <div class="tp-banner-container rev-slider-content">
-		<div class="slider_one" >
-			<ul>
-                <!-- slide one -->
-                @foreach ($banner as $item)
-                    <li data-transition="boxslide" data-slotamount="7">
-                        
-                        {{-- <img src="{{ asset('upload/banner/'.$item->bn_hinhanh) }}" style="background-color:#f9f9f7" alt="slidebg1"> --}}
-
-                        <div class="tp-caption customin customout"
-                            data-x="right" data-hoffset="10"
-                            data-y="top" data-voffset="50"
-                            data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="800"
-                            data-start="700"
-                            data-easing="Power4.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            style="z-index: 2">
-                            <a href="{{ route('getBanner', ['idBanner'=>$item->bn_id]) }}">
-                                <img src="{{ asset('upload/banner/'.$item->bn_hinhanh) }}" alt="" width="100%">
-                            </a>
-                        </div>
-                    </li>
-                @endforeach
-			</ul>
-		</div>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+          
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                
+                <div class="item active">
+                    <a href="{{ route('getBanner', ['idBanner'=>$banner[0]->bn_id]) }}"  style="width: 100%; height: 612px; background-size: cover;"><img src="{{ asset('upload/banner/'.$banner[0]->bn_hinhanh) }}" style="width: 100%; height: 100%;"></a>
+                </div>
+                {{-- @foreach ($banner as $item)
+                    <div class="item">
+                        <img src="{{ asset('upload/banner/'.$item->bn_hinhanh) }}" alt="Los Angeles">
+                    </div>
+                @endforeach --}}
+                @for ($i = 1; $i < $countBanner; $i++)
+                    <div class="item">
+                        <a href="{{ route('getBanner', ['idBanner'=>$banner[$i]->bn_id]) }}"  style="width: 100%; height: 612px; background-size: cover;"><img src="{{ asset('upload/banner/'.$banner[$i]->bn_hinhanh) }}" style="width: 100%; height: 100%;"></a>
+                    </div>
+                @endfor
+            </div>
+          
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
     </div>
     <!-- / slider -->
     @else

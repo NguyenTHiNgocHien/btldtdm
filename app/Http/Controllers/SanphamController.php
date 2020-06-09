@@ -340,4 +340,9 @@ class SanphamController extends Controller
         $data = DB::table('sanpham')->where('sp_id','=',$idsp)->get();
         return response()->json($data, 200);
     }
+
+    // public function removeSale(){
+    //     DB::table('sanpham')->update(['sp_giakhuyenmai' => null]);
+    //     return redirect()->route('danhsachsanpham', ['sort' => 'danh-sach']);
+    // }
 }

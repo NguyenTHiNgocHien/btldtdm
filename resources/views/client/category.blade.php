@@ -59,7 +59,10 @@
                                     <img class="img-responsive lazy-load" style="width: 280px;" src="{{ asset('upload/sanpham') }}/{{ $item->sp_anhdaidien }}" alt="">
                                 </div>
                                 <div class="product-info">
-                                    <a href="{{ route('sanpham', ['idProduct'=> $item->sp_id]) }}"><h2>{{$item->sp_ten}}</h2></a>
+                                    <a href="{{ route('sanpham', ['idProduct'=> $item->sp_id]) }}" style="white-space: nowrap; 
+                                        width: 500px; 
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;"><h2>{{$item->sp_ten}}</h2></a>
                                     <div class="star-rating">
                                         <ul>
                                             <li><i class="fa fa-star"></i></li>
@@ -68,7 +71,6 @@
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star-half-full"></i></li>
                                         </ul>
-                                        <span> (24 lượt mua) </span>
                                     </div>
                                     <div class="price">
                                         @if (Session::has('ngoaite'))

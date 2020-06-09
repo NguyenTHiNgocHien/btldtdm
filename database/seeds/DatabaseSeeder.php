@@ -29,6 +29,121 @@ class DatabaseSeeder extends Seeder
 
         DB::table('loaikhachhang')->insert($loaikhachhang);
 
+        $khachhang = [
+            [
+                'username' => 'ngocduc',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Lê Ngọc Đức',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'lnd240998@gmail.com',
+                'kh_diachi' => 'Cần Thơ',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'ngocnguyen',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Đỗ Thị Ngọc Nguyên',
+                'kh_gioitinh' => 'Nữ',
+                'kh_email' => 'nguyen98@gmail.com',
+                'kh_diachi' => 'An Giang',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'ngoctam',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Dương Ngọc Tâm',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'tam98@gmail.com',
+                'kh_diachi' => 'Thốt Nốt',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'quocbinh',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Lương Quốc Bình',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'binh98@gmail.com',
+                'kh_diachi' => 'Cần Thơ',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'tranphung',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Trần Thanh Phụng',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'phung98@gmail.com',
+                'kh_diachi' => 'Trà Vinh',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'tuongvy',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Đặng Thị Tường Vy',
+                'kh_gioitinh' => 'Nữ',
+                'kh_email' => 'vy98@gmail.com',
+                'kh_diachi' => 'Vĩnh Long',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'minhnghia',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Lê Minh Nghĩa',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'nghia98@gmail.com',
+                'kh_diachi' => 'Cần Thơ',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'user1',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Nguyễn Văn A',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'nguyenvan98a@gmail.com',
+                'kh_diachi' => 'An Giang',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'user2',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Nguyễn Văn B',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'nguyenvan98b@gmail.com',
+                'kh_diachi' => 'An Giang',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'user3',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Nguyễn Thị C',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'nguyenthi98c@gmail.com',
+                'kh_diachi' => 'An Giang',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+            [
+                'username' => 'user4',
+                'password' => bcrypt('12345'),
+                'kh_hoten' => 'Nguyễn Văn ABC',
+                'kh_gioitinh' => 'Nam',
+                'kh_email' => 'nguyenvan98abc@gmail.com',
+                'kh_diachi' => 'An Giang',
+                'kh_sdt' => '0123456789',
+                'lkh_id' => '1'
+            ],
+        ];
+
+        DB::table('khachhang')->insert($khachhang);
+
         $quyen = [
             [
                 'q_ten' => 'Admin',
@@ -87,17 +202,27 @@ class DatabaseSeeder extends Seeder
         //Loại sản phẩm
         $loaisp = [
             [
-                'l_ten' => 'Loại 1',
+                'l_ten' => 'Trang Điểm',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
             [
-                'l_ten' => 'Loại 2',
+                'l_ten' => 'Chăm Sóc Da',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
             [
-                'l_ten' => 'Loại 3',
+                'l_ten' => 'Chăm Sóc Toàn Thân',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'l_ten' => 'Chăm Sóc Tóc',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'l_ten' => 'Nước Hoa',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
@@ -224,249 +349,249 @@ class DatabaseSeeder extends Seeder
         ];
         DB::table('xuatxu')->insert($xuatxu);
 
-        $sanpham = [
-            [
-                'sp_ten' => 'Sản phẩm 1',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'cd_id' => rand(1,8),
-                'cdp_id' => rand(1,8),
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 2',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cd_id' => rand(1,8),
-                'cdp_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 3',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'xx_id' => rand(1,5),
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 4',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'xx_id' => rand(1,5),
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 5',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 6',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 7',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 8',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 9',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 10',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 11',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 12',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 13',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 14',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 15',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 16',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 17',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 18',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 19',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'sp_ten' => 'Sản phẩm 20',
-                'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
-                'sp_danhgia' => 4,
-                'l_id' => rand(1,3),
-                'sp_giaban' => rand(100000,500000),
-                'cdp_id' => rand(1,8),
-                'cd_id' => rand(1,8),
-                'xx_id' => rand(1,5),
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-        ];
-        DB::table('sanpham')->insert($sanpham);
+        // $sanpham = [
+        //     [
+        //         'sp_ten' => 'Kẻ Mắt Nước Innisfree Power Proof Brush Liner 0.6gr',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'cd_id' => rand(1,8),
+        //         'cdp_id' => rand(1,8),
+        //         'l_id' => 1,
+        //         'sp_giaban' => rand(100000,500000),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 2',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cd_id' => rand(1,8),
+        //         'cdp_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 3',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'xx_id' => rand(1,5),
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 4',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'xx_id' => rand(1,5),
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 5',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 6',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 7',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 8',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 9',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 10',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 11',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 12',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 13',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 14',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 15',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 16',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 17',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 18',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 19',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        //     [
+        //         'sp_ten' => 'Sản phẩm 20',
+        //         'sp_thongtin' => 'Sản phẩm số một không chỗ nào bằng',
+        //         'sp_danhgia' => 4,
+        //         'l_id' => rand(1,3),
+        //         'sp_giaban' => rand(100000,500000),
+        //         'cdp_id' => rand(1,8),
+        //         'cd_id' => rand(1,8),
+        //         'xx_id' => rand(1,5),
+        //         'created_at' => $now,
+        //         'updated_at' => $now
+        //     ],
+        // ];
+        // DB::table('sanpham')->insert($sanpham);
 
         
     }

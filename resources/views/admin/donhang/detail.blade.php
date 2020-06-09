@@ -111,7 +111,6 @@
                 <span class="badge bg-green">Đã nhận hàng</span>
               @endif
             </p>
-
             <form action="{{ route('vanchuyendonhang', ['id'=> $donhang->dh_id]) }}" method="get">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Thay đổi vận chuyển đơn hàng</label>

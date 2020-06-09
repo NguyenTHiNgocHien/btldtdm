@@ -52,17 +52,75 @@
                 </div>
                 <div class="col-md-6">
                     <div class="right-content">
+                        class="un-rated"
+                        
                         <a href="#"><h3>{{ $product->sp_ten }}</h3></a>
-                        <div class="rated">
-                            <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li class="un-rated"><i class="fa fa-star"></i></li>
-                            </ul>
-                            <span>(24 reviews)</span>
-                        </div>
+                        @if ($product->sp_danhgia == 0)
+                            <div class="rated">
+                                <ul>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        @endif
+                        @if ($product->sp_danhgia <= 1 && $product->sp_danhgia > 0)
+                            <div class="rated">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        @endif
+                        @if ($product->sp_danhgia <= 2 && $product->sp_danhgia > 1)
+                            <div class="rated">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        @endif
+                        @if ($product->sp_danhgia <= 3 && $product->sp_danhgia > 2)
+                            <div class="rated">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        @endif
+                        @if ($product->sp_danhgia <= 4 && $product->sp_danhgia > 3)
+                            <div class="rated">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li class="un-rated"><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        @endif
+                        @if ($product->sp_danhgia <= 5 && $product->sp_danhgia > 4)
+                            <div class="rated">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        @endif
                         @if (Session::has('ngoaite'))
                                             @if (number_format($product->sp_giakhuyenmai) == 0)
                                                 {{ number_format($product->sp_giaban/Session::get('tigia'),2) }} {{ Session::get('ngoaite') }}
@@ -80,7 +138,8 @@
                                         @endif
                         <br>
                         <span class="sku">Còn {{ $product->sp_soluong }} sản phẩm trong kho</span>
-                        
+                        <p>Tác dụng: {{ $product->cd_ten }}</p>
+                        <p>Tác dụng phụ: {{ $product->cdp_ten }}</p>
                         <div class="product-desc">
                             <span class="item-number"><b>Mã sản phẩm:</b>  SP-{{ $product->sp_id }}</span><br>
                             <span class="item-cat"><b>Loại sản phẩm:</b>  {{ $category->l_ten }}</span>
@@ -117,8 +176,7 @@
                             <div id="tab1" class="tab-pane active">
                                 <h3>Thông tin chi tiết về sản phẩm</h3>
                                 <p>{!! $product->sp_thongtin !!}</p>
-                                <p>Tác dụng: </p>
-                                <p>Tác dụng phụ: </p>
+                                
                             </div>
                             <div id="tab2" class="tab-pane">
                                 <h3>Bình luận bằng tài khoản khách hàng</h3>
@@ -177,7 +235,11 @@
                                     <h1>Bình luận</h1>
                                     @foreach ($comment as $item)
                                     <div class="col-md-1" style="border-radius: 50%;">
-                                        <img class="img-responsive" alt="Single product" src="{{ asset('front-end-2') }}/img/single_1.jpg">
+                                        @if ($item->kh_gioitinh == "Nam")
+                                            <img src="{{ asset('front-end/avata-men.png') }}" alt="" class="img-responsive">
+                                        @else
+                                            <img src="{{ asset('front-end/avata-women.png') }}" alt="" class="img-responsive">
+                                        @endif
                                     </div>
                                     <div class="col-md-11">
                                         <h4>{{ $item->kh_hoten }}</h4>

@@ -97,12 +97,15 @@
            
             
             
-            <p>Đánh giá sản phẩm</p>
+            
             <p>Tác dụng: {{ $sanpham->cd_ten }}</p>
             <p>Tác dụng phụ: {{ $sanpham->cdp_ten }}</p>
-            
+            <p>Đánh giá sản phẩm</p>
             <p>
               <div id="rating">
+                @if ($sanpham->sp_danhgia == 0)
+                    <span>Sản phẩm chưa có đánh giá</span>
+                @endif
                 @if ($sanpham->sp_danhgia == 5)
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>

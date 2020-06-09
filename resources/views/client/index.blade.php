@@ -76,7 +76,7 @@
                                     <ul>
                                         <li><a class="zoom" href="{{ asset('upload/sanpham/'.$value->sp_anhdaidien) }}"><i class="fa fa-search"></i></a></li>
 										<li><a href="{{ route('add-wish-list', ['idProduct'=> $value->sp_id]) }}"><i class="fa fa-heart-o"></i></a></li>
-										<li><a href="product-details-1.html"><i class="fa fa-expand"></i></a></li>
+										<li><a href="{{ route('sanpham', ['id'=>$value->sp_id]) }}"><i class="fa fa-expand"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -191,7 +191,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12 no-padding">
                                 <div class="news-content">
-                                    <h2>Đức đẹp trai</h2>
+                                    <h2>Anh Nam</h2>
                                     <p class="excerpt">Sản phẩm rất tốt tôi sẽ sử dụng và giới thiệu cho nhiều người biết đến</p>
                                 </div>
                             </div>
@@ -207,7 +207,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12 no-padding">
                                 <div class="news-content">
-                                    <h2>Đức đẹp trai</h2>
+                                    <h2>Anh Hiệp</h2>
                                     <p class="excerpt">Sản phẩm rất tốt tôi sẽ sử dụng và giới thiệu cho nhiều người biết đến</p>
                                 </div>
                             </div>

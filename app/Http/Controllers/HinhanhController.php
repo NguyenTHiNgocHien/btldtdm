@@ -58,7 +58,7 @@ class HinhanhController extends Controller
             if($sanpham)
             {
                 $success = Session::put('alert-info', 'Thêm dữ liệu thành công');
-                return redirect()->route('chitietsanpham', ['id' => $request->sp_id]);
+                return redirect()->back();
             }
             else
             {

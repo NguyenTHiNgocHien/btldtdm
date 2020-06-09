@@ -81,7 +81,10 @@
 												$phamtramgiam = $item->sp_giakhuyenmai * 100 / $item->sp_giaban;
 											@endphp --}}
 										<div class="product-info">
-											<a href="{{ route('sanpham', ['id'=>$item->sp_id]) }}"><h2>{{ $item->sp_ten }}</h2></a>
+											<a href="{{ route('sanpham', ['id'=>$item->sp_id]) }}" style="white-space: nowrap; 
+												width: 500px; 
+												overflow: hidden;
+												text-overflow: ellipsis;"><h2>{{ $item->sp_ten }}</h2></a>
 											<div class="star-rating">
 												<ul>
 													<li><i class="fa fa-star"></i></li>

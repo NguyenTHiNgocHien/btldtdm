@@ -54,14 +54,14 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <div class="text-right">
+                  {{-- <div class="text-right">
                     <a href="#" class="btn btn-sm btn-primary">
                         <i class="fas fa-user"></i> Chỉnh sửa
                     </a>
                     <a href="#" class="btn btn-sm bg-danger">
                       <i class="fas fa-trash"></i>
                     </a>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>

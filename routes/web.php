@@ -125,6 +125,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkUser'], function () {
     Route::get('sanpham/{id}/edit','SanphamController@edit')->name('suathongtinsanpham');
     Route::get('sanpham/{id}/cap-nhat-gia-ban','SanphamController@CapNhatGiaBan')->name('capnhatgiaban');
     Route::get('sanpham/{idsp}', 'SanphamController@editProduct')->name('showproduct');
+    Route::get('sanpham/remove-sale','SanphamController@removeSale')->name('remove-sale');
 
 
 

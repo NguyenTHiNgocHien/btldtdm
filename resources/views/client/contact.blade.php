@@ -61,58 +61,6 @@
             </div>
         </div>
     </div>
-    
-    <div class="row margin-bottom-70px">	
-        <div class="col-md-12">
-            <div class="contact login">
-                <h3>leave a reply</h3>
-                <form action="#">
-                    <div class="col-md-6 no-padding-left">
-                        <div class="your-name">
-                            <label for="your-name">Name <span class="required">*</span></label><br>
-                            <input type="text" name="your-name" value="" id="your-name">
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6 no-padding-left">
-                        <div class="email">
-                            <label for="your-email">Email <span class="required">*</span></label><br>
-                            <input type="email" name="your-email" value="" id="your-email">
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6 no-padding-left">
-                        <div class="email">
-                            <label for="your-subject">Subject</label><br>
-                            <input type="text" name="your-subject" value=""  id="your-subject">
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6 no-padding-left">
-                        <div class="your-website">
-                            <label for="your-website">Website</label>
-                            <input type="text" name="your-website" value=""  id="your-website">	
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-12 no-padding-left">
-                        <div class="your-message">
-                            <label for="your-message">Your Message</label><br>
-                            <textarea name="your-message" cols="10" rows="6"  id="your-message"></textarea>
-                        </div>
-                    </div>
-                    
-                    <div class="clear-fix"></div>
-                    
-                    <div class="col-md-6 no-padding-left">	
-                        <div class="submit col-md-12 no-padding-left">
-                            <a href="#" class="trendify-btn black-bordered">Send Message</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 
 @endsection

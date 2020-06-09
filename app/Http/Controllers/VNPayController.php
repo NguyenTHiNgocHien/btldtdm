@@ -27,8 +27,6 @@ class VNPayController extends Controller
                     'dh_tongtien' => Cart::getTotal(),
                     'dh_thoigiandathang' => $now,
                     'kh_id' => $username->kh_id,
-                    'htvc_id' => 1,
-                    'httt_id' => 1
                 ]
             );
         } else {
@@ -44,8 +42,6 @@ class VNPayController extends Controller
                 'dh_tongtien' => Cart::getTotal(),
                 'dh_thoigiandathang' => $now,
                 'kh_id' => $username->kh_id,
-                'htvc_id' => 1,
-                'httt_id' => 1
             ]
         );
 
